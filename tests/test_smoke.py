@@ -19,7 +19,8 @@ from worksheet_generator import Foerderziel, generate_worksheet, renderers, sche
 
 def test_schema_validates_minimal_worksheet():
     goal = {"icf_codes": [], "freitext": "Test", "niveau": "standard", "alter": ""}
-    worksheet = schema.new_worksheet_skeleton("Testblatt", goal)
+    targeting = {"mode": "foerder", **goal}
+    worksheet = schema.new_worksheet_skeleton("Testblatt", targeting, goal)
     worksheet["sections"] = [
         {"type": "intro", "title": "Einleitung", "content": "Hallo", "items": []}
     ]
@@ -28,7 +29,8 @@ def test_schema_validates_minimal_worksheet():
 
 def test_schema_rejects_invalid_item_kind():
     goal = {"icf_codes": [], "freitext": "Test", "niveau": "standard", "alter": ""}
-    worksheet = schema.new_worksheet_skeleton("Testblatt", goal)
+    targeting = {"mode": "foerder", **goal}
+    worksheet = schema.new_worksheet_skeleton("Testblatt", targeting, goal)
     worksheet["sections"] = [
         {
             "type": "task",
@@ -56,6 +58,7 @@ def test_generate_worksheet_synthetic_mini_input():
     worksheet = generate_worksheet(ziel, recherche_stichpunkte=["Welche Form hat ein Ball?"])
 
     schema.validate_worksheet(worksheet)  # muss ohne Fehler durchlaufen
+    assert worksheet["meta"]["targeting"]["mode"] == "foerder"
     assert worksheet["meta"]["goal"]["freitext"] == ziel.freitext
     assert worksheet["meta"]["goal"]["icf_codes"] == ["d115"]
 

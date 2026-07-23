@@ -16,6 +16,19 @@ sortieren").
 DOCX-Rendering ist über `tests/test_smoke.py` und den Docstring von
 `renderers.to_docx()` abgedeckt.)
 
+## Curriculum-Beispiel (Schulmodus)
+
+- `worksheet_curriculum.json` / `worksheet_curriculum.md` -- fiktives
+  Schul-Arbeitsblatt (Mathematik, Klasse 3, Einmaleins, Differenzierung M,
+  Kompetenzfokus Begruenden/Vergleichen), erzeugt mit:
+
+```bash
+PYTHONIOENCODING=utf-8 python -m worksheet_generator generate \
+  --subject Mathematik --grade 3 --topic "Einmaleins" --level M \
+  --kompetenz "begruenden,vergleichen" --out examples/worksheet_curriculum.json
+PYTHONIOENCODING=utf-8 python -m worksheet_generator render examples/worksheet_curriculum.json --format md --out examples/worksheet_curriculum.md
+```
+
 ## Erzeugt mit
 
 ```bash

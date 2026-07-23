@@ -80,6 +80,18 @@ Ohne `icf_local.json` funktioniert der Generator weiter -- ICF-Codes werden
 dann ohne Kurztitel übernommen. Details, Lizenzhinweise und die genaue
 API-Technik: Docstring von `_tools/icf_fetch.py`.
 
+## Schulmodus (Curriculum)
+
+`--subject <Fach>` schaltet vom Förder- in den Curriculum-Modus: Fach +
+`--grade` (Klassen-/Lernstufe) + `--topic`, optional `--level`
+(Differenzierung, z. B. G/M/E) und `--kompetenz` (kommagetrennt:
+recherchieren, begründen, vergleichen, modellieren, interpretieren,
+transferieren, reflektieren). Lehrplan-Kontext kommt optional aus
+`curriculum_sources` (config): `local-files` (eigene Lehrplan-Auszüge)
+und `lernquest` (experimentell, liest read-only aus einer lokalen
+LernQuest-DB via `db_path`/ENV `LERNQUEST_DB`). Auszüge sind Kontext,
+keine amtliche Quelle — Lehrplan-Treue prüft der Anwender.
+
 ## Design-Delegation (optional, manuelle Folgeschritte)
 
 Für ansprechendere Ausgabeformen als Markdown/HTML/DOCX kann das erzeugte

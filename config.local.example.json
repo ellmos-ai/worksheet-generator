@@ -1,5 +1,17 @@
 {
   "_hinweis": "Vorlage fuer config.local.json (gitignored). Kopieren nach config.local.json, anpassen, NIE committen. Ueberschreibt gleichnamige Felder der config.json.",
   "material_dirs": ["C:/Pfad/zu/eigenem/Materialordner"],
-  "icf_local_path": "icf_local.json"
+  "icf_local_path": "icf_local.json",
+  "curriculum_sources": [
+    {
+      "type": "local-files",
+      "path": "C:/Pfad/zu/eigenen/Lehrplan-Auszuegen",
+      "_hinweis": "Ordner mit eigenen .md/.json-Themenlisten -- einfache Fach/Thema-Substringsuche"
+    },
+    {
+      "type": "lernquest",
+      "db_path": "C:/Pfad/zu/lernquest.db",
+      "_hinweis": "EXPERIMENTELL, nur lesend. Alternativ ENV LERNQUEST_DB statt db_path setzen. Konvention mancher LernQuest-Installationen (nicht garantiert): %LOCALAPPDATA%/LernQuest/lernquest.db"
+    }
+  ]
 }

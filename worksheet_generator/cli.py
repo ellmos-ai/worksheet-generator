@@ -1,9 +1,13 @@
 """CLI-Einstieg: `python -m worksheet_generator <command> ...`.
 
 Befehle:
-    generate  -- Foerderziel -> Arbeitsblatt-JSON schreiben
+    generate  -- Foerderziel ODER Curriculumziel -> Arbeitsblatt-JSON schreiben
     render    -- Arbeitsblatt-JSON -> md/html/docx rendern
     status    -- Konfiguration + verfuegbare Renderer/ICF-Referenz anzeigen
+
+`generate` erkennt den Modus automatisch: `--subject` gesetzt -> Curriculum-
+Modus (Fach/Klassenstufe, benoetigt zusaetzlich `--grade`); sonst
+Foerder-Modus (benoetigt `--freitext`, wie bisher).
 """
 from __future__ import annotations
 
@@ -13,7 +17,7 @@ import sys
 from pathlib import Path
 
 from . import renderers, schema
-from .generator import Foerderziel, generate_worksheet, save_worksheet
+from .generator import Curriculumziel, Foerderziel, generate_worksheet, save_worksheet
 
 MODULE_ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_CONFIG = MODULE_ROOT / "config.json"
@@ -43,24 +47,47 @@ def load_icf_reference(config: dict) -> dict | None:
 
 def cmd_generate(args: argparse.Namespace) -> int:
     config = load_config()
-    ziel = Foerderziel(
-        freitext=args.freitext,
-        icf_codes=[c.strip() for c in args.icf.split(",") if c.strip()] if args.icf else [],
-        niveau=args.niveau,
-        alter=args.alter,
-        thema=args.thema,
-    )
     material_dirs = args.material_dir if args.material_dir else config.get("material_dirs", [])
-    icf_reference = None if args.no_icf else load_icf_reference(config)
 
-    worksheet = generate_worksheet(
-        ziel,
-        material_dirs=material_dirs,
-        recherche_stichpunkte=args.recherche,
-        icf_reference=icf_reference,
-    )
+    if args.subject:
+        if not args.grade:
+            print("FEHLER: Curriculum-Modus (--subject gesetzt) benoetigt zusaetzlich --grade", file=sys.stderr)
+            return 1
+        ziel = Curriculumziel(
+            subject=args.subject,
+            grade=args.grade,
+            topic=args.topic or "",
+            differenzierung=args.level or "",
+            kompetenzfokus=[k.strip() for k in args.kompetenz.split(",") if k.strip()] if args.kompetenz else [],
+        )
+        curriculum_sources_config = config.get("curriculum_sources", [])
+        worksheet = generate_worksheet(
+            ziel,
+            material_dirs=material_dirs,
+            recherche_stichpunkte=args.recherche,
+            curriculum_sources=curriculum_sources_config,
+        )
+    else:
+        if not args.freitext:
+            print("FEHLER: Foerder-Modus (kein --subject) benoetigt --freitext", file=sys.stderr)
+            return 1
+        ziel = Foerderziel(
+            freitext=args.freitext,
+            icf_codes=[c.strip() for c in args.icf.split(",") if c.strip()] if args.icf else [],
+            niveau=args.niveau,
+            alter=args.alter,
+            thema=args.thema,
+        )
+        icf_reference = None if args.no_icf else load_icf_reference(config)
+        worksheet = generate_worksheet(
+            ziel,
+            material_dirs=material_dirs,
+            recherche_stichpunkte=args.recherche,
+            icf_reference=icf_reference,
+        )
+
     out = save_worksheet(worksheet, args.out)
-    print(f"Arbeitsblatt-JSON geschrieben: {out}")
+    print(f"Arbeitsblatt-JSON geschrieben: {out} (Modus: {worksheet['meta']['targeting']['mode']})")
     return 0
 
 
@@ -96,6 +123,8 @@ def cmd_status(_args: argparse.Namespace) -> int:
     except ImportError:
         docx_status = "NICHT installiert (pip install python-docx)"
 
+    curriculum_sources_config = config.get("curriculum_sources", [])
+
     print("worksheet-generator -- Status")
     print(f"  Schema-Version:     {schema.SCHEMA_VERSION}")
     print(f"  config.json:        {'gefunden' if DEFAULT_CONFIG.exists() else 'FEHLT'}")
@@ -105,6 +134,11 @@ def cmd_status(_args: argparse.Namespace) -> int:
         print(f"  icf_local.json:     geladen ({len(icf_reference)} Codes)")
     else:
         print("  icf_local.json:     NICHT vorhanden -- siehe _tools/icf_fetch.py")
+    if curriculum_sources_config:
+        typen = ", ".join(e.get("type", "?") for e in curriculum_sources_config)
+        print(f"  curriculum_sources: {len(curriculum_sources_config)} konfiguriert ({typen})")
+    else:
+        print("  curriculum_sources: keine konfiguriert (Curriculum-Modus laeuft ohne Kontext-Adapter)")
     print("  Renderer md/html:   immer verfuegbar")
     print(f"  Renderer docx:      {docx_status}")
     print("  Renderer pdf:       nicht eingebaut -- HTML -> PDF extern (siehe SKILL.md)")
@@ -117,19 +151,33 @@ def build_parser() -> argparse.ArgumentParser:
     )
     sub = parser.add_subparsers(dest="command")
 
-    gen = sub.add_parser("generate", help="Arbeitsblatt-JSON aus Foerderziel erzeugen")
-    gen.add_argument("--freitext", required=True, help="Foerderziel als Freitext")
-    gen.add_argument("--icf", default="", help="Kommagetrennte ICF-Codes, z.B. d140,d145")
-    gen.add_argument("--niveau", default="standard", help="z.B. standard, einfache_sprache, aac")
-    gen.add_argument("--alter", default="", help="Alter bzw. Altersspanne")
-    gen.add_argument("--thema", default="allgemein", help="Aufgaben-Bank, z.B. mathe, deutsch")
+    gen = sub.add_parser(
+        "generate",
+        help="Arbeitsblatt-JSON erzeugen (Foerder-Modus per --freitext, Curriculum-Modus per --subject)",
+    )
+    # Foerder-Modus (bestehend)
+    gen.add_argument("--freitext", default="", help="Foerder-Modus: Foerderziel als Freitext")
+    gen.add_argument("--icf", default="", help="Foerder-Modus: kommagetrennte ICF-Codes, z.B. d140,d145")
+    gen.add_argument("--niveau", default="standard", help="Foerder-Modus: z.B. standard, einfache_sprache, aac")
+    gen.add_argument("--alter", default="", help="Foerder-Modus: Alter bzw. Altersspanne")
+    gen.add_argument("--thema", default="allgemein", help="Foerder-Modus: Aufgaben-Bank, z.B. mathe, deutsch")
+    gen.add_argument("--no-icf", action="store_true", help="Foerder-Modus: ICF-Referenz nicht laden")
+    # Curriculum-Modus (neu) -- --subject gesetzt schaltet den Modus um
+    gen.add_argument("--subject", default="", help="Curriculum-Modus: Unterrichtsfach (schaltet den Modus um)")
+    gen.add_argument("--grade", default="", help="Curriculum-Modus: Klassen- bzw. Lernstufe")
+    gen.add_argument("--topic", default="", help="Curriculum-Modus: Thema")
+    gen.add_argument("--level", default="", help="Curriculum-Modus: Differenzierung, z.B. G/M/E")
+    gen.add_argument(
+        "--kompetenz", default="",
+        help="Curriculum-Modus: kommagetrennter Kompetenzfokus, z.B. vergleichen,interpretieren",
+    )
+    # Gemeinsam
     gen.add_argument(
         "--material-dir", action="append", help="Material-Ordner (mehrfach angebbar)"
     )
     gen.add_argument(
         "--recherche", action="append", help="Bereits recherchierter Stichpunkt (mehrfach angebbar)"
     )
-    gen.add_argument("--no-icf", action="store_true", help="ICF-Referenz nicht laden")
     gen.add_argument("--out", default="output/worksheet.json", help="Zieldatei fuer das JSON")
     gen.set_defaults(func=cmd_generate)
 

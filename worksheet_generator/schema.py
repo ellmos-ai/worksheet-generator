@@ -5,26 +5,48 @@ konsumiert. Die Validierung ist ein reiner stdlib-Validator (keine
 externe jsonschema-Abhaengigkeit), damit das Modul ohne Zusatz-Installation
 lauffaehig bleibt.
 
-Struktur (schema_version "1.0"):
+Struktur (schema_version "2.0"):
 
     {
-      "schema_version": "1.0",
+      "schema_version": "2.0",
       "meta": {
         "title": str,
         "generated_at": ISO-Zeitstempel,
-        "goal": {
+        "targeting": {
+          "mode": "foerder" | "curriculum",
+
+          # mode == "foerder" (Foerder-/Therapiekontext, ICF-gestuetzt):
           "icf_codes": [str, ...],
-          "icf_titles": {code: kurztitel, ...},   # nur falls ICF-Referenz geladen
+          "icf_titles": {code: kurztitel, ...},
           "freitext": str,
-          "niveau": str,      # z.B. "standard", "einfache_sprache", "aac"
+          "niveau": str,          # z.B. "standard", "einfache_sprache", "aac"
           "alter": str,
-          "thema": str        # z.B. "mathe", "deutsch", "allgemein"
+          "thema": str,           # z.B. "mathe", "deutsch", "allgemein"
+
+          # mode == "curriculum" (Schulkontext, Fach/Klassenstufe-gestuetzt):
+          "subject": str,          # Unterrichtsfach
+          "grade": str,            # Klassen- bzw. Lernstufe
+          "topic": str,            # Thema
+          "differenzierung": str,  # optional, z.B. "G"/"M"/"E"-Niveau
+          "kompetenzfokus": [str, ...]  # optional, aus KOMPETENZFOKUS
+        },
+        "goal": {
+          # Renderer-kompatible Projektion von "targeting" -- IMMER vorhanden,
+          # unabhaengig vom Modus, damit renderers.py unveraendert bleibt.
+          "icf_codes": [str, ...],
+          "icf_titles": {code: kurztitel, ...},
+          "freitext": str,
+          "niveau": str,
+          "alter": str,
+          "thema": str
         },
         "sources": {
           "material_scan": [dateiname, ...],
           "material_notes": [{"file": ..., "excerpt": ...}, ...],
           "recherche_stichpunkte": [str, ...],
-          "icf_reference_used": bool
+          "icf_reference_used": bool,
+          "curriculum_notes": [{...}, ...],       # nur mode == "curriculum"
+          "curriculum_warnings": [str, ...]        # nur mode == "curriculum"
         }
       },
       "sections": [
@@ -44,16 +66,35 @@ Struktur (schema_version "1.0"):
         }, ...
       ]
     }
+
+Migrationshinweis: schema_version "1.0" kannte nur "meta.goal" (ohne
+"targeting", implizit Foerder-Modus). "2.0" fuehrt "targeting" als
+kanonische, modusfaehige Struktur ein; "goal" bleibt als abgeleitete
+Projektion fuer Renderer-Kompatibilitaet erhalten. Es gibt keinen
+automatischen Migrator fuer 1.0-Dateien -- neu generieren.
 """
 from __future__ import annotations
 
 import datetime as _dt
 from typing import Any
 
-SCHEMA_VERSION = "1.0"
+SCHEMA_VERSION = "2.0"
 
 ITEM_KINDS = {"luecke", "zuordnung", "rechnung", "frage", "freitext"}
 SECTION_TYPES = {"intro", "task", "bonus", "custom"}
+TARGETING_MODES = {"foerder", "curriculum"}
+
+# Kompetenzfokus-Vokabular fuer den Curriculum-Modus (ASCII-Identifier nach
+# Codebase-Konvention, siehe ITEM_KINDS; "begruenden" statt "begründen").
+KOMPETENZFOKUS = {
+    "recherchieren",
+    "begruenden",
+    "vergleichen",
+    "modellieren",
+    "interpretieren",
+    "transferieren",
+    "reflektieren",
+}
 
 
 class SchemaError(ValueError):
@@ -63,6 +104,26 @@ class SchemaError(ValueError):
 def _require(cond: bool, msg: str) -> None:
     if not cond:
         raise SchemaError(msg)
+
+
+def _validate_targeting(targeting: Any) -> None:
+    _require(isinstance(targeting, dict), "meta.targeting fehlt oder ist kein Objekt")
+    mode = targeting.get("mode")
+    _require(mode in TARGETING_MODES, f"meta.targeting.mode ungueltig: {mode!r}")
+
+    if mode == "foerder":
+        _require(isinstance(targeting.get("icf_codes"), list), "targeting.icf_codes muss eine Liste sein")
+        _require(isinstance(targeting.get("freitext"), str), "targeting.freitext muss ein String sein")
+        _require(isinstance(targeting.get("niveau"), str) and targeting["niveau"], "targeting.niveau fehlt")
+        _require("alter" in targeting, "targeting.alter fehlt")
+    else:  # mode == "curriculum"
+        _require(isinstance(targeting.get("subject"), str) and targeting["subject"], "targeting.subject fehlt")
+        _require(isinstance(targeting.get("grade"), str) and targeting["grade"], "targeting.grade fehlt")
+        _require(isinstance(targeting.get("topic"), str), "targeting.topic muss ein String sein")
+        kompetenzfokus = targeting.get("kompetenzfokus", [])
+        _require(isinstance(kompetenzfokus, list), "targeting.kompetenzfokus muss eine Liste sein")
+        unbekannt = [k for k in kompetenzfokus if k not in KOMPETENZFOKUS]
+        _require(not unbekannt, f"targeting.kompetenzfokus enthaelt unbekannte Werte: {unbekannt}")
 
 
 def validate_worksheet(data: dict[str, Any]) -> None:
@@ -85,6 +146,10 @@ def validate_worksheet(data: dict[str, Any]) -> None:
         "meta.generated_at fehlt",
     )
 
+    _validate_targeting(meta.get("targeting"))
+
+    # "goal" bleibt Pflicht -- Renderer-kompatible Projektion, unabhaengig
+    # vom targeting.mode (renderers.py liest ausschliesslich hieraus).
     goal = meta.get("goal")
     _require(isinstance(goal, dict), "meta.goal fehlt oder ist kein Objekt")
     _require(isinstance(goal.get("icf_codes"), list), "meta.goal.icf_codes muss eine Liste sein")
@@ -125,13 +190,20 @@ def validate_worksheet(data: dict[str, Any]) -> None:
             )
 
 
-def new_worksheet_skeleton(title: str, goal: dict, sources: dict | None = None) -> dict:
-    """Erzeugt ein leeres, schema-konformes Arbeitsblatt-Geruest ohne sections."""
+def new_worksheet_skeleton(
+    title: str, targeting: dict, goal: dict, sources: dict | None = None
+) -> dict:
+    """Erzeugt ein leeres, schema-konformes Arbeitsblatt-Geruest ohne sections.
+
+    targeting: kanonische Zielsteuerung (mode "foerder" oder "curriculum").
+    goal: Renderer-kompatible Projektion (siehe Moduldoc oben).
+    """
     return {
         "schema_version": SCHEMA_VERSION,
         "meta": {
             "title": title,
             "generated_at": _dt.datetime.now().isoformat(timespec="seconds"),
+            "targeting": targeting,
             "goal": goal,
             "sources": sources or {},
         },

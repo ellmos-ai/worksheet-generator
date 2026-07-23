@@ -32,7 +32,18 @@ class RendererUnavailable(RuntimeError):
     """Ausgeloest, wenn ein optionaler Renderer (z.B. docx) nicht installiert ist."""
 
 
-def _meta_bits(goal: dict[str, Any]) -> list[str]:
+def _meta_bits(goal: dict[str, Any], targeting: dict[str, Any] | None = None) -> list[str]:
+    # Im Curriculum-Modus tragen die generischen goal-Felder Schul-Semantik
+    # (grade->alter, level->niveau) -- die Labels kommen dann aus targeting.
+    if targeting and targeting.get("mode") == "curriculum":
+        bits = []
+        if targeting.get("grade"):
+            bits.append(f"Stufe: {targeting['grade']}")
+        if targeting.get("differenzierung"):
+            bits.append(f"Differenzierung: {targeting['differenzierung']}")
+        if targeting.get("kompetenzfokus"):
+            bits.append(f"Kompetenzfokus: {', '.join(targeting['kompetenzfokus'])}")
+        return bits
     bits = []
     if goal.get("icf_codes"):
         titles = goal.get("icf_titles", {})
@@ -52,7 +63,7 @@ def to_markdown(worksheet: dict[str, Any]) -> str:
     meta = worksheet["meta"]
     goal = meta.get("goal", {})
     lines = [f"# {meta['title']}", ""]
-    bits = _meta_bits(goal)
+    bits = _meta_bits(goal, meta.get("targeting"))
     if bits:
         lines.append(f"*{' | '.join(bits)}*")
         lines.append("")
@@ -92,7 +103,7 @@ def to_html(worksheet: dict[str, Any]) -> str:
         "</head><body>",
         f"<h1>{_html.escape(meta['title'])}</h1>",
     ]
-    bits = _meta_bits(goal)
+    bits = _meta_bits(goal, meta.get("targeting"))
     if bits:
         parts.append(f'<p class="meta">{_html.escape(" | ".join(bits))}</p>')
 
@@ -139,7 +150,7 @@ def to_docx(worksheet: dict[str, Any], out_path: str | Path) -> Path:
     document = docx.Document()
     document.add_heading(meta["title"], level=1)
 
-    bits = _meta_bits(goal)
+    bits = _meta_bits(goal, meta.get("targeting"))
     if bits:
         p = document.add_paragraph(" | ".join(bits))
         if p.runs:

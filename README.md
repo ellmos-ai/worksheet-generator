@@ -98,6 +98,43 @@ Rendern anreichert.
 `renderers`, `sprache`). Lokale, nicht versionierte Overrides gehören in
 `config.local.json` (gitignored) -- Vorlage: `config.local.example.json`.
 
+## Schulmodus (Curriculum)
+
+Neben dem Förder-Modus (ICF/Förderziele) erzeugt der Generator Arbeitsblätter
+für Unterrichtsfächer und Lernstufen. `--subject` schaltet den Modus um:
+
+```bash
+# Mathe, Klasse 3, Thema Einmaleins
+python -m worksheet_generator generate --subject Mathematik --grade 3 --topic "Einmaleins" --out ab.json
+
+# Gesellschaftswissenschaften 7/8 mit Differenzierung und Kompetenzfokus
+python -m worksheet_generator generate --subject Gesellschaftswissenschaften --grade "7/8" \
+  --topic "Wasserkreislauf" --level M --kompetenz recherchieren,begruenden --out ab.json
+```
+
+### Lehrplan-Quellen (`curriculum_sources`, optional)
+
+Konfigurierbare Kontext-Quellen in `config.json`/`config.local.json`:
+
+```json
+"curriculum_sources": [
+  {"type": "local-files", "path": "C:/eigene/lehrplan-auszuege"},
+  {"type": "lernquest", "db_path": "optional; sonst ENV LERNQUEST_DB"}
+]
+```
+
+- **local-files:** eigener Ordner mit Lehrplan-Auszügen/Themenlisten (`.md`/`.json`);
+  das Fach muss die Datei über Dateinamen oder Titel-Überschrift qualifizieren.
+- **lernquest (experimentell):** liest NUR LESEND aus einer lokalen
+  LernQuest-Kompetenzregister-Datenbank (SQLite, `?mode=ro`; Pfad via
+  `db_path` oder ENV `LERNQUEST_DB`). LernQuest ist in Entwicklung — fehlt
+  DB/Tabelle, meldet der Adapter das als Warnung statt zu crashen; bei
+  Schema-Änderungen wird der Adapter nachgezogen.
+
+Hinweis: Die gelieferten Auszüge sind Prompt-KONTEXT, keine amtliche Quelle.
+Lehrplan-Treue verantwortet der Nutzer — Referenz bleiben die amtlichen
+Lehrpläne des jeweiligen Bundeslandes.
+
 ## ICF-Referenz (bring-your-own)
 
 > Dieses Modul enthält KEINE ICF-Volltexte. Es nutzt ausschließlich amtliche

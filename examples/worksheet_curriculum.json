@@ -1,0 +1,70 @@
+{
+  "schema_version": "2.0",
+  "meta": {
+    "title": "Arbeitsblatt: Mathematik -- Einmaleins",
+    "generated_at": "2026-07-23T19:19:37",
+    "targeting": {
+      "mode": "curriculum",
+      "subject": "Mathematik",
+      "grade": "3",
+      "topic": "Einmaleins",
+      "differenzierung": "M",
+      "kompetenzfokus": [
+        "begruenden",
+        "vergleichen"
+      ]
+    },
+    "goal": {
+      "icf_codes": [],
+      "icf_titles": {},
+      "freitext": "Mathematik -- Einmaleins",
+      "niveau": "M",
+      "alter": "3",
+      "thema": "mathe"
+    },
+    "sources": {
+      "material_scan": [],
+      "material_notes": [],
+      "recherche_stichpunkte": [],
+      "icf_reference_used": false,
+      "curriculum_notes": [],
+      "curriculum_warnings": []
+    }
+  },
+  "sections": [
+    {
+      "type": "intro",
+      "title": "Einleitung",
+      "content": "Arbeitsblatt Mathematik, Klassen-/Lernstufe 3 zum Thema Einmaleins. Differenzierung: M.",
+      "items": []
+    },
+    {
+      "type": "task",
+      "title": "Aufgaben",
+      "content": "Fach: Mathematik | Klassen-/Lernstufe: 3 | Differenzierung: M",
+      "items": [
+        {
+          "kind": "frage",
+          "prompt": "Aufgabe mit Kompetenzfokus Begruenden zu Einmaleins (ANZUPASSEN).",
+          "hint": "kompetenzfokus: begruenden"
+        },
+        {
+          "kind": "zuordnung",
+          "prompt": "Aufgabe mit Kompetenzfokus Vergleichen zu Einmaleins (ANZUPASSEN).",
+          "hint": "kompetenzfokus: vergleichen"
+        }
+      ]
+    },
+    {
+      "type": "bonus",
+      "title": "Bonus",
+      "content": "Kleines Raetsel oder Zusatzaufgabe zur Motivation.",
+      "items": [
+        {
+          "kind": "freitext",
+          "prompt": "Bonusaufgabe (ANZUPASSEN)."
+        }
+      ]
+    }
+  ]
+}
