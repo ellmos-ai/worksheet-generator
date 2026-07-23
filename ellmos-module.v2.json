@@ -4,8 +4,8 @@
   "display_name": "worksheet-generator",
   "category": "domains",
   "kind": "workflow",
-  "status": "development",
-  "visibility": "public-candidate",
+  "status": "released",
+  "visibility": "public",
   "provides": [
     "domain.education.material-generation"
   ],
