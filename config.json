@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "beschreibung": "Konfiguration des Moduls worksheet-generator. Aenderungen bewusst: version hochzaehlen. Private/lokale Werte gehoeren in config.local.json (gitignored, ueberschreibt gleichnamige Felder) -- Vorlage: config.local.example.json.",
+  "material_dirs": [],
+  "icf_source": "user-provided",
+  "icf_local_path": "icf_local.json",
+  "renderers": ["md", "html", "docx"],
+  "sprache": "de"
+}

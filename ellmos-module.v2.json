@@ -1,0 +1,40 @@
+{
+  "schema": "ellmos.module.v2",
+  "id": "worksheet-generator",
+  "display_name": "worksheet-generator",
+  "category": "domains",
+  "kind": "workflow",
+  "status": "development",
+  "visibility": "public-candidate",
+  "provides": [
+    "domain.education.material-generation"
+  ],
+  "requires": [],
+  "optional": [
+    "domain.education.icf-reference"
+  ],
+  "conflicts": [],
+  "surfaces": [
+    "workflow",
+    "skill"
+  ],
+  "state": {
+    "ownership": "external",
+    "location": "project"
+  },
+  "boundaries": {
+    "network": "listed",
+    "data": "user-local",
+    "platforms": [
+      "windows",
+      "macos",
+      "linux"
+    ]
+  },
+  "source_of_truth": {
+    "type": "local-directory",
+    "path": ".",
+    "repository": null
+  },
+  "adapters": []
+}

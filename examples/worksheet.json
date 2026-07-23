@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.0",
+  "meta": {
+    "title": "Arbeitsblatt: Farben benennen und sortieren (fiktives Beispiel)",
+    "generated_at": "2026-07-23T13:18:09",
+    "goal": {
+      "icf_codes": [
+        "d137"
+      ],
+      "icf_titles": {},
+      "freitext": "Farben benennen und sortieren (fiktives Beispiel)",
+      "niveau": "aac",
+      "alter": "6",
+      "thema": "allgemein"
+    },
+    "sources": {
+      "material_scan": [],
+      "material_notes": [],
+      "recherche_stichpunkte": [
+        "Welche Farbe hat die Sonne auf dem Bild?"
+      ],
+      "icf_reference_used": false
+    }
+  },
+  "sections": [
+    {
+      "type": "intro",
+      "title": "Einleitung",
+      "content": "Arbeitsblatt zum Foerderziel: Farben benennen und sortieren (fiktives Beispiel).",
+      "items": []
+    },
+    {
+      "type": "task",
+      "title": "Aufgaben",
+      "content": "Niveau: aac | Alter: 6",
+      "items": [
+        {
+          "kind": "frage",
+          "prompt": "Frage passend zum Foerderziel (ANZUPASSEN)."
+        },
+        {
+          "kind": "freitext",
+          "prompt": "Freie Bearbeitung bzw. Notizfeld (ANZUPASSEN)."
+        },
+        {
+          "kind": "frage",
+          "prompt": "Welche Farbe hat die Sonne auf dem Bild?"
+        }
+      ]
+    },
+    {
+      "type": "bonus",
+      "title": "Bonus",
+      "content": "Kleines Raetsel oder Zusatzaufgabe zur Motivation.",
+      "items": [
+        {
+          "kind": "freitext",
+          "prompt": "Bonusaufgabe (ANZUPASSEN)."
+        }
+      ]
+    }
+  ]
+}

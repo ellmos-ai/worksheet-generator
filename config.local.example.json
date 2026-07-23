@@ -1,0 +1,5 @@
+{
+  "_hinweis": "Vorlage fuer config.local.json (gitignored). Kopieren nach config.local.json, anpassen, NIE committen. Ueberschreibt gleichnamige Felder der config.json.",
+  "material_dirs": ["C:/Pfad/zu/eigenem/Materialordner"],
+  "icf_local_path": "icf_local.json"
+}

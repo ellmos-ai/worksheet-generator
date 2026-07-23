@@ -1,0 +1,35 @@
+# Lokale, nicht versionierte Konfigurations-Overrides (z.B. eigene Material-
+# Ordner, eigener icf_local_path) -- siehe config.local.example.json
+config.local.json
+
+# Lokal beschaffte ICF-Referenz (siehe _tools/icf_fetch.py) -- nie committen,
+# Herkunft/Lizenz ungeklaert bzw. nutzerabhaengig
+icf_local.json
+icf_local.*.json
+
+# LOCK-System (Multi-Agenten-Koordination, nie committen)
+LOCK*.txt
+
+# Generierte Arbeitsblaetter (nur synthetische Beispiele in examples/ sind Teil des Repos)
+output/
+
+# Interne Arbeitsdokumente
+_intern/
+
+# Rohsicherung des BACH-Vorgaengers (nur lokale Referenz beim Bau der Engine
+# genutzt, kein Teil des Repos -- enthaelt Alt-Code + war Fundort real
+# wirkender Klientendaten in output/, siehe TODO.md)
+bach_source/
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+.env
+
+# OS/Editor
+Thumbs.db
+.DS_Store
+.idea/
+.vscode/
