@@ -1,3 +1,5 @@
+![worksheet-generator Banner](assets/banner.png)
+
 # worksheet-generator
 
 **Fördermaterial-Generator für pädagogische und therapeutische Fachkräfte mit
