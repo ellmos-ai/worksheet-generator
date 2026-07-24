@@ -2,26 +2,27 @@
 
 # worksheet-generator
 
-**Fördermaterial-Generator für pädagogische und therapeutische Fachkräfte mit
-lokalem LLM-Agenten (Claude Code u. a.).**
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
+[![CI](https://github.com/ellmos-ai/worksheet-generator/actions/workflows/tests.yml/badge.svg)](https://github.com/ellmos-ai/worksheet-generator/actions)
+[![llms.txt](https://img.shields.io/badge/llms.txt-available-green.svg)](llms.txt)
 
-Dieses Modul erzeugt aus einem Förderziel (Freitext + optionale ICF-Codes),
-Niveau und Alter ein strukturiertes **Arbeitsblatt-JSON**, das anschließend
-nach Markdown, HTML oder DOCX gerendert werden kann. Es liefert den
-**Generator**, kein fertiges Fördermaterial -- im Repo liegt lediglich ein
-synthetisches Beispiel (`examples/`).
+**Fördermaterial-Generator für pädagogische und therapeutische Fachkräfte mit lokalem LLM-Agenten (Claude Code u. a.).**
 
-**Kein Klienten-/Personenbezug:** Steuerung ausschließlich über
-Förderziel/Niveau/Alter, niemals über Name oder Diagnose.
+Dieses Modul erzeugt aus einem Förderziel (Freitext + optionale ICF-Codes), Niveau und Alter ein strukturiertes **Arbeitsblatt-JSON**, das anschließend nach Markdown, HTML oder DOCX gerendert werden kann. Es liefert den **Generator**, kein fertiges Fördermaterial -- im Repo liegt lediglich ein synthetisches Beispiel (`examples/`).
 
-**Hinweis:** Dieses Modul ist ein **Material-Generator**, kein
-Therapieprogramm und kein Heilversprechen. Es ersetzt keine fachliche
-Einschätzung durch qualifizierte pädagogische/therapeutische Fachkräfte --
-erzeugte Arbeitsblätter sind vor dem Einsatz fachlich zu prüfen und
-anzupassen.
+| Eigenschaft | Beschreibung |
+|---|---|
+| **Privacy & DSGVO** | Local-First, 100% offline Engine. Kein Personen- oder Klientenbezug. |
+| **Generierungsmodi** | (1) Förderziel & ICF-Codes (Förder-Modus) / (2) Fach, Schulstufe & Thema (Curriculum-Modus) |
+| **Exportformate** | Markdown, HTML, DOCX (optional via `python-docx`) |
+| **AI Agent Ready** | Inklusive `llms.txt` und `SKILL.md` zur nahtlosen Integration in Claude Code, Antigravity & LLM-Pipelines |
 
-**Status:** Development / Public-Kandidat -- siehe `TODO.md` für offene
-Punkte vor einer Veröffentlichung.
+**Kein Klienten-/Personenbezug:** Steuerung ausschließlich über Förderziel/Niveau/Alter, niemals über Name oder Diagnose.
+
+**Hinweis:** Dieses Modul ist ein **Material-Generator**, kein Therapieprogramm und kein Heilversprechen. Es ersetzt keine fachliche Einschätzung durch qualifizierte pädagogische/therapeutische Fachkräfte -- erzeugte Arbeitsblätter sind vor dem Einsatz fachlich zu prüfen und anzupassen.
+
+**Status:** Beta / Public-Kandidat -- siehe `TODO.md` für offene Punkte.
 
 ## Installation
 

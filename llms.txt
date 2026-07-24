@@ -1,0 +1,39 @@
+# worksheet-generator
+
+> Fördermaterial-Generator für pädagogische und therapeutische Fachkräfte mit lokalem LLM-Agenten. Erzeugt aus Förderzielen (ICF-Codes, Freitext, Niveau, Alter) oder Schulcurricula (Fach, Klasse, Thema) deterministische Arbeitsblatt-JSONs, die nach Markdown, HTML oder DOCX gerendert werden können.
+
+## Core Characteristics
+
+- **Local & Privacy-First**: Steuerung ausschließlich über Förderziel/Niveau/Alter oder Fach/Stufe, niemals über Klienten-Name oder Personenbezug.
+- **Offline & Deterministic Engine**: Der Kern-Generator benötigt kein Netzwerk und kein externes LLM für die Erzeugung der Grundstruktur.
+- **Dual Mode**: Unterstützt sowohl den Förder-Modus (ICF-Ziele) als auch den Schul-Modus (Fach, Jahrgangsstufe, Thema, Differenzierung).
+- **Extensible Renderers**: Baut Markdown und HTML out-of-the-box (reine Standardbibliothek) und optional DOCX via `python-docx`.
+
+## Key Files
+
+- `README.md`: Hauptdokumentation mit Nutzungsbeispielen und Architektur-Überblick.
+- `SKILL.md`: Skill-Spezifikation für KI-Agenten und LLM-Integration.
+- `KONZEPT.md`: Herkunft, Designentscheidungen und Abgrenzungen.
+- `worksheet_generator/schema.py`: JSON-Schema-Definition und Pydantic-/Dataclass-Validierung.
+- `worksheet_generator/generator.py`: Deterministische Generator-Engine.
+- `worksheet_generator/renderers.py`: Export-Renderer für Markdown, HTML und DOCX.
+- `worksheet_generator/cli.py`: CLI-Schnittstelle (`generate`, `render`, `status`).
+
+## CLI Usage
+
+```bash
+# Förder-Modus
+python -m worksheet_generator generate --freitext "Mengen bis 10 erfassen" --icf d150 --niveau einfache_sprache --alter 8 --thema mathe --out output/worksheet.json
+
+# Schul-Modus
+python -m worksheet_generator generate --subject Mathematik --grade 3 --topic "Einmaleins" --out ab.json
+
+# Rendering
+python -m worksheet_generator render output/worksheet.json --format md
+```
+
+## System Integration & Governance
+
+- Repository: https://github.com/ellmos-ai/worksheet-generator
+- License: MIT
+- Last Checked: 2026-07-24

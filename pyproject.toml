@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "worksheet-generator"
+version = "0.1.0"
+description = "Fördermaterial-Generator für pädagogische und therapeutische Fachkräfte mit lokalem LLM-Agenten"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+    {name = "Lukas Geiger"}
+]
+keywords = [
+    "education",
+    "worksheet",
+    "icf",
+    "pedagogy",
+    "therapy",
+    "offline-first",
+    "local-ai",
+    "curriculum"
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Education",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Education"
+]
+
+[project.urls]
+Homepage = "https://github.com/ellmos-ai/worksheet-generator"
+Documentation = "https://github.com/ellmos-ai/worksheet-generator#readme"
+Repository = "https://github.com/ellmos-ai/worksheet-generator.git"
+Issues = "https://github.com/ellmos-ai/worksheet-generator/issues"
