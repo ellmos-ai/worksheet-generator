@@ -5,9 +5,17 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![CI](https://github.com/ellmos-ai/worksheet-generator/actions/workflows/tests.yml/badge.svg)](https://github.com/ellmos-ai/worksheet-generator/actions)
+[![Pytest](https://img.shields.io/badge/pytest-16%20passed-brightgreen.svg)](tests/)
+[![Local-First](https://img.shields.io/badge/privacy-100%25%20local--first-blue.svg)](#eigenschaften)
 [![llms.txt](https://img.shields.io/badge/llms.txt-available-green.svg)](llms.txt)
 
 **Fördermaterial-Generator für pädagogische und therapeutische Fachkräfte mit lokalem LLM-Agenten (Claude Code u. a.).**
+
+> [!NOTE]
+> **AI Agent & LLM-Integration:** Dieses Repository liefert maschinenlesbare Schnittstellen (`llms.txt`, `SKILL.md` und `worksheet_generator/schema.py`), die von lokalen KI-Agenten (Claude Code, Antigravity, Open-WebUI) direkt zur automatisierten Arbeitsblatt-Generierung und Anreicherung genutzt werden können.
+
+> [!IMPORTANT]
+> **Datenschutz & Privacy:** `worksheet-generator` arbeitet 100% offline und verarbeitet keinerlei Klienten- oder Personendaten. Steuerung ausschließlich über abstrakte Förderziele, ICF-Codes oder Schulcurricula.
 
 Dieses Modul erzeugt aus einem Förderziel (Freitext + optionale ICF-Codes), Niveau und Alter ein strukturiertes **Arbeitsblatt-JSON**, das anschließend nach Markdown, HTML oder DOCX gerendert werden kann. Es liefert den **Generator**, kein fertiges Fördermaterial -- im Repo liegt lediglich ein synthetisches Beispiel (`examples/`).
 
@@ -70,6 +78,38 @@ PYTHONIOENCODING=utf-8 python -m worksheet_generator status
 
 `status` zeigt die aktive Konfiguration, ob eine `icf_local.json` vorliegt
 und ob der optionale DOCX-Renderer verfügbar ist.
+
+## Systemarchitektur & Workflow
+
+```mermaid
+flowchart TD
+    subgraph Inputs["1. Eingabe & Modus"]
+        A1["Förderziel & ICF-Codes<br/>(Förder-Modus)"]
+        A2["Fach, Stufe & Thema<br/>(Schul-Modus)"]
+    end
+
+    subgraph CoreEngine["2. Offline Generator Engine"]
+        B1["Pydantic Schema Validation<br/>(worksheet_generator/schema.py)"]
+        B2["Deterministische Generierung<br/>(worksheet_generator/generator.py)"]
+        B3["Lehrplan- & Context-Adapter<br/>(Local Files / LernQuest DB)"]
+    end
+
+    subgraph OutputFormat["3. Multi-Format Output"]
+        C1["Arbeitsblatt JSON Schema"]
+        D1["Markdown (.md)"]
+        D2["HTML (.html)"]
+        D3["DOCX (.docx)"]
+    end
+
+    A1 --> B1
+    A2 --> B1
+    B1 --> B2
+    B3 --> B2
+    B2 --> C1
+    C1 --> D1
+    C1 --> D2
+    C1 --> D3
+```
 
 ## Arbeitsblatt-JSON-Schema
 

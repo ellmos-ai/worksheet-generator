@@ -5,6 +5,15 @@ Alle relevanten Änderungen an `worksheet-generator` werden in dieser Datei doku
 Das Format basiert auf [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 und dieses Projekt hält sich an [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.1] - 2026-07-26
+
+### Hinzugefügt
+- **Discoverability & README-Design:** GFM Callout Notes (`> [!NOTE]`, `> [!IMPORTANT]`), zusätzliche Shields.io Badges (pytest, local-first privacy) und Mermaid Systemarchitektur-Diagramm in `README.md` integriert.
+- **Pytest-Konfiguration:** `[tool.pytest.ini_options]` in `pyproject.toml` nachgerüstet.
+
+### Geändert
+- **LLM-Metadaten:** Verification & Timestamp in `llms.txt` auf `2026-07-26` aktualisiert.
+
 ## [0.1.0] - 2026-07-24
 
 ### Hinzugefügt

@@ -39,3 +39,7 @@ Homepage = "https://github.com/ellmos-ai/worksheet-generator"
 Documentation = "https://github.com/ellmos-ai/worksheet-generator#readme"
 Repository = "https://github.com/ellmos-ai/worksheet-generator.git"
 Issues = "https://github.com/ellmos-ai/worksheet-generator/issues"
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
