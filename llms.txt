@@ -11,7 +11,8 @@
 
 ## Key Files
 
-- `README.md`: Hauptdokumentation mit Nutzungsbeispielen und Architektur-Überblick.
+- `README.md`: Primary English documentation with usage examples and architecture overview.
+- `README_de.md`: Complete German documentation with detailed examples and ICF integration guidelines.
 - `SKILL.md`: Skill-Spezifikation für KI-Agenten und LLM-Integration.
 - `KONZEPT.md`: Herkunft, Designentscheidungen und Abgrenzungen.
 - `worksheet_generator/schema.py`: JSON-Schema-Definition und Pydantic-/Dataclass-Validierung.
@@ -36,4 +37,4 @@ python -m worksheet_generator render output/worksheet.json --format md
 
 - Repository: https://github.com/ellmos-ai/worksheet-generator
 - License: MIT
-- Last Checked: 2026-07-26
+- Last Checked: 2026-07-27
