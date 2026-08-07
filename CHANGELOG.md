@@ -5,6 +5,16 @@ Alle relevanten Änderungen an `worksheet-generator` werden in dieser Datei doku
 Das Format basiert auf [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 und dieses Projekt hält sich an [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.2] - 2026-07-27
+
+### Hinzugefügt
+- **Dokumentations-Parität & i18n:** `README_de.md` als vollständige deutsche Dokumentation mit Systemarchitektur, GFM-Callouts und Ökosystem-Verlinkungen ergänzt.
+- **Bilinguale Startseite:** `README.md` mit Sprachwechsel und konsistenten Schnellstart-Anleitungen aktualisiert.
+
+### Geändert
+- **LLM-Metadaten:** `llms.txt` um `README_de.md` ergänzt und auf den aktuellen Prüfstand synchronisiert.
+- **Projekt-Version:** `pyproject.toml` auf `0.1.2` angehoben.
+
 ## [0.1.1] - 2026-07-26
 
 ### Hinzugefügt

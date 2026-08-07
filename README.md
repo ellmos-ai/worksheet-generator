@@ -84,7 +84,7 @@ flowchart TD
     end
 
     subgraph CoreEngine["2. Offline Generator Engine"]
-        B1["Pydantic Schema Validation<br/>(worksheet_generator/schema.py)"]
+        B1["Standard-library schema validation<br/>(worksheet_generator/schema.py)"]
         B2["Deterministic Generation<br/>(worksheet_generator/generator.py)"]
         B3["Curriculum & Context Adapter<br/>(Local Files / LernQuest DB)"]
     end

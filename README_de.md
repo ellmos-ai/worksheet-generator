@@ -92,7 +92,7 @@ flowchart TD
     end
 
     subgraph CoreEngine["2. Offline Generator Engine"]
-        B1["Pydantic Schema Validation<br/>(worksheet_generator/schema.py)"]
+        B1["Schema-Validierung mit Standardbibliothek<br/>(worksheet_generator/schema.py)"]
         B2["Deterministische Generierung<br/>(worksheet_generator/generator.py)"]
         B3["Lehrplan- & Context-Adapter<br/>(Local Files / LernQuest DB)"]
     end
@@ -121,12 +121,15 @@ flowchart TD
 
 ## Arbeitsblatt-JSON-Schema
 
-Definiert und validiert in `worksheet_generator/schema.py` (`SCHEMA_VERSION`). Grobstruktur:
+Definiert und validiert in `worksheet_generator/schema.py` (`SCHEMA_VERSION`).
+`targeting` ist die kanonische, modusabhängige Steuerung; `goal` bleibt als
+Renderer-kompatible Projektion erhalten. Grobstruktur:
 
 ```
-schema_version, meta{title, generated_at, goal{icf_codes, icf_titles,
-freitext, niveau, alter, thema}, sources{material_scan, material_notes,
-recherche_stichpunkte, icf_reference_used}}, sections[{type, title, content,
+schema_version, meta{title, generated_at, targeting{mode, ...},
+goal{icf_codes, icf_titles, freitext, niveau, alter, thema},
+sources{material_scan, material_notes, recherche_stichpunkte,
+icf_reference_used}}, sections[{type, title, content,
 items[{kind, prompt, options?, answer_space?, hint?}]}]
 ```
 
