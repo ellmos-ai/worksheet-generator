@@ -18,7 +18,7 @@
 > **AI Agent & LLM-Integration:** Dieses Repository liefert maschinenlesbare Schnittstellen (`llms.txt`, `SKILL.md` und `worksheet_generator/schema.py`), die von lokalen KI-Agenten (Claude Code, Antigravity, Open-WebUI) direkt zur automatisierten Arbeitsblatt-Generierung und Anreicherung genutzt werden können.
 
 > [!IMPORTANT]
-> **Datenschutz & Privacy:** `worksheet-generator` arbeitet 100% offline und verarbeitet keinerlei Klienten- oder Personendaten. Steuerung ausschließlich über abstrakte Förderziele, ICF-Codes oder Schulcurricula.
+> **Datenschutz & Privacy:** Die Generator-Engine arbeitet vollständig offline und verarbeitet keinerlei Klienten- oder Personendaten — Steuerung ausschließlich über abstrakte Förderziele, ICF-Codes oder Schulcurricula. Einzige Ausnahme ist das optionale Hilfsskript `_tools/icf_fetch.py --who-api`, das nur auf ausdrückliche Anweisung des Nutzers ICF-Kurztitel bei der WHO-API abruft (siehe [ICF-Referenz](#icf-referenz-bring-your-own)).
 
 > [!TIP]
 > **Ökosystem-Integration:** Funktioniert nahtlos zusammen mit anderen Tools aus dem `ellmos-ai` Ökosystem wie [report-forge](https://github.com/ellmos-ai/report-forge) (anonymisierbare Berichts-Pipelines), [USMC](https://github.com/ellmos-ai/usmc) (Shared Agent Memory) und [ellmos-homebase-mcp](https://github.com/ellmos-ai/ellmos-homebase-mcp).
@@ -27,7 +27,7 @@ Dieses Modul erzeugt aus einem Förderziel (Freitext + optionale ICF-Codes), Niv
 
 | Eigenschaft | Beschreibung |
 |---|---|
-| **Privacy & DSGVO** | Local-First, 100% offline Engine. Kein Personen- oder Klientenbezug. |
+| **Privacy & DSGVO** | Local-First, offline arbeitende Engine. Kein Personen- oder Klientenbezug. |
 | **Generierungsmodi** | (1) Förderziel & ICF-Codes (Förder-Modus) / (2) Fach, Schulstufe & Thema (Curriculum-Modus) |
 | **Exportformate** | Markdown, HTML, DOCX (optional via `python-docx`) |
 | **AI Agent Ready** | Inklusive `llms.txt` und `SKILL.md` zur nahtlosen Integration in Claude Code, Antigravity & LLM-Pipelines |
@@ -36,7 +36,7 @@ Dieses Modul erzeugt aus einem Förderziel (Freitext + optionale ICF-Codes), Niv
 
 **Hinweis:** Dieses Modul ist ein **Material-Generator**, kein Therapieprogramm und kein Heilversprechen. Es ersetzt keine fachliche Einschätzung durch qualifizierte pädagogische/therapeutische Fachkräfte -- erzeugte Arbeitsblätter sind vor dem Einsatz fachlich zu prüfen und anzupassen.
 
-**Status:** Beta / Public-Kandidat -- siehe `TODO.md` für offene Punkte.
+**Status:** Beta (0.2.0) -- Änderungen je Version in [`CHANGELOG.md`](CHANGELOG.md).
 
 ## Installation
 
@@ -202,7 +202,7 @@ PYTHONIOENCODING=utf-8 python _tools/icf_fetch.py --who-api --codes d150,d115 --
 PYTHONIOENCODING=utf-8 python -m pytest tests/ -v
 ```
 
-`tests/test_smoke.py` prüft Schema-Validierung, einen Generator-Lauf mit synthetischem Mini-Input und den Markdown-Renderer.
+16 Tests in zwei Dateien: `tests/test_smoke.py` prüft Schema-Validierung, einen Generator-Lauf mit synthetischem Mini-Input und den Markdown-Renderer; `tests/test_curriculum.py` deckt den Schul-Modus und die Lehrplan-Adapter ab. Die CI führt sie unter Linux und Windows gegen Python 3.10--3.13 aus.
 
 ## Ökosystem & verwandte Projekte
 
