@@ -13,12 +13,13 @@ LOCK*.txt
 # Generierte Arbeitsblaetter (nur synthetische Beispiele in examples/ sind Teil des Repos)
 output/
 
-# Interne Arbeitsdokumente
+# Interne Arbeits- und Planungsdokumente (Aufgabenliste, Notizen, Pflegeprotokolle)
 _intern/
+_after-care/
+TODO.md
 
-# Rohsicherung des BACH-Vorgaengers (nur lokale Referenz beim Bau der Engine
-# genutzt, kein Teil des Repos -- enthaelt Alt-Code + war Fundort real
-# wirkender Klientendaten in output/, siehe TODO.md)
+# Lokale Referenzkopie des Vorgaengerprojekts, aus dem die Engine abgeleitet
+# wurde -- Altcode, nie Teil des Repos
 bach_source/
 
 # Python
