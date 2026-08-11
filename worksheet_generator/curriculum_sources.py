@@ -18,7 +18,7 @@ Zwei Adapter:
 
   - "lernquest" (EXPERIMENTELL): liest NUR LESEND aus einer lokalen
     LernQuest-Kompetenzregister-Datenbank (SQLite, Tabelle "competencies";
-    Projekt: DEV_LernQuest_SOCIAL, Stand 2026-07-23 -- experimentell, Schema
+    Projekt: LernQuest (separat, noch unveroeffentlicht) -- das hier erwartete Schema
     kann sich noch aendern). Pfad-Aufloesung: entry["db_path"] > ENV
     LERNQUEST_DB > kein Default. Als Doku-Konvention (NICHT hart verdrahtet):
     manche LernQuest-Installationen koennten unter

@@ -63,8 +63,8 @@ anpassen.
 
 Dieses Modul bündelt **keine** ICF-Kurztitel oder -Volltexte (ICF steht
 unter WHO-Lizenz, deutsche Fassung zusätzlich unter BfArM-Bedingungen --
-Details/Herleitung: interne Recherchenotiz `_intern/ICF-LIZENZ-CHECK.md`,
-nicht Teil des Repos). `_tools/icf_fetch.py` bietet zwei Modi, um eine
+maßgeblich sind die Bedingungen an der Quelle selbst: `icd.who.int/icdapi`
+bzw. `klassifikationen.bfarm.de/icf`). `_tools/icf_fetch.py` bietet zwei Modi, um eine
 lokale `icf_local.json` (Code + Kurztitel, Quelle + Abrufdatum im
 Dateikopf) zu erzeugen:
 
@@ -128,14 +128,16 @@ worksheet-generator/
 ├── config.json             # Defaults (material_dirs, icf_source, renderers)
 ├── config.local.example.json  # Vorlage fuer config.local.json (gitignored)
 ├── examples/                # Ein synthetisches Beispiel (Input + Output)
-├── tests/test_smoke.py      # Schema-Validierung + Generator + md-Renderer
-└── bach_source/             # Rohsicherung des BACH-Vorgaengers (Referenz)
+├── tests/                   # test_smoke.py + test_curriculum.py (16 Tests)
+├── SKILL.md, llms.txt       # Maschinenlesbare Spezifikation fuer LLM-Agenten
+└── README.md, README_de.md  # Nutzerdokumentation (EN/DE)
 ```
 
 ## Abgrenzung
 
-- Berichte/Klientendaten: NICHT hier -- siehe Berichts-Pipeline/foerderplaner.
+- Berichte/Klientendaten: NICHT hier -- dafuer sind Berichts-Werkzeuge wie
+  [report-forge](https://github.com/ellmos-ai/report-forge) zustaendig.
 - Fertiges Material: wird nicht mitgeliefert, nur synthetische Beispiele.
 
 Siehe auch: `KONZEPT.md` (Herkunft, Designentscheidungen), `README.md`
-(Installation, API), `TODO.md` (offene Punkte).
+/ `README_de.md` (Installation, API), `CHANGELOG.md` (Versionsstand).

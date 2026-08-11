@@ -11,11 +11,12 @@ Familie; die deutsche Fassung von BfArM ist zusaetzlich amtliches Werk i.S.d.
 § 5 Abs. 2 UrhG mit Aenderungsverbot/Quellenangabe-Pflicht). Kurztitel
 bezieht deshalb JEDER Nutzer selbst -- entweder ueber eine eigene Quelldatei
 (Modus A) oder per eigener WHO-API-Registrierung (Modus B). Ergebnis-Datei
-`icf_local.json` ist gitignored und nie Teil des Repos. Details/Herleitung:
-`_intern/ICF-LIZENZ-CHECK.md` (interne Recherchenotiz, nicht Teil des Repos).
+`icf_local.json` ist gitignored und nie Teil des Repos. Massgeblich sind
+die Bedingungen im Original bei icd.who.int/icdapi bzw.
+klassifikationen.bfarm.de/icf.
 
-Unterscheidet sich damit bewusst von _tools/gesetze_fetch.py im
-Schwestermodul rechtsabteilung (dort: gemeinfreie deutsche Bundesgesetze,
+Unterscheidet sich damit bewusst vom Gesetzes-Abrufskript im
+Schwesterprojekt law-checker (dort: gemeinfreie deutsche Bundesgesetze,
 direkter Bulk-XML-Download von gesetze-im-internet.de) -- fuer die ICF gibt
 es keine vergleichbar unkomplizierte, gemeinfreie Bulk-Quelle.
 
