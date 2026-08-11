@@ -1,0 +1,8 @@
+# Zeilenenden im Repository einheitlich als LF fuehren.
+# Ohne diesen Pin haengt das Ergebnis von der lokalen core.autocrlf-Einstellung
+# ab -- derselbe unveraenderte Baum erscheint dann je nach Rechner als geaendert.
+* text=auto eol=lf
+
+# Binaerdateien nie konvertieren
+*.png binary
+*.docx binary
