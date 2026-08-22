@@ -1,17 +1,16 @@
 from pathlib import Path
-import tomllib
+import re
 
 
 ROOT = Path(__file__).resolve().parents[1]
 
 
 def test_pyproject_uses_pep639_license_metadata() -> None:
-    metadata = tomllib.loads((ROOT / "pyproject.toml").read_text(encoding="utf-8"))
+    pyproject = (ROOT / "pyproject.toml").read_text(encoding="utf-8")
 
-    assert metadata["build-system"]["requires"] == ["setuptools>=77.0.3"]
-    assert metadata["project"]["license"] == "MIT"
-    assert metadata["project"]["license-files"] == ["LICENSE"]
-    assert not any(
-        classifier.startswith("License ::")
-        for classifier in metadata["project"]["classifiers"]
+    assert re.search(
+        r'^requires = \["setuptools>=77\.0\.3"\]$', pyproject, re.MULTILINE
     )
+    assert re.search(r'^license = "MIT"$', pyproject, re.MULTILINE)
+    assert re.search(r'^license-files = \["LICENSE"\]$', pyproject, re.MULTILINE)
+    assert '"License ::' not in pyproject
