@@ -125,10 +125,11 @@ PYTHONIOENCODING=utf-8 python -m worksheet_generator status
 worksheet-generator/
 ├── worksheet_generator/    # Python-Paket: schema, generator, renderers, cli
 ├── _tools/icf_fetch.py     # ICF-Quelldatei -> icf_local.json (bring-your-own)
-├── config.json             # Defaults (material_dirs, icf_source, renderers)
+├── config.json             # Repository-Spiegel der paketierten Defaults
+├── worksheet_generator/default_config.json  # installierbare Standardkonfiguration
 ├── config.local.example.json  # Vorlage fuer config.local.json (gitignored)
 ├── examples/                # Ein synthetisches Beispiel (Input + Output)
-├── tests/                   # test_smoke.py + test_curriculum.py (16 Tests)
+├── tests/                   # Smoke-, Curriculum- und Metadaten-Tests (19 Tests)
 ├── SKILL.md, llms.txt       # Maschinenlesbare Spezifikation fuer LLM-Agenten
 └── README.md, README_de.md  # Nutzerdokumentation (EN/DE)
 ```

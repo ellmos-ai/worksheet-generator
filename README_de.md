@@ -5,7 +5,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![CI](https://github.com/ellmos-ai/worksheet-generator/actions/workflows/tests.yml/badge.svg)](https://github.com/ellmos-ai/worksheet-generator/actions)
-[![Pytest](https://img.shields.io/badge/pytest-17%20passed-brightgreen.svg)](tests/)
+[![Pytest](https://img.shields.io/badge/pytest-19%20passed-brightgreen.svg)](tests/)
 [![Local-First](https://img.shields.io/badge/privacy-100%25%20local--first-blue.svg)](#eigenschaften)
 [![llms.txt](https://img.shields.io/badge/llms.txt-available-green.svg)](llms.txt)
 [![Language: EN](https://img.shields.io/badge/Language-English-blue.svg)](README.md)
@@ -36,7 +36,7 @@ Dieses Modul erzeugt aus einem Förderziel (Freitext + optionale ICF-Codes), Niv
 
 **Hinweis:** Dieses Modul ist ein **Material-Generator**, kein Therapieprogramm und kein Heilversprechen. Es ersetzt keine fachliche Einschätzung durch qualifizierte pädagogische/therapeutische Fachkräfte -- erzeugte Arbeitsblätter sind vor dem Einsatz fachlich zu prüfen und anzupassen.
 
-**Status:** Beta (0.2.1) -- Änderungen je Version in [`CHANGELOG.md`](CHANGELOG.md).
+**Status:** Beta (0.2.2) -- Änderungen je Version in [`CHANGELOG.md`](CHANGELOG.md).
 
 ## Installation
 
@@ -140,7 +140,7 @@ Der Generator arbeitet **deterministisch und offline** (kein LLM-, kein Netzwerk
 
 ## Konfiguration
 
-`config.json` enthält die Defaults (`material_dirs`, `icf_source`, `renderers`, `sprache`). Lokale, nicht versionierte Overrides gehören in `config.local.json` (gitignored) -- Vorlage: `config.local.example.json`.
+Das Paket enthält die Standardwerte in `worksheet_generator/default_config.json`; `config.json` ist der identische Spiegel im Repository. Lokale, nicht versionierte Overrides gehören als `config.local.json` in den aktuellen Projektordner (gitignored) -- Vorlage: `config.local.example.json`.
 
 ## Schulmodus (Curriculum)
 
@@ -202,7 +202,7 @@ PYTHONIOENCODING=utf-8 python _tools/icf_fetch.py --who-api --codes d150,d115 --
 PYTHONIOENCODING=utf-8 python -m pytest tests/ -v
 ```
 
-17 Tests in drei Dateien: `tests/test_smoke.py` prüft Schema-Validierung, einen Generator-Lauf mit synthetischem Mini-Input und den Markdown-Renderer; `tests/test_curriculum.py` deckt den Schul-Modus und die Lehrplan-Adapter ab; `tests/test_metadata.py` verifiziert den PEP-639-Lizenzvertrag. Die CI führt sie unter Linux und Windows gegen Python 3.10--3.13 aus.
+19 Tests in drei Dateien: `tests/test_smoke.py` prüft Schema-Validierung, einen Generator-Lauf mit synthetischem Mini-Input und den Markdown-Renderer; `tests/test_curriculum.py` deckt den Schul-Modus und die Lehrplan-Adapter ab; `tests/test_metadata.py` verifiziert PEP 639, Paketentdeckung und die paketierte Konfiguration. Die CI führt sie unter Linux und Windows gegen Python 3.10--3.13 aus und prüft das installierte Wheel zusätzlich separat.
 
 ## Ökosystem & verwandte Projekte
 
