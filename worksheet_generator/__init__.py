@@ -15,7 +15,7 @@ Oeffentliche API:
 from .generator import Curriculumziel, Foerderziel, generate_worksheet, save_worksheet
 from . import curriculum_sources, renderers, schema
 
-__version__ = "0.2.0"
+__version__ = "0.2.1"
 __all__ = [
     "Foerderziel",
     "Curriculumziel",

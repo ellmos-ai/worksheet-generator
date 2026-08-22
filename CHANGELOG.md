@@ -5,6 +5,14 @@ Alle relevanten Änderungen an `worksheet-generator` werden in dieser Datei doku
 Das Format basiert auf [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 und dieses Projekt hält sich an [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.1] - 2026-08-22
+
+### Geändert
+- Lizenzmetadaten auf PEP 639 umgestellt: SPDX-Ausdruck `MIT`, explizite
+  Einbindung der Root-`LICENSE` und Entfernung des veralteten Lizenz-Classifiers.
+- Minimale Setuptools-Version für die verwendete PEP-639-Unterstützung auf
+  77.0.3 angehoben und der Metadatenvertrag durch einen Regressionstest gesichert.
+
 ## [0.2.0] - 2026-08-11
 
 ### Hinzugefügt

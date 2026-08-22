@@ -5,7 +5,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![CI](https://github.com/ellmos-ai/worksheet-generator/actions/workflows/tests.yml/badge.svg)](https://github.com/ellmos-ai/worksheet-generator/actions)
-[![Pytest](https://img.shields.io/badge/pytest-16%20passed-brightgreen.svg)](tests/)
+[![Pytest](https://img.shields.io/badge/pytest-17%20passed-brightgreen.svg)](tests/)
 [![Local-First](https://img.shields.io/badge/privacy-100%25%20local--first-blue.svg)](#features)
 [![llms.txt](https://img.shields.io/badge/llms.txt-available-green.svg)](llms.txt)
 [![Language: DE](https://img.shields.io/badge/Language-Deutsch-de.svg)](README_de.md)
@@ -34,7 +34,7 @@ This module generates structured **worksheet JSONs** from an educational goal (f
 
 ---
 
-**Status:** Beta (0.2.0) — per-version changes in [`CHANGELOG.md`](CHANGELOG.md).
+**Status:** Beta (0.2.1) — per-version changes in [`CHANGELOG.md`](CHANGELOG.md).
 
 **Note:** This is a *material generator*, not a therapy program and not a promise of treatment success. It does not replace professional judgement — review and adapt every generated worksheet before use.
 
@@ -184,7 +184,7 @@ Without `icf_local.json` the generator still works — ICF codes are then carrie
 PYTHONIOENCODING=utf-8 python -m pytest tests/ -v
 ```
 
-16 tests across two files: `tests/test_smoke.py` covers schema validation, a generator run on synthetic input, and the Markdown renderer; `tests/test_curriculum.py` covers the curriculum mode and its adapters. CI runs them on Linux and Windows against Python 3.10–3.13.
+17 tests across three files: `tests/test_smoke.py` covers schema validation, a generator run on synthetic input, and the Markdown renderer; `tests/test_curriculum.py` covers the curriculum mode and its adapters; `tests/test_metadata.py` verifies the PEP 639 license contract. CI runs them on Linux and Windows against Python 3.10–3.13.
 
 ---
 
