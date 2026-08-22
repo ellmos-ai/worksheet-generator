@@ -12,6 +12,7 @@ Foerder-Modus (benoetigt `--freitext`, wie bisher).
 from __future__ import annotations
 
 import argparse
+from importlib import resources
 import json
 import sys
 from pathlib import Path
@@ -20,16 +21,19 @@ from . import renderers, schema
 from .generator import Curriculumziel, Foerderziel, generate_worksheet, save_worksheet
 
 MODULE_ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_CONFIG = MODULE_ROOT / "config.json"
-LOCAL_CONFIG = MODULE_ROOT / "config.local.json"
+RUNTIME_ROOT = MODULE_ROOT if (MODULE_ROOT / "pyproject.toml").is_file() else Path.cwd()
+PACKAGE_DEFAULT_CONFIG = resources.files("worksheet_generator").joinpath(
+    "default_config.json"
+)
+DEFAULT_CONFIG = RUNTIME_ROOT / "config.json"
+LOCAL_CONFIG = RUNTIME_ROOT / "config.local.json"
 
 
 def load_config() -> dict:
-    """Laedt config.json und ueberlagert sie mit config.local.json (falls
-    vorhanden, gitignored). Fehlt config.json, wird ein leeres dict genutzt."""
-    config: dict = {}
+    """Lädt den Paketstandard und überlagert Projekt- sowie lokale Konfiguration."""
+    config: dict = json.loads(PACKAGE_DEFAULT_CONFIG.read_text(encoding="utf-8"))
     if DEFAULT_CONFIG.exists():
-        config = json.loads(DEFAULT_CONFIG.read_text(encoding="utf-8"))
+        config.update(json.loads(DEFAULT_CONFIG.read_text(encoding="utf-8")))
     if LOCAL_CONFIG.exists():
         config.update(json.loads(LOCAL_CONFIG.read_text(encoding="utf-8")))
     return config
@@ -38,7 +42,7 @@ def load_config() -> dict:
 def load_icf_reference(config: dict) -> dict | None:
     """Laedt icf_local.json (siehe _tools/icf_fetch.py), falls vorhanden.
     Gibt None zurueck, wenn keine lokale ICF-Referenz beschafft wurde."""
-    icf_path = MODULE_ROOT / config.get("icf_local_path", "icf_local.json")
+    icf_path = RUNTIME_ROOT / config.get("icf_local_path", "icf_local.json")
     if not icf_path.exists():
         return None
     data = json.loads(icf_path.read_text(encoding="utf-8"))
@@ -127,7 +131,8 @@ def cmd_status(_args: argparse.Namespace) -> int:
 
     print("worksheet-generator -- Status")
     print(f"  Schema-Version:     {schema.SCHEMA_VERSION}")
-    print(f"  config.json:        {'gefunden' if DEFAULT_CONFIG.exists() else 'FEHLT'}")
+    config_status = "gefunden (Projektdatei)" if DEFAULT_CONFIG.exists() else "eingebaut (Paketstandard)"
+    print(f"  config.json:        {config_status}")
     print(f"  config.local.json:  {'aktiv (Override)' if LOCAL_CONFIG.exists() else '(kein Override)'}")
     print(f"  material_dirs:      {config.get('material_dirs', [])}")
     if icf_reference:

@@ -5,6 +5,16 @@ Alle relevanten Änderungen an `worksheet-generator` werden in dieser Datei doku
 Das Format basiert auf [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 und dieses Projekt hält sich an [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.2] - 2026-08-22
+
+### Behoben
+- Setuptools-Paketentdeckung auf `worksheet_generator*` begrenzt, damit
+  dokumentationsbezogene Root-Ordner wie `assets/` nicht als Python-Pakete gelten.
+- Standardkonfiguration als geprüfte Paketressource aufgenommen; ein installiertes
+  Wheel verwendet sie auch außerhalb des Repository-Ordners.
+- Eigener CI-Paketjob baut Wheel und sdist und prüft Status, Generierung und
+  Markdown-Rendering aus einer isolierten Wheel-Installation.
+
 ## [0.2.1] - 2026-08-22
 
 ### Geändert

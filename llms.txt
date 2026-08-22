@@ -37,8 +37,8 @@ python -m worksheet_generator render output/worksheet.json --format md
 
 - Repository: https://github.com/ellmos-ai/worksheet-generator
 - License: MIT
-- Version: 0.2.1
+- Version: 0.2.2
 - Network: Die Generator-Engine arbeitet offline. Einziger Netzzugriff ist das optionale, ausdrücklich aufzurufende `_tools/icf_fetch.py --who-api` (WHO ICD-11-API).
 - ICF-Lizenz: Die MIT-Lizenz erstreckt sich NICHT auf ICF-Inhalte (ICF © WHO, deutsche Fassung © WHO/BfArM); das Repo bundelt keine ICF-Kurztitel oder -Volltexte.
-- Tests: 17 (pytest, Linux + Windows, Python 3.10-3.13)
+- Tests: 19 plus Wheel-Smoke-Test (pytest, Linux + Windows, Python 3.10-3.13)
 - Last Checked: 2026-08-22

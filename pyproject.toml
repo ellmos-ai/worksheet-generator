@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "worksheet-generator"
-version = "0.2.1"
+version = "0.2.2"
 description = "Fördermaterial-Generator für pädagogische und therapeutische Fachkräfte mit lokalem LLM-Agenten"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -39,6 +39,12 @@ Homepage = "https://github.com/ellmos-ai/worksheet-generator"
 Documentation = "https://github.com/ellmos-ai/worksheet-generator#readme"
 Repository = "https://github.com/ellmos-ai/worksheet-generator.git"
 Issues = "https://github.com/ellmos-ai/worksheet-generator/issues"
+
+[tool.setuptools.packages.find]
+include = ["worksheet_generator*"]
+
+[tool.setuptools.package-data]
+worksheet_generator = ["default_config.json"]
 
 [tool.pytest.ini_options]
 pythonpath = ["."]
