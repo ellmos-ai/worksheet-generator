@@ -5,7 +5,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![CI](https://github.com/ellmos-ai/worksheet-generator/actions/workflows/tests.yml/badge.svg)](https://github.com/ellmos-ai/worksheet-generator/actions)
-[![Pytest](https://img.shields.io/badge/pytest-19%20passed-brightgreen.svg)](tests/)
+[![Pytest](https://img.shields.io/badge/pytest-24%20passed-brightgreen.svg)](tests/)
 [![Local-First](https://img.shields.io/badge/privacy-100%25%20local--first-blue.svg)](#eigenschaften)
 [![llms.txt](https://img.shields.io/badge/llms.txt-available-green.svg)](llms.txt)
 [![Language: EN](https://img.shields.io/badge/Language-English-blue.svg)](README.md)
@@ -36,14 +36,24 @@ Dieses Modul erzeugt aus einem Förderziel (Freitext + optionale ICF-Codes), Niv
 
 **Hinweis:** Dieses Modul ist ein **Material-Generator**, kein Therapieprogramm und kein Heilversprechen. Es ersetzt keine fachliche Einschätzung durch qualifizierte pädagogische/therapeutische Fachkräfte -- erzeugte Arbeitsblätter sind vor dem Einsatz fachlich zu prüfen und anzupassen.
 
-**Status:** Beta (0.2.2) -- Änderungen je Version in [`CHANGELOG.md`](CHANGELOG.md).
+**Status:** Beta (0.2.3) -- Änderungen je Version in [`CHANGELOG.md`](CHANGELOG.md).
 
 ## Installation
 
-Keine Pflicht-Abhängigkeiten -- reine Python-Standardbibliothek (Python ≥ 3.10 wegen `X | Y`-Typannotationen und `dataclasses`). Optional für den DOCX-Renderer:
+Keine Pflicht-Abhängigkeiten -- reine Python-Standardbibliothek (Python ≥ 3.10 wegen `X | Y`-Typannotationen und `dataclasses`).
+
+Paket direkt installieren:
 
 ```bash
-pip install python-docx
+pip install -e .
+```
+
+Optional für den DOCX-Renderer oder die Testsuite:
+
+```bash
+pip install -e ".[docx]"
+# oder für Tests:
+pip install -e ".[test]"
 ```
 
 ## Nutzung
@@ -69,15 +79,17 @@ print(renderers.to_markdown(worksheet))
 
 ### Über die CLI
 
+Die Steuerung kann direkt über den Konsolenbefehl `worksheet-generator` oder über `python -m worksheet_generator` erfolgen:
+
 ```bash
-PYTHONIOENCODING=utf-8 python -m worksheet_generator generate \
+worksheet-generator generate \
   --freitext "Mengen bis 10 erfassen" --icf d150 --niveau einfache_sprache \
   --alter 8 --thema mathe --out output/worksheet.json
 
-PYTHONIOENCODING=utf-8 python -m worksheet_generator render \
+worksheet-generator render \
   output/worksheet.json --format md
 
-PYTHONIOENCODING=utf-8 python -m worksheet_generator status
+worksheet-generator status
 ```
 
 `status` zeigt die aktive Konfiguration, ob eine `icf_local.json` vorliegt und ob der optionale DOCX-Renderer verfügbar ist.

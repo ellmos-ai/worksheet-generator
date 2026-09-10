@@ -5,6 +5,13 @@ Alle relevanten Änderungen an `worksheet-generator` werden in dieser Datei doku
 Das Format basiert auf [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 und dieses Projekt hält sich an [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.3] - 2026-09-10
+
+### Hinzugefügt
+- **PEP 621 Skripte und optionale Abhängigkeiten:** Konsolenbefehl `worksheet-generator` als `[project.scripts]`-Einstiegspunkt sowie `docx` und `test` als `[project.optional-dependencies]` in `pyproject.toml` deklariert.
+- **CI-Matrix-Härtung:** Test-Matrix in `.github/workflows/tests.yml` um `macos-latest` erweitert (deckt Ubuntu, Windows und macOS entsprechend der Plattformdeklaration in `ellmos-module.v2.json` ab), `fail-fast: false` und `workflow_dispatch` ergänzt, Bytecode-Kompilierung (`python -m compileall`) und Konsolenbefehlsprüfung im Paket-Smoke-Test integriert.
+- **Vertragstests & Testsuite:** Vertragstests für PEP 621 Metadaten (`[project.scripts]`, `[project.optional-dependencies]`, Versionsparität), HTML-Renderer-Escaping, Fehlermeldung bei fehlendem `python-docx` und CLI-Befehlsaufruf ergänzt (Testsuite von 19 auf 24 Tests erweitert).
+
 ## [0.2.2] - 2026-08-22
 
 ### Behoben

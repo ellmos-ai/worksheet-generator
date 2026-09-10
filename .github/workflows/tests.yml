@@ -5,13 +5,18 @@ on:
     branches: [ main, master ]
   pull_request:
     branches: [ main, master ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
   test:
     runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest]
+        os: [ubuntu-latest, windows-latest, macos-latest]
         python-version: ['3.10', '3.11', '3.12', '3.13']
 
     steps:
@@ -25,7 +30,11 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install pytest
+        pip install -e .[test]
+
+    - name: Verify bytecode compilation
+      run: |
+        python -m compileall -q worksheet_generator tests
 
     - name: Run tests
       run: |
@@ -63,3 +72,4 @@ jobs:
           --format md --out worksheet.md
         test -s worksheet.json
         test -s worksheet.md
+        "$RUNNER_TEMP/worksheet-smoke/bin/worksheet-generator" status

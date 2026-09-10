@@ -5,7 +5,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![CI](https://github.com/ellmos-ai/worksheet-generator/actions/workflows/tests.yml/badge.svg)](https://github.com/ellmos-ai/worksheet-generator/actions)
-[![Pytest](https://img.shields.io/badge/pytest-19%20passed-brightgreen.svg)](tests/)
+[![Pytest](https://img.shields.io/badge/pytest-24%20passed-brightgreen.svg)](tests/)
 [![Local-First](https://img.shields.io/badge/privacy-100%25%20local--first-blue.svg)](#features)
 [![llms.txt](https://img.shields.io/badge/llms.txt-available-green.svg)](llms.txt)
 [![Language: DE](https://img.shields.io/badge/Language-Deutsch-de.svg)](README_de.md)
@@ -34,7 +34,7 @@ This module generates structured **worksheet JSONs** from an educational goal (f
 
 ---
 
-**Status:** Beta (0.2.2) — per-version changes in [`CHANGELOG.md`](CHANGELOG.md).
+**Status:** Beta (0.2.3) — per-version changes in [`CHANGELOG.md`](CHANGELOG.md).
 
 **Note:** This is a *material generator*, not a therapy program and not a promise of treatment success. It does not replace professional judgement — review and adapt every generated worksheet before use.
 
@@ -42,10 +42,20 @@ This module generates structured **worksheet JSONs** from an educational goal (f
 
 ## Installation
 
-No mandatory dependencies — pure Python standard library (Python >= 3.10, for `X | Y` type annotations and `dataclasses`). Optional, for the DOCX renderer:
+No mandatory dependencies — pure Python standard library (Python >= 3.10, for `X | Y` type annotations and `dataclasses`).
+
+Install the package directly:
 
 ```bash
-pip install python-docx
+pip install -e .
+```
+
+Optional, for the DOCX renderer or test suite:
+
+```bash
+pip install -e ".[docx]"
+# or for tests:
+pip install -e ".[test]"
 ```
 
 ---
@@ -73,19 +83,24 @@ print(renderers.to_markdown(worksheet))
 
 ### CLI Command Line
 
+You can invoke the CLI either via the `worksheet-generator` command or via `python -m worksheet_generator`:
+
 ```bash
 # Generate worksheet JSON (Special Education mode)
-PYTHONIOENCODING=utf-8 python -m worksheet_generator generate \
+worksheet-generator generate \
   --freitext "Mengen bis 10 erfassen" --icf d150 --niveau einfache_sprache \
   --alter 8 --thema mathe --out output/worksheet.json
 
 # Generate worksheet JSON (School Curriculum mode)
-PYTHONIOENCODING=utf-8 python -m worksheet_generator generate \
+worksheet-generator generate \
   --subject Mathematik --grade 3 --topic "Einmaleins" --out output/worksheet.json
 
 # Render to Markdown or HTML
-PYTHONIOENCODING=utf-8 python -m worksheet_generator render \
+worksheet-generator render \
   output/worksheet.json --format md
+
+# Check status and optional renderer availability
+worksheet-generator status
 ```
 
 ---
