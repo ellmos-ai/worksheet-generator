@@ -1,0 +1,91 @@
+# MARKETING-LOG — worksheet-generator
+
+> Repository-Sichtbarkeits-, Discoverability- und Marketing-Register für `worksheet-generator` (ellmos-ai / open-bricks).
+> Zuletzt aktualisiert: 2026-09-14 (Pfad B — Discoverability & Visual Architecture Audit).
+
+---
+
+## 1. Strategische Positionierung & Wertversprechen
+
+`worksheet-generator` schließt die kritische Lücke zwischen therapeutisch-pädagogischer Zielplanung (Förderziele, ICF-Klassifikation, Niveaustufen, Differenzierung) und moderner KI-Agenten-Automatisierung:
+
+1. **Datenschutz & Lokale Souveränität (Zero Egress):**
+   Pädagogische Förderpläne und therapeutische Falldaten unterliegen strengen Datenschutzanforderungen (DSGVO, Berufsgeheimnis). Kommerzielle Cloud-Generatoren erzwingen den Upload sensibler Schüler- und Klientendaten in fremde Clouds. `worksheet-generator` läuft zu 100 % lokal, trennt Diagnostik strikt von der Materialerstellung und verarbeitet ausschließlich abstrakte Förderziele und didaktische Parameter.
+2. **Kombinierter Förder- & Schulcurriculum-Modus:**
+   - *Förder-Modus:* Ableitung von differenzierten Übungen aus Freitext-Förderzielen, ICF-Codes (`d150`, `b140`), Niveaustufen (`einfache_sprache`, `anschaulich`, etc.) und Altersgruppen.
+   - *Curriculum-Modus:* Differenzierung nach Fach, Schuljahrgangsstufe, Thema und Niveau (G/M/E) für Regelschulen.
+3. **Deterministische Engine + LLM-Agenten-Ökosystem:**
+   Statt unstrukturierter, halluzinationsanfälliger Free-Form-Prompts liefert die Standardbibliothek-Engine ein validiertes JSON-Schema (`schema.py`). Dieses Schema kann direkt von lokalen LLM-Agenten (Claude Code, Antigravity, Open-WebUI via `llms.txt` und `SKILL.md`) angereichert, differenziert oder direkt in Markdown, HTML und DOCX exportiert werden.
+
+---
+
+## 2. Zielgruppen-Personas (`[PERSONA-01]` bis `[PERSONA-04]`)
+
+### `[PERSONA-01]` Förderschullehrkräfte & Sonderpädagogen (Special Education Practitioners)
+- **Profil:** Lehrkräfte an Förderzentren, Inklusionsschulen oder Sonderpädagogischen Bildungs- und Beratungszentren (SBBZ).
+- **Kernbedarf:** Passgenaue, kleinschrittige Fördermaterialien für spezifische Entwicklungs- und Förderschwerpunkte (Lernen, Sprache, geistige Entwicklung, emotionale und soziale Entwicklung), abgestimmt auf Förderpläne.
+- **Pain Point:** Handelsübliche Schulbücher sind für heterogene Lerngruppen unzureichend differenziert; die manuelle Erstellung kostet Stunden. Cloud-Tools sind datenschutzrechtlich untersagt.
+- **Nutzen:** Schnelle Generierung adaptiver Übungsreihen in Leichter/Einfacher Sprache ohne jeden Personenbezug.
+
+### `[PERSONA-02]` Therapeuten, Logopäden & Ergotherapeuten (Therapeutic Specialists)
+- **Profil:** Fachkräfte in ambulanten Praxen, SPZs (Sozialpädiatrischen Zentren) oder Reha-Einrichtungen.
+- **Kernbedarf:** Gezielte Übungsblätter für motorische, sprachliche oder kognitive Teilfunktionen (z. B. phonologische Bewusstheit, Mengenverständnis, Handlungsplanung) als Heimübungsprogramm.
+- **Pain Point:** Höchste Vertraulichkeitsanforderungen; keine Klientennamen oder Patientendaten dürfen das lokale Praxissystem verlassen.
+- **Nutzen:** Lokale Generierung auf Knopfdruck, standardisierte Formate, Bring-Your-Own-ICF-Architektur.
+
+### `[PERSONA-03]` Autonome KI-Agenten-Entwickler & Pipeline-Architekten (AI Engineers)
+- **Profil:** Entwickler lokaler Multi-Agenten-Systeme (Claude Code, Antigravity, Open-WebUI, USMC, LangGraph).
+- **Kernbedarf:** Strukturierte Schnittstellen (`llms.txt`, `SKILL.md`, Python API, CLI), deterministische Schemavalidierung und Null externe Pflichtabhängigkeiten.
+- **Pain Point:** Unstrukturierte LLM-Generierung erzeugt inkonsistente Textwüsten ohne Lösungsschlüssel oder feste JSON-Typen.
+- **Nutzen:** Plug-and-Play als Werkzeug in Agenten-Toolchains mit sauberer Fehlerbehandlung und robuster Typensicherheit.
+
+### `[PERSONA-04]` Regelschullehrkräfte & Fachschaftsleiter (Curriculum Teachers)
+- **Profil:** Lehrkräfte in Grundschulen, Gesamtschulen und Gymnasien mit heterogenen Klassen.
+- **Kernbedarf:** Schnelle Differenzierung (Grundlegendes / Mittleres / Erweitertes Niveau — G/M/E) für Klassenarbeiten und Übungsphasen nach Lehrplanvorgaben.
+- **Pain Point:** Teure Abonnements für kommerzielle Arbeitsblatt-Software mit proprietären Dateiformaten.
+- **Nutzen:** Open-Source-Freiheit (MIT), anpassbare Markdown/HTML/DOCX-Exporte und offene JSON-Schnittstellen.
+
+---
+
+## 3. High-Intent Suchbegriffe & SEO-Matrix
+
+| Sprache | High-Intent Suchbegriff | Suchintention / Problemstellung |
+|---|---|---|
+| **DE** | `arbeitsblatt generator icf foerderziel` | Suche nach strukturierter Arbeitsblatterstellung basierend auf Förderzielen |
+| **DE** | `arbeitsblatt generator sonderpaedagogik differenzierung` | Suche nach Unterrichtsmaterialien mit Niveaustufen und einfacher Sprache |
+| **DE** | `lokaler arbeitsblatt generator dsgvo lehrer` | Suche nach datenschutzkonformer, offline nutzbarer Software für Schulen |
+| **DE** | `arbeitsblatt json schema llm agent` | Entwicklersuche nach maschinenlesbaren Unterrichtsmaterial-Schemas |
+| **EN** | `worksheet generator special education icf goals` | Targeted search for goal-oriented special education worksheet generation |
+| **EN** | `local offline worksheet generator privacy first` | Search for GDPR-compliant educational material generation software |
+| **EN** | `differentiated teaching materials generator python` | Educator search for automated curriculum differentiation (G/M/E) |
+| **EN** | `educational worksheet schema llms txt agent` | AI developer search for LLM-native material generation toolchains |
+
+---
+
+## 4. 10-Dimensionen-Vergleichsmatrix
+
+| Kriterium / Dimension | worksheet-generator | Worksheet Crafter | ChatGPT / Cloud LLMs | Eduki / TPT | Ad-Hoc DOCX Templates |
+|---|---|---|---|---|---|
+| **1. Datenschutz & Zero Egress** | **100 % Lokal / Offline** | Lokal (Desktop-App) | Cloud (Datenabfluss) | Cloud-Marktplatz | Lokal |
+| **2. ICF-Förderziel-Fokus** | **Nativ integriert** | Nein (Manuell) | Nur via Custom Prompt | Vereinzelt statisch | Nein |
+| **3. Deterministisches JSON-Schema** | **Ja (`schema.py`)** | Nein (Proprietär) | Nein (Freitext) | Nein (PDF/DOCX) | Nein |
+| **4. KI-Agenten-Integration** | **Ja (`llms.txt`, `SKILL.md`)** | Nein | Proprietäre Schnittstelle | Nein | Nein |
+| **5. Niveaustufen-Differenzierung** | **Automatisch (G/M/E)** | Manuell | Abhängig vom Prompt | Statisch pro Datei | Manuell |
+| **6. Multi-Format-Renderer** | **MD, HTML, DOCX** | PDF, eigenes Format | Nur Markdown/Text | Meist nur PDF | Nur DOCX |
+| **7. Pflicht-Abhängigkeiten** | **0 (Python stdlib)** | C++ / Qt Installer | Cloud-Account + API-Key | Webbrowser / Abo | MS Office Lizenz |
+| **8. Telemetrie & Accounts** | **Keine (RunAsInvoker)** | Lizenzschlüssel-Prüfung | Account & Tracking | Account & Bezahlung | Variiert |
+| **9. Lokale Kontext-Adapter** | **Ja (`curriculum_sources`)** | Nein | RAG erforderlich | Nein | Nein |
+| **10. Lizenzmodell** | **MIT Open-Source** | Proprietär (Abonnement) | SaaS-Abonnement | Pay-per-Item | Variiert |
+
+---
+
+## 5. Audit & Historie
+
+- **2026-09-14:** Pfad B Discoverability & Bilingual Visual Architecture Audit (Antigravity).
+  - Shields.io Badges harmonisiert und um Ecosystem-, Privacy- und Privilegien-Badges erweitert.
+  - 16-Punkte wechselseitige zweisprachige Schnellnavigation in `README.md` und `README_de.md` implementiert.
+  - Mermaid Flowchart TD und SequenceDiagram (Generation & Export Lifecycle) integriert und syntaxvalidiert.
+  - `THIRD_PARTY_LICENSES.md` mit Bring-Your-Own-ICF-Hinweis und SPDX-Transparenz angelegt.
+  - `llms.txt` aktualisiert (v0.2.3, 24 Tests).
+  - PEP 621 Projekt-URLs in `pyproject.toml` ergänzt.
+  - Automatisierte Vertragstests in `tests/test_metadata.py` ausgebaut (100 % grün).

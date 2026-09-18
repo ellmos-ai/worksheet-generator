@@ -4,15 +4,19 @@
 
 ## Core Characteristics
 
-- **Local & Privacy-First**: Steuerung ausschließlich über Förderziel/Niveau/Alter oder Fach/Stufe, niemals über Klienten-Name oder Personenbezug.
+- **Local & Privacy-First**: Steuerung ausschließlich über Förderziel/Niveau/Alter oder Fach/Stufe, niemals über Klienten-Name oder Personenbezug (`INV-LOCAL-01`).
 - **Offline & Deterministic Engine**: Der Kern-Generator benötigt kein Netzwerk und kein externes LLM für die Erzeugung der Grundstruktur.
 - **Dual Mode**: Unterstützt sowohl den Förder-Modus (ICF-Ziele) als auch den Schul-Modus (Fach, Jahrgangsstufe, Thema, Differenzierung).
 - **Extensible Renderers**: Baut Markdown und HTML out-of-the-box (reine Standardbibliothek) und optional DOCX via `python-docx`.
+- **Zero Mandatory Dependencies**: Vollständig auf der Python 3.10+ Standardbibliothek lauffähig.
 
-## Key Files
+## Key Files & Documentation
 
-- `README.md` / `README_de.md`: Englische und deutsche Hauptdokumentation mit Nutzungsbeispielen und Architektur-Überblick.
+- `README.md`: English documentation, 16-point bilingual navigation, visual Mermaid architecture & lifecycle sequence diagrams.
+- `README_de.md`: Deutsche Dokumentation mit 100% Parität zu `README.md`.
 - `SKILL.md`: Skill-Spezifikation für KI-Agenten und LLM-Integration.
+- `THIRD_PARTY_LICENSES.md`: Lizenzaudit, SPDX-Inventar und Bring-Your-Own-ICF-Rechtshinweis.
+- `MARKETING-LOG.txt`: Positionierung, Personas, High-Intent SEO-Matrix und Vergleichsmatrix.
 - `KONZEPT.md`: Herkunft, Designentscheidungen und Abgrenzungen.
 - `worksheet_generator/schema.py`: JSON-Schema-Definition und Validierung mit der Python-Standardbibliothek.
 - `worksheet_generator/generator.py`: Deterministische Generator-Engine.
@@ -36,9 +40,9 @@ python -m worksheet_generator render output/worksheet.json --format md
 ## System Integration & Governance
 
 - Repository: https://github.com/ellmos-ai/worksheet-generator
-- License: MIT
-- Version: 0.2.2
-- Network: Die Generator-Engine arbeitet offline. Einziger Netzzugriff ist das optionale, ausdrücklich aufzurufende `_tools/icf_fetch.py --who-api` (WHO ICD-11-API).
+- License: MIT (Permissive Open-Source)
+- Version: 0.2.3
+- Network: Die Generator-Engine arbeitet 100% offline. Einziger Netzzugriff ist das optionale, ausdrücklich manuell aufzurufende `_tools/icf_fetch.py --who-api` (WHO ICD-11-API).
 - ICF-Lizenz: Die MIT-Lizenz erstreckt sich NICHT auf ICF-Inhalte (ICF © WHO, deutsche Fassung © WHO/BfArM); das Repo bundelt keine ICF-Kurztitel oder -Volltexte.
-- Tests: 19 plus Wheel-Smoke-Test (pytest, Linux + Windows, Python 3.10-3.13)
-- Last Checked: 2026-08-22
+- Tests: 24 passed | 100% green (pytest, Linux + Windows, Python 3.10-3.13)
+- Last Checked: 2026-09-14

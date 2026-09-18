@@ -75,3 +75,68 @@ def test_version_parity() -> None:
     assert match is not None
     assert match.group(1) == worksheet_generator.__version__
     assert worksheet_generator.__version__ == "0.2.3"
+
+
+def test_documentation_and_license_artifacts() -> None:
+    import worksheet_generator
+
+    # 1. Third-party licenses
+    tpl = ROOT / "THIRD_PARTY_LICENSES.md"
+    assert tpl.is_file()
+    tpl_text = tpl.read_text(encoding="utf-8")
+    assert "PSF-2.0" in tpl_text
+    assert "MIT" in tpl_text
+    assert "ICF (International Classification of Functioning, Disability and Health)" in tpl_text
+    assert "Zero-Copyleft on Generated Worksheets" in tpl_text
+
+    # 2. Marketing log
+    mlog = ROOT / "MARKETING-LOG.txt"
+    assert mlog.is_file()
+    mlog_text = mlog.read_text(encoding="utf-8")
+    assert "[PERSONA-01]" in mlog_text
+    assert "[PERSONA-04]" in mlog_text
+    assert "10-Dimensionen-Vergleichsmatrix" in mlog_text
+
+    # 3. llms.txt context index
+    llms = ROOT / "llms.txt"
+    assert llms.is_file()
+    llms_text = llms.read_text(encoding="utf-8")
+    assert f"Version: {worksheet_generator.__version__}" in llms_text
+    assert "THIRD_PARTY_LICENSES.md" in llms_text
+    assert "MARKETING-LOG.txt" in llms_text
+
+
+def test_pyproject_pep621_urls() -> None:
+    pyproject = (ROOT / "pyproject.toml").read_text(encoding="utf-8")
+    for key in [
+        "Homepage",
+        "Documentation",
+        '"German Documentation"',
+        "Repository",
+        "Issues",
+        '"LLM Context Index"',
+        '"Third-Party Licenses"',
+        '"Marketing Log"',
+    ]:
+        assert key in pyproject
+
+
+def test_bilingual_navigation_parity() -> None:
+    readme_en = (ROOT / "README.md").read_text(encoding="utf-8")
+    readme_de = (ROOT / "README_de.md").read_text(encoding="utf-8")
+
+    en_nav = re.findall(r'^\d+\.\s+\[([^\]]+)\]\(#([^\)]+)\)', readme_en, re.MULTILINE)
+    de_nav = re.findall(r'^\d+\.\s+\[([^\]]+)\]\(#([^\)]+)\)', readme_de, re.MULTILINE)
+
+    assert len(en_nav) == 16, f"Expected 16 EN navigation points, got {len(en_nav)}"
+    assert len(de_nav) == 16, f"Expected 16 DE navigation points, got {len(de_nav)}"
+
+    # Ensure all anchors in navigation exist as headers in the respective files
+    for title, anchor in en_nav:
+        # Check that header exists matching the anchor
+        expected_header = title.replace("&", "").replace("(", "").replace(")", "").strip()
+        assert f"## {expected_header}" in readme_en or f"#{anchor}" in readme_en
+
+    for title, anchor in de_nav:
+        assert f"#{anchor}" in readme_de
+
