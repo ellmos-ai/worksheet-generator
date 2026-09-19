@@ -1,4 +1,4 @@
-![worksheet-generator Banner](assets/banner.png)
+![worksheet-generator Banner](assets/banner.svg)
 
 # worksheet-generator
 
