@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2400 680" width="2400" height="680">
 <defs>
-  <!-- Background Gradients -->
+  <!-- Background Canvas Gradient -->
   <linearGradient id="bg-canvas" x1="0%" y1="0%" x2="100%" y2="100%">
     <stop offset="0%" stop-color="#041217"/>
     <stop offset="35%" stop-color="#071d24"/>
@@ -8,6 +8,7 @@
     <stop offset="100%" stop-color="#0b2e38"/>
   </linearGradient>
 
+  <!-- Panel Border Gradient -->
   <linearGradient id="bg-panel-border" x1="0%" y1="0%" x2="100%" y2="0%">
     <stop offset="0%" stop-color="#144d59" stop-opacity="0.8"/>
     <stop offset="40%" stop-color="#2dd4bf" stop-opacity="0.6"/>
@@ -15,7 +16,7 @@
     <stop offset="100%" stop-color="#144d59" stop-opacity="0.3"/>
   </linearGradient>
 
-  <!-- Radial Glows -->
+  <!-- Ambient Radial Lighting Glows -->
   <radialGradient id="ambient-cyan" cx="50%" cy="50%" r="50%">
     <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.22"/>
     <stop offset="50%" stop-color="#06b6d4" stop-opacity="0.05"/>
@@ -34,22 +35,53 @@
     <stop offset="100%" stop-color="#10b981" stop-opacity="0"/>
   </radialGradient>
 
+  <!-- LED Optical Glows -->
+  <radialGradient id="led-amber-glow" cx="50%" cy="50%" r="50%">
+    <stop offset="0%" stop-color="#fbbf24" stop-opacity="1"/>
+    <stop offset="40%" stop-color="#f59e0b" stop-opacity="0.8"/>
+    <stop offset="100%" stop-color="#f59e0b" stop-opacity="0"/>
+  </radialGradient>
+
+  <radialGradient id="led-cyan-glow" cx="50%" cy="50%" r="50%">
+    <stop offset="0%" stop-color="#2dd4bf" stop-opacity="1"/>
+    <stop offset="40%" stop-color="#06b6d4" stop-opacity="0.8"/>
+    <stop offset="100%" stop-color="#06b6d4" stop-opacity="0"/>
+  </radialGradient>
+
   <!-- Glass Card Gradients -->
   <linearGradient id="card-glass" x1="0%" y1="0%" x2="100%" y2="100%">
-    <stop offset="0%" stop-color="#0e323b" stop-opacity="0.94"/>
+    <stop offset="0%" stop-color="#0e323b" stop-opacity="0.92"/>
     <stop offset="100%" stop-color="#081e24" stop-opacity="0.98"/>
   </linearGradient>
 
-  <!-- Machine Engine Gradients -->
-  <linearGradient id="engine-body" x1="0%" y1="0%" x2="100%" y2="100%">
-    <stop offset="0%" stop-color="#133842"/>
-    <stop offset="50%" stop-color="#0c272e"/>
-    <stop offset="100%" stop-color="#06191d"/>
+  <!-- Printer Mechanical Housing Gradients -->
+  <linearGradient id="printer-chassis" x1="0%" y1="0%" x2="0%" y2="100%">
+    <stop offset="0%" stop-color="#2a3c4a"/>
+    <stop offset="12%" stop-color="#21303c"/>
+    <stop offset="60%" stop-color="#19252f"/>
+    <stop offset="100%" stop-color="#111a21"/>
   </linearGradient>
 
-  <!-- Blueprint Grid Pattern -->
+  <linearGradient id="printer-tray" x1="0%" y1="0%" x2="0%" y2="100%">
+    <stop offset="0%" stop-color="#1c2b36"/>
+    <stop offset="100%" stop-color="#0f1920"/>
+  </linearGradient>
+
+  <linearGradient id="printer-acrylic" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#0f2b34" stop-opacity="0.92"/>
+    <stop offset="50%" stop-color="#0a1e25" stop-opacity="0.88"/>
+    <stop offset="100%" stop-color="#061418" stop-opacity="0.96"/>
+  </linearGradient>
+
+  <linearGradient id="slider-track-fill" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#0d9488"/>
+    <stop offset="50%" stop-color="#2dd4bf"/>
+    <stop offset="100%" stop-color="#38bdf8"/>
+  </linearGradient>
+
+  <!-- Blueprint Background Grid Pattern -->
   <pattern id="grid-dots" width="40" height="40" patternUnits="userSpaceOnUse">
-    <circle cx="20" cy="20" r="1.2" fill="#2dd4bf" fill-opacity="0.10"/>
+    <circle cx="20" cy="20" r="1.2" fill="#2dd4bf" fill-opacity="0.09"/>
   </pattern>
 </defs>
 
@@ -59,314 +91,365 @@
 <rect x="2" y="2" width="2396" height="676" rx="20" fill="none" stroke="url(#bg-panel-border)" stroke-width="2.5"/>
 
 <!-- Ambient Color Lighting Orbs -->
-<ellipse cx="1450" cy="340" rx="460" ry="300" fill="url(#ambient-cyan)"/>
-<ellipse cx="1980" cy="360" rx="440" ry="280" fill="url(#ambient-amber)"/>
-<ellipse cx="450" cy="260" rx="420" ry="260" fill="url(#ambient-emerald)"/>
+<ellipse cx="420" cy="280" rx="430" ry="260" fill="url(#ambient-cyan)"/>
+<ellipse cx="1180" cy="340" rx="490" ry="320" fill="url(#ambient-emerald)"/>
+<ellipse cx="1960" cy="350" rx="460" ry="300" fill="url(#ambient-amber)"/>
 
-<!-- ================= LEFT BRAND COLUMN ================= -->
+<!-- ================= LEFT: WORDMARK & SCHEMATIC INPUT PIPELINE ================= -->
 <g id="brand-column">
-  <!-- Privacy Pill Badge -->
-  <g transform="translate(85, 72)">
-    <rect width="455" height="34" rx="17" fill="#072224" stroke="#10b981" stroke-opacity="0.7" stroke-width="1.5"/>
-    <circle cx="20" cy="17" r="5" fill="#34d399"/>
-    <circle cx="20" cy="17" r="8" fill="#34d399" fill-opacity="0.25"/>
-    <text x="36" y="22" fill="#34d399" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="12.5" font-weight="700" letter-spacing="1.5">100% LOCAL-FIRST · ZERO DATA EGRESS · OFFLINE</text>
-  </g>
-
-  <!-- Main Wordmark -->
-  <g transform="translate(85, 185)">
-    <text font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="76" font-weight="900" letter-spacing="-2px">
+  <!-- Main Wordmark: Exactly ONE text element in entire banner -->
+  <g id="brand-wordmark" transform="translate(90, 138)">
+    <text font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="82" font-weight="900" letter-spacing="-2.5px">
       <tspan fill="#ffffff">worksheet</tspan><tspan fill="#2dd4bf">-generator</tspan>
     </text>
   </g>
 
-  <!-- Tagline -->
-  <g transform="translate(87, 244)">
-    <text fill="#f8fafc" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="26.5" font-weight="700" letter-spacing="-0.5px">
-      Bespoke Practice Sheets from Abstract Educational Goals
-    </text>
-  </g>
-
-  <!-- Descriptive Subtitle -->
-  <g transform="translate(87, 288)">
-    <text fill="#94a3b8" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="17.5" font-weight="400">
-      <tspan x="0" dy="0">Turns ICF competencies &amp; school curricula into individually differentiated, ready-to-print</tspan>
-      <tspan x="0" dy="27">worksheets. Runs entirely on your local machine with deterministic, private generation.</tspan>
-    </text>
-  </g>
-
-  <!-- Feature Grid / Key Pillars (4 Pill Badges) -->
-  <g transform="translate(85, 390)">
-    <!-- Pill 1: ICF & Curricula -->
-    <g transform="translate(0, 0)">
-      <rect width="365" height="48" rx="12" fill="#0d2831" stroke="#1d4e5b" stroke-width="1.5"/>
-      <circle cx="28" cy="24" r="10" fill="#0284c7" fill-opacity="0.3"/>
-      <path d="M24 24 L27 27 L33 21" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-      <text x="50" y="29" fill="#e2e8f0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="14.5" font-weight="600">
-        ICF Codes <tspan fill="#94a3b8" font-weight="400">(d150, b140, b167)</tspan> &amp; Curricula
-      </text>
-    </g>
-
-    <!-- Pill 2: Differentiation -->
-    <g transform="translate(385, 0)">
-      <rect width="365" height="48" rx="12" fill="#0d2831" stroke="#1d4e5b" stroke-width="1.5"/>
-      <circle cx="28" cy="24" r="10" fill="#059669" fill-opacity="0.3"/>
-      <path d="M22 28 L28 18 L34 28" stroke="#34d399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-      <text x="50" y="29" fill="#e2e8f0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="14.5" font-weight="600">
-        Multi-Tiered <tspan fill="#94a3b8" font-weight="400">(G / M / E Differentiated)</tspan>
-      </text>
-    </g>
-
-    <!-- Pill 3: Export Formats -->
-    <g transform="translate(0, 64)">
-      <rect width="365" height="48" rx="12" fill="#0d2831" stroke="#1d4e5b" stroke-width="1.5"/>
-      <circle cx="28" cy="24" r="10" fill="#d97706" fill-opacity="0.3"/>
-      <rect x="22" y="18" width="12" height="12" rx="2" stroke="#fbbf24" stroke-width="2" fill="none"/>
-      <text x="50" y="29" fill="#e2e8f0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="14.5" font-weight="600">
-        Formats: <tspan fill="#fbbf24" font-weight="700">JSON · Markdown · HTML · DOCX</tspan>
-      </text>
-    </g>
-
-    <!-- Pill 4: Zero Egress Stdlib -->
-    <g transform="translate(385, 64)">
-      <rect width="365" height="48" rx="12" fill="#0d2831" stroke="#1d4e5b" stroke-width="1.5"/>
-      <circle cx="28" cy="24" r="10" fill="#7c3aed" fill-opacity="0.3"/>
-      <path d="M28 17 L23 20 V25 C23 28 28 31 28 31 C28 31 33 28 33 25 V20 Z" stroke="#a78bfa" stroke-width="1.8" fill="none"/>
-      <text x="50" y="29" fill="#e2e8f0" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="14.5" font-weight="600">
-        Zero Egress <tspan fill="#94a3b8" font-weight="400">· Standard Library Only</tspan>
-      </text>
-    </g>
-  </g>
-
-  <!-- Technical Spec Footnote -->
-  <g transform="translate(87, 578)">
-    <text fill="#64748b" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="500" letter-spacing="0.5">
-      PYTHON 3.10+ · SPECIAL EDUCATION &amp; CLASSROOM MODES · DETERMINISTIC GENERATION
-    </text>
-  </g>
+  <!-- Glowing Accent Rail underneath Wordmark -->
+  <rect x="92" y="158" width="360" height="4" rx="2" fill="#2dd4bf" fill-opacity="0.8"/>
+  <rect x="92" y="158" width="150" height="4" rx="2" fill="#38bdf8"/>
 </g>
 
-<!-- ================= CONNECTIVE CONDUITS ================= -->
-<g id="conduits" opacity="0.9">
-  <!-- Glowing Data Rails from Left Cards to Engine -->
-  <path d="M1150 168 C1185 168, 1200 270, 1240 285" fill="none" stroke="#0284c7" stroke-width="3" stroke-dasharray="6,6" opacity="0.7"/>
-  <path d="M1160 298 C1195 298, 1200 325, 1240 325" fill="none" stroke="#2dd4bf" stroke-width="3.5" opacity="0.8"/>
-  <path d="M1150 428 C1185 428, 1200 375, 1240 365" fill="none" stroke="#10b981" stroke-width="3" stroke-dasharray="6,6" opacity="0.7"/>
+<!-- ================= DECORATIVE FINISHED-WORKSHEET STACK (fills gap left of printer) ================= -->
+<g id="decorative-worksheet-stack" transform="translate(350, 265)">
+  <!-- Soft ground shadow -->
+  <ellipse cx="147" cy="335" rx="150" ry="15" fill="#02080a" opacity="0.45"/>
 
-  <!-- Energy Stream leaving Engine into Worksheets -->
-  <path d="M1490 310 C1515 310, 1530 250, 1565 250" fill="none" stroke="#f59e0b" stroke-width="4" opacity="0.8"/>
-  <path d="M1495 350 C1520 350, 1535 380, 1575 380" fill="none" stroke="#38bdf8" stroke-width="3" opacity="0.8"/>
-</g>
+  <!-- Back sheets, slightly offset, text-free -->
+  <rect x="24" y="24" width="270" height="310" rx="10" fill="#d9e1e8" stroke="#b6c2cc" stroke-width="1"/>
+  <rect x="19" y="19" width="270" height="310" rx="10" fill="#e2e9ee" stroke="#c3ced7" stroke-width="1"/>
+  <rect x="14" y="15" width="270" height="310" rx="10" fill="#ebf0f4" stroke="#d2dae1" stroke-width="1"/>
+  <rect x="9" y="10" width="270" height="310" rx="10" fill="#f3f6f8" stroke="#dde3e8" stroke-width="1"/>
+  <rect x="4" y="5" width="270" height="310" rx="10" fill="#f9fafb" stroke="#e6eaed" stroke-width="1"/>
 
-<!-- ================= STAGE 1: ABSTRACT INPUT CARTRIDGES ================= -->
-<g id="stage-inputs" transform="translate(885, 0)">
-  <!-- Flow Label -->
-  <g transform="translate(15, 88)">
-    <text fill="#38bdf8" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" letter-spacing="2">STAGE 1: ABSTRACT PEDAGOGICAL INPUT</text>
-  </g>
+  <!-- Top sheet drop shadow -->
+  <rect x="4" y="8" width="270" height="310" rx="10" fill="#02080a" opacity="0.28"/>
 
-  <!-- Input Card 1: ICF Competency -->
-  <g transform="translate(15, 115)">
-    <!-- Card Drop Shadow -->
-    <rect x="0" y="8" width="250" height="96" rx="14" fill="#030d11" opacity="0.6"/>
-    <!-- Card Frame -->
-    <rect width="250" height="96" rx="14" fill="url(#card-glass)" stroke="#0284c7" stroke-width="1.8"/>
-    <!-- Card Header Icon & Tag -->
-    <rect x="14" y="14" width="26" height="26" rx="7" fill="#0369a1" fill-opacity="0.4"/>
-    <text x="27" y="31" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" text-anchor="middle">🎯</text>
-    <text x="48" y="23" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="10" font-weight="700" letter-spacing="1">ICF COMPETENCY CODE</text>
-    <text x="48" y="38" fill="#ffffff" font-family="system-ui, sans-serif" font-size="15" font-weight="800">d150: Calculating</text>
-    
-    <!-- Mini Sub-Tags -->
-    <rect x="14" y="54" width="102" height="24" rx="6" fill="#0f3440"/>
-    <text x="65" y="70" fill="#7dd3fc" font-family="system-ui, sans-serif" font-size="10.5" font-weight="600" text-anchor="middle">Zahlenraum 100</text>
-    
-    <rect x="122" y="54" width="112" height="24" rx="6" fill="#0f3440"/>
-    <text x="178" y="70" fill="#7dd3fc" font-family="system-ui, sans-serif" font-size="10.5" font-weight="600" text-anchor="middle">Grundrechenarten</text>
-  </g>
+  <!-- Top sheet (visible, matches house worksheet style, text-free) -->
+  <g id="stack-top-sheet">
+    <rect width="270" height="310" rx="10" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
 
-  <!-- Input Card 2: Differentiation & Target Learner -->
-  <g transform="translate(25, 240)">
-    <!-- Card Drop Shadow -->
-    <rect x="0" y="8" width="250" height="110" rx="14" fill="#030d11" opacity="0.6"/>
-    <!-- Card Frame -->
-    <rect width="250" height="110" rx="14" fill="url(#card-glass)" stroke="#2dd4bf" stroke-width="1.8"/>
-    <!-- Card Header -->
-    <rect x="14" y="14" width="26" height="26" rx="7" fill="#0f766e" fill-opacity="0.4"/>
-    <text x="27" y="31" fill="#2dd4bf" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" text-anchor="middle">⚖</text>
-    <text x="48" y="23" fill="#2dd4bf" font-family="system-ui, sans-serif" font-size="10" font-weight="700" letter-spacing="1">DIFFERENTIATION LEVEL</text>
-    <text x="48" y="38" fill="#ffffff" font-family="system-ui, sans-serif" font-size="15" font-weight="800">Tier M · Anschaulich</text>
-    
-    <!-- Calibrated Slider Visual -->
-    <g transform="translate(14, 60)">
-      <text x="0" y="0" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="9.5" font-weight="600">Scaffolded</text>
-      <text x="220" y="0" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="9.5" font-weight="600" text-anchor="end">Abstract</text>
-      <!-- Track -->
-      <rect x="0" y="8" width="220" height="6" rx="3" fill="#134e4a"/>
-      <rect x="0" y="8" width="125" height="6" rx="3" fill="#2dd4bf"/>
-      <!-- Dial Pin -->
-      <circle cx="125" cy="11" r="8" fill="#ffffff" stroke="#2dd4bf" stroke-width="2.5"/>
-      <text x="125" y="33" fill="#5eead4" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700" text-anchor="middle">Age: 8–10 yrs</text>
+    <!-- Header ribbon (graphic only) -->
+    <rect x="14" y="14" width="242" height="30" rx="6" fill="#0f766e"/>
+    <circle cx="30" cy="29" r="7" fill="#5eead4"/>
+    <rect x="46" y="24" width="95" height="6" rx="3" fill="#99f6e4"/>
+    <rect x="46" y="34" width="62" height="5" rx="2.5" fill="#5eead4" opacity="0.7"/>
+
+    <!-- Hinted ten-frame task graphic -->
+    <g transform="translate(14, 58)">
+      <rect width="242" height="66" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+      <line x1="121" y1="0" x2="121" y2="66" stroke="#e2e8f0" stroke-width="1"/>
+      <line x1="0" y1="33" x2="242" y2="33" stroke="#e2e8f0" stroke-width="1"/>
+      <circle cx="30" cy="17" r="6" fill="#0284c7"/>
+      <circle cx="62" cy="17" r="6" fill="#0284c7"/>
+      <circle cx="30" cy="49" r="6" fill="#0284c7"/>
+      <circle cx="152" cy="17" r="6" fill="#0284c7"/>
+      <circle cx="184" cy="17" r="6" fill="#0284c7"/>
     </g>
-  </g>
 
-  <!-- Input Card 3: Offline Privacy Chamber -->
-  <g transform="translate(15, 380)">
-    <!-- Card Drop Shadow -->
-    <rect x="0" y="8" width="250" height="90" rx="14" fill="#030d11" opacity="0.6"/>
-    <!-- Card Frame -->
-    <rect width="250" height="90" rx="14" fill="url(#card-glass)" stroke="#10b981" stroke-width="1.8"/>
-    <!-- Card Header -->
-    <rect x="14" y="14" width="26" height="26" rx="7" fill="#065f46" fill-opacity="0.4"/>
-    <text x="27" y="31" fill="#34d399" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" text-anchor="middle">🔒</text>
-    <text x="48" y="23" fill="#34d399" font-family="system-ui, sans-serif" font-size="10" font-weight="700" letter-spacing="1">LOCAL RUNTIME VAULT</text>
-    <text x="48" y="39" fill="#ffffff" font-family="system-ui, sans-serif" font-size="15" font-weight="800">Zero Student PII Egress</text>
-    
-    <g transform="translate(14, 54)">
-      <circle cx="8" cy="8" r="4" fill="#10b981"/>
-      <text x="20" y="12" fill="#a7f3d0" font-family="system-ui, sans-serif" font-size="11" font-weight="500">Unprivileged · Python Stdlib Only</text>
+    <!-- Text-placeholder bars (no letters) -->
+    <rect x="14" y="136" width="242" height="8" rx="4" fill="#e2e8f0"/>
+    <rect x="14" y="152" width="172" height="8" rx="4" fill="#e2e8f0"/>
+
+    <!-- Small calculation row -->
+    <g transform="translate(14, 174)">
+      <rect width="62" height="34" rx="5" fill="#e0f2fe" stroke="#0284c7" stroke-width="1"/>
+      <rect x="72" y="0" width="62" height="34" rx="5" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/>
+      <rect x="144" y="0" width="50" height="34" rx="5" fill="#ecfdf5" stroke="#10b981" stroke-width="1"/>
+      <path d="M158 17 L163 22 L179 10" stroke="#10b981" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    </g>
+
+    <!-- Star rating row -->
+    <g transform="translate(14, 228)">
+      <polygon points="14,0 17,7 24,8 19,13 20,20 14,16 8,20 9,13 4,8 11,7" fill="#f59e0b"/>
+      <polygon points="42,0 45,7 52,8 47,13 48,20 42,16 36,20 37,13 32,8 39,7" fill="#f59e0b"/>
+      <polygon points="70,0 73,7 80,8 75,13 76,20 70,16 64,20 65,13 60,8 67,7" fill="#f59e0b"/>
+      <rect x="100" y="4" width="130" height="10" rx="5" fill="#e2e8f0"/>
+    </g>
+
+    <!-- Footer meta bars -->
+    <g transform="translate(14, 282)">
+      <rect width="76" height="6" rx="3" fill="#cbd5e1"/>
+      <circle cx="238" cy="3" r="4" fill="#2dd4bf"/>
     </g>
   </g>
 </g>
 
-<!-- ================= STAGE 2: BESPOKE SYNTHESIS ENGINE ================= -->
-<g id="stage-engine" transform="translate(1175, 0)">
-  <!-- Flow Label -->
-  <g transform="translate(25, 88)">
-    <text fill="#fbbf24" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" letter-spacing="2">STAGE 2: BESPOKE COMPOSITION &amp; TAILORING</text>
+<!-- ================= CENTER: CLASSIC 80s/90s RETRO DESKTOP PRINTER ================= -->
+<g id="retro-desktop-printer">
+  <!-- Ground Shadow underneath Printer -->
+  <ellipse cx="1185" cy="580" rx="275" ry="30" fill="#02080a" opacity="0.85"/>
+  <ellipse cx="1185" cy="580" rx="210" ry="18" fill="#010405" opacity="0.95"/>
+
+  <!-- Rubber Sturdy Base Feet -->
+  <rect x="950" y="555" width="46" height="15" rx="4" fill="#091217" stroke="#1a2b36" stroke-width="1"/>
+  <rect x="1375" y="555" width="46" height="15" rx="4" fill="#091217" stroke="#1a2b36" stroke-width="1"/>
+
+  <!-- REAR PAPER FEEDER TRAY (Papierschacht) -->
+  <g id="printer-paper-feed-tray">
+    <!-- Sloped Backplate -->
+    <polygon points="985,260 1025,135 1345,135 1385,260" fill="url(#printer-tray)" stroke="#2f4352" stroke-width="2"/>
+    <!-- Tray Ribs / Reinforcements -->
+    <line x1="1085" y1="138" x2="1065" y2="258" stroke="#1e2c36" stroke-width="2"/>
+    <line x1="1185" y1="138" x2="1185" y2="258" stroke="#1e2c36" stroke-width="2"/>
+    <line x1="1285" y1="138" x2="1305" y2="258" stroke="#1e2c36" stroke-width="2"/>
+
+    <!-- Left & Right Adjustable Paper Guide Sliders (Cyan Accents) -->
+    <rect x="1040" y="140" width="16" height="110" rx="4" fill="#0f3440" stroke="#2dd4bf" stroke-width="1.5"/>
+    <rect x="1043" y="180" width="10" height="30" rx="2" fill="#2dd4bf"/>
+    <rect x="1315" y="140" width="16" height="110" rx="4" fill="#0f3440" stroke="#2dd4bf" stroke-width="1.5"/>
+    <rect x="1318" y="180" width="10" height="30" rx="2" fill="#2dd4bf"/>
+
+    <!-- STACK OF CLEAN INPUT PAPER SHEETS IN TRAY -->
+    <!-- Sheet 3 (Rear) -->
+    <rect x="1063" y="120" width="244" height="135" rx="4" fill="#cbd5e1" stroke="#94a3b8" stroke-width="1"/>
+    <!-- Sheet 2 (Mid) -->
+    <rect x="1059" y="130" width="252" height="125" rx="4" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1"/>
+    <!-- Sheet 1 (Front blank waiting to be drawn in) -->
+    <rect x="1055" y="140" width="260" height="115" rx="4" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+    <!-- Top shadow inside intake slot -->
+    <rect x="1050" y="245" width="270" height="15" rx="3" fill="#081014" opacity="0.7"/>
   </g>
 
-  <!-- Engine Mechanical Enclosure Frame -->
-  <g transform="translate(15, 120)">
-    <!-- Shadow -->
-    <rect x="0" y="12" width="295" height="395" rx="20" fill="#030d11" opacity="0.7"/>
-    <!-- Main Chassis -->
-    <rect width="295" height="395" rx="20" fill="url(#engine-body)" stroke="#225b68" stroke-width="2"/>
-    <rect x="10" y="10" width="275" height="375" rx="14" fill="none" stroke="#16434d" stroke-width="1.5" stroke-dasharray="4,4"/>
+  <!-- MAIN PRINTER CHASSIS (Heavy Beveled Casing) -->
+  <g id="printer-body-casing">
+    <!-- Main Outer Housing Frame -->
+    <rect x="915" y="260" width="540" height="300" rx="18" fill="url(#printer-chassis)" stroke="#3b5062" stroke-width="2"/>
+    <!-- Top Edge Highlight Bevel -->
+    <rect x="917" y="262" width="536" height="6" rx="3" fill="#527088" opacity="0.6"/>
 
-    <!-- Top Roller / Feed Mechanism -->
-    <rect x="20" y="26" width="255" height="28" rx="8" fill="#1a4652" stroke="#2dd4bf" stroke-width="1.5"/>
-    <line x1="35" y1="40" x2="260" y2="40" stroke="#5eead4" stroke-width="2" stroke-dasharray="8,6"/>
-
-    <!-- Interlocking Precision Gears (Rich High-Contrast Colors) -->
-    <!-- Gear 1 (Main Gold Gear) -->
-    <g transform="translate(80, 125)">
-      <!-- Outer Rim & Teeth -->
-      <circle cx="0" cy="0" r="46" fill="#d97706"/>
-      <!-- Teeth -->
-      <path d="M-5 -49 H5 V-41 H-5 Z" fill="#fbbf24"/>
-      <path d="M-5 41 H5 V49 H-5 Z" fill="#fbbf24"/>
-      <path d="M-49 -5 V5 H-41 V-5 Z" fill="#fbbf24"/>
-      <path d="M41 -5 V5 H49 V-5 Z" fill="#fbbf24"/>
-      <path d="M-36 -36 L-29 -29 L-23 -35 L-30 -42 Z" fill="#fbbf24"/>
-      <path d="M29 29 L36 36 L42 30 L35 23 Z" fill="#fbbf24"/>
-      <path d="M-36 36 L-29 29 L-35 23 L-42 30 Z" fill="#fbbf24"/>
-      <path d="M29 -29 L36 -36 L30 -42 L23 -35 Z" fill="#fbbf24"/>
-      
-      <!-- Main Gear Face -->
-      <circle cx="0" cy="0" r="41" fill="#f59e0b"/>
-      <circle cx="0" cy="0" r="34" fill="#0d2831" stroke="#fef08a" stroke-width="1.5"/>
-      <!-- Inner Gold Cutouts -->
-      <circle cx="0" cy="-19" r="6" fill="#fbbf24"/>
-      <circle cx="0" cy="19" r="6" fill="#fbbf24"/>
-      <circle cx="-19" cy="0" r="6" fill="#fbbf24"/>
-      <circle cx="19" cy="0" r="6" fill="#fbbf24"/>
-      <!-- Hub -->
-      <circle cx="0" cy="0" r="12" fill="#fbbf24" stroke="#d97706" stroke-width="1.5"/>
-      <circle cx="0" cy="0" r="5" fill="#0d2831"/>
+    <!-- Left Side Ventilation Slats (Iconic 80s/90s Grille) -->
+    <g id="printer-cooling-vents" transform="translate(940, 345)">
+      <rect x="0" y="0" width="75" height="7" rx="3.5" fill="#091318" stroke="#213543" stroke-width="1"/>
+      <rect x="0" y="18" width="75" height="7" rx="3.5" fill="#091318" stroke="#213543" stroke-width="1"/>
+      <rect x="0" y="36" width="75" height="7" rx="3.5" fill="#091318" stroke="#213543" stroke-width="1"/>
+      <rect x="0" y="54" width="75" height="7" rx="3.5" fill="#091318" stroke="#213543" stroke-width="1"/>
+      <rect x="0" y="72" width="75" height="7" rx="3.5" fill="#091318" stroke="#213543" stroke-width="1"/>
+      <rect x="0" y="90" width="75" height="7" rx="3.5" fill="#091318" stroke="#213543" stroke-width="1"/>
+      <rect x="0" y="108" width="75" height="7" rx="3.5" fill="#091318" stroke="#213543" stroke-width="1"/>
+      <rect x="0" y="126" width="75" height="7" rx="3.5" fill="#091318" stroke="#213543" stroke-width="1"/>
     </g>
 
-    <!-- Gear 2 (Cyan Secondary Gear) -->
-    <g transform="translate(180, 105)">
-      <!-- Teeth -->
-      <rect x="-4" y="-36" width="8" height="6" fill="#38bdf8"/>
-      <rect x="-4" y="30" width="8" height="6" fill="#38bdf8"/>
-      <rect x="-36" y="-4" width="6" height="8" fill="#38bdf8"/>
-      <rect x="30" y="-4" width="6" height="8" fill="#38bdf8"/>
-      <!-- Body -->
-      <circle cx="0" cy="0" r="32" fill="#0284c7" stroke="#38bdf8" stroke-width="2"/>
-      <circle cx="0" cy="0" r="22" fill="#0e3d48"/>
-      <circle cx="0" cy="0" r="12" fill="#38bdf8"/>
-      <circle cx="0" cy="0" r="5" fill="#062027"/>
+    <!-- RIGHT SIDE PLATEN ROLLER WHEEL (Classic Dot-Matrix Knob) -->
+    <g id="platen-knob" transform="translate(1451, 320)">
+      <!-- Knob Base Flange -->
+      <rect x="0" y="5" width="8" height="60" rx="3" fill="#152129" stroke="#293c4a" stroke-width="1"/>
+      <!-- Main Knurled Knob Cylinder -->
+      <rect x="6" y="0" width="22" height="70" rx="6" fill="#1d2c37" stroke="#3d5466" stroke-width="1.5"/>
+      <!-- Knurled Grip Ridges -->
+      <line x1="6" y1="12" x2="28" y2="12" stroke="#48657a" stroke-width="2"/>
+      <line x1="6" y1="22" x2="28" y2="22" stroke="#48657a" stroke-width="2"/>
+      <line x1="6" y1="32" x2="28" y2="32" stroke="#48657a" stroke-width="2"/>
+      <line x1="6" y1="42" x2="28" y2="42" stroke="#48657a" stroke-width="2"/>
+      <line x1="6" y1="52" x2="28" y2="52" stroke="#48657a" stroke-width="2"/>
+      <line x1="6" y1="62" x2="28" y2="62" stroke="#48657a" stroke-width="2"/>
+      <!-- Knob Center Hub -->
+      <circle cx="17" cy="35" r="4" fill="#091217"/>
     </g>
 
-    <!-- Movable Type Matrix / Setzkasten Slugs -->
-    <g transform="translate(20, 195)">
-      <!-- Chase Plate -->
-      <rect width="255" height="110" rx="10" fill="#0a2027" stroke="#d97706" stroke-width="1.5"/>
-      <text x="127" y="20" fill="#fbbf24" font-family="system-ui, sans-serif" font-size="9.5" font-weight="700" letter-spacing="1.5" text-anchor="middle">TYPOGRAPHIC COMPOSITION MATRIX</text>
-      
-      <!-- Typeblock Slugs Grid -->
-      <!-- Slug 1: 47 -->
-      <g transform="translate(10, 30)">
-        <rect width="48" height="32" rx="5" fill="#1b4753" stroke="#f59e0b" stroke-width="1.5"/>
-        <text x="24" y="22" fill="#ffffff" font-family="'Courier New', monospace" font-size="16" font-weight="bold" text-anchor="middle">47</text>
+    <!-- TOP SMOKED ACRYLIC PLATEN WINDOW / COVER -->
+    <g id="acrylic-platen-lid" transform="translate(955, 275)">
+      <!-- Smoked Acrylic Frame -->
+      <rect width="460" height="52" rx="8" fill="url(#printer-acrylic)" stroke="#38bdf8" stroke-opacity="0.4" stroke-width="1.5"/>
+      <rect x="2" y="2" width="456" height="4" rx="2" fill="#38bdf8" fill-opacity="0.25"/>
+
+      <!-- Interior Rails & Printhead Visible through Acrylic -->
+      <line x1="20" y1="22" x2="440" y2="22" stroke="#64748b" stroke-width="3" stroke-linecap="round"/>
+      <line x1="20" y1="32" x2="440" y2="32" stroke="#64748b" stroke-width="3" stroke-linecap="round"/>
+      <!-- Moving Printhead Carriage Unit -->
+      <rect x="210" y="12" width="48" height="30" rx="5" fill="#1b2a34" stroke="#2dd4bf" stroke-width="1.5"/>
+      <!-- Printhead Micro-glow Needle Active Point -->
+      <circle cx="234" cy="27" r="4" fill="#2dd4bf"/>
+      <circle cx="234" cy="27" r="8" fill="#2dd4bf" fill-opacity="0.35"/>
+      <!-- Stepper Belt -->
+      <line x1="20" y1="27" x2="210" y2="27" stroke="#334155" stroke-width="2" stroke-dasharray="3,3"/>
+      <line x1="258" y1="27" x2="440" y2="27" stroke="#334155" stroke-width="2" stroke-dasharray="3,3"/>
+    </g>
+
+    <!-- FRONT CONTROL PANEL (Bedienfeld) -->
+    <g id="printer-control-panel" transform="translate(1340, 345)">
+      <rect width="95" height="195" rx="10" fill="#0e1a21" stroke="#243b49" stroke-width="1.8"/>
+      <!-- Bevel highlight -->
+      <rect x="3" y="3" width="89" height="3" rx="1.5" fill="#3b576b" opacity="0.6"/>
+
+      <!-- LED Section Title Notch (no text) -->
+      <rect x="12" y="14" width="71" height="6" rx="3" fill="#182d38"/>
+
+      <!-- POWER LED (Amber) -->
+      <g transform="translate(20, 36)">
+        <circle cx="8" cy="8" r="14" fill="url(#led-amber-glow)"/>
+        <circle cx="8" cy="8" r="6" fill="#fbbf24" stroke="#d97706" stroke-width="1.5"/>
+        <circle cx="6" cy="6" r="2" fill="#ffffff"/>
+        <!-- Mini Graphic Power Symbol beside LED -->
+        <circle cx="36" cy="8" r="7" fill="none" stroke="#94a3b8" stroke-width="1.5"/>
+        <line x1="36" y1="3" x2="36" y2="9" stroke="#94a3b8" stroke-width="1.5"/>
       </g>
-      <!-- Slug 2: + -->
-      <g transform="translate(66, 30)">
-        <rect width="44" height="32" rx="5" fill="#1b4753" stroke="#38bdf8" stroke-width="1.5"/>
-        <text x="22" y="23" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="20" font-weight="bold" text-anchor="middle">+</text>
+
+      <!-- ONLINE / READY LED (Cyan) -->
+      <g transform="translate(20, 72)">
+        <circle cx="8" cy="8" r="14" fill="url(#led-cyan-glow)"/>
+        <circle cx="8" cy="8" r="6" fill="#2dd4bf" stroke="#0d9488" stroke-width="1.5"/>
+        <circle cx="6" cy="6" r="2" fill="#ffffff"/>
+        <!-- Mini Graphic Waves Symbol beside LED -->
+        <path d="M30 11 C34 6, 38 6, 42 11" fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M33 8 C35 5, 37 5, 39 8" fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round"/>
       </g>
-      <!-- Slug 3: 28 -->
-      <g transform="translate(118, 30)">
-        <rect width="48" height="32" rx="5" fill="#1b4753" stroke="#f59e0b" stroke-width="1.5"/>
-        <text x="24" y="22" fill="#ffffff" font-family="'Courier New', monospace" font-size="16" font-weight="bold" text-anchor="middle">28</text>
+
+      <!-- TACTILE PUSH BUTTONS (Form Feed / Line Feed) -->
+      <!-- Button 1 -->
+      <g transform="translate(14, 110)">
+        <!-- Button 3D Base Drop Shadow -->
+        <rect x="0" y="3" width="67" height="28" rx="5" fill="#071015"/>
+        <!-- Main Button Cap -->
+        <rect width="67" height="27" rx="5" fill="#223441" stroke="#48687f" stroke-width="1.2"/>
+        <rect x="3" y="3" width="61" height="4" rx="2" fill="#3a566c"/>
+        <!-- Icon on button (Double arrow down/feed) -->
+        <path d="M28 11 L33.5 17 L39 11" fill="none" stroke="#cbd5e1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
       </g>
-      <!-- Slug 4: = -->
-      <g transform="translate(174, 30)">
-        <rect width="70" height="32" rx="5" fill="#1b4753" stroke="#34d399" stroke-width="1.5"/>
-        <text x="35" y="22" fill="#34d399" font-family="system-ui, sans-serif" font-size="16" font-weight="bold" text-anchor="middle">[ ? ]</text>
-      </g>
-      
-      <!-- Row 2: Pedagogical Scaffolding Slugs -->
-      <!-- Slug 5: Visual Hint -->
-      <g transform="translate(10, 68)">
-        <rect width="105" height="28" rx="5" fill="#133640" stroke="#2dd4bf" stroke-width="1"/>
-        <text x="52" y="18" fill="#5eead4" font-family="system-ui, sans-serif" font-size="10.5" font-weight="600" text-anchor="middle">Ten-Frame Grid</text>
-      </g>
-      <!-- Slug 6: Token -->
-      <g transform="translate(123, 68)">
-        <rect width="121" height="28" rx="5" fill="#133640" stroke="#f59e0b" stroke-width="1"/>
-        <text x="60" y="18" fill="#fde68a" font-family="system-ui, sans-serif" font-size="10.5" font-weight="600" text-anchor="middle">★ Self-Assess</text>
+
+      <!-- Button 2 -->
+      <g transform="translate(14, 148)">
+        <rect x="0" y="3" width="67" height="28" rx="5" fill="#071015"/>
+        <rect width="67" height="27" rx="5" fill="#223441" stroke="#48687f" stroke-width="1.2"/>
+        <rect x="3" y="3" width="61" height="4" rx="2" fill="#3a566c"/>
+        <!-- Icon on button (Single step arrow) -->
+        <path d="M30 11 L33.5 15 L37 11" fill="none" stroke="#cbd5e1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <line x1="28" y1="18" x2="39" y2="18" stroke="#cbd5e1" stroke-width="2" stroke-linecap="round"/>
       </g>
     </g>
 
-    <!-- Bespoke Tailor's Tape / Calibrated Measuring Band -->
-    <g transform="translate(15, 325)">
-      <!-- Golden Tape Outer -->
-      <path d="M0 22 C75 5, 185 38, 265 18" fill="none" stroke="#f59e0b" stroke-width="20" stroke-linecap="round"/>
-      <path d="M0 22 C75 5, 185 38, 265 18" fill="none" stroke="#fef08a" stroke-width="16" stroke-linecap="round"/>
-      <!-- Millimeter Markings on Tape -->
-      <path d="M25 17 L25 23 M45 15 L45 23 M65 16 L65 24 M85 18 L85 26 M105 20 L105 28 M125 22 L125 30 M145 22 L145 30 M165 21 L165 29 M185 19 L185 27 M205 17 L205 25 M225 16 L225 24 M245 15 L245 23" stroke="#78350f" stroke-width="1.8"/>
-      <text x="132" y="13" fill="#78350f" font-family="system-ui, sans-serif" font-size="9" font-weight="900" text-anchor="middle">INDIVIDUALIZED SCALE</text>
+    <!-- FRONT PAPER EXIT SLOT (Ausgabeschacht) -->
+    <g id="printer-paper-exit-slot" transform="translate(1020, 338)">
+      <!-- Deep Recessed Cavity -->
+      <rect width="310" height="20" rx="5" fill="#060e12" stroke="#1d3442" stroke-width="1.5"/>
+      <!-- Visible Rubber Feed Rollers inside Slot -->
+      <circle cx="30" cy="10" r="6" fill="#111827" stroke="#374151" stroke-width="1"/>
+      <circle cx="95" cy="10" r="6" fill="#111827" stroke="#374151" stroke-width="1"/>
+      <circle cx="155" cy="10" r="6" fill="#111827" stroke="#374151" stroke-width="1"/>
+      <circle cx="215" cy="10" r="6" fill="#111827" stroke="#374151" stroke-width="1"/>
+      <circle cx="280" cy="10" r="6" fill="#111827" stroke="#374151" stroke-width="1"/>
+    </g>
+
+    <!-- ================= THE EMERGING WORKSHEET (DAS GERADE GEDRUCKTE BLATT) ================= -->
+    <g id="active-emerging-sheet" transform="translate(1030, 346)">
+      <!-- Sheet Realistic Drop Shadow onto lower front chassis -->
+      <rect x="0" y="8" width="290" height="205" rx="8" fill="#02080a" opacity="0.6"/>
+      <!-- Pure White Crisp Paper Sheet -->
+      <rect width="290" height="205" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+
+      <!-- Top Header Ribbon on active sheet (Teal & Cyan) -->
+      <rect x="12" y="12" width="266" height="24" rx="5" fill="#0f766e"/>
+      <rect x="18" y="20" width="100" height="8" rx="4" fill="#99f6e4"/>
+      <rect x="235" y="20" width="35" height="8" rx="4" fill="#2dd4bf"/>
+
+      <!-- Metadata Strip Placeholder -->
+      <rect x="12" y="42" width="266" height="16" rx="3" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.8"/>
+      <circle cx="24" cy="50" r="5" fill="#0284c7"/>
+      <line x1="36" y1="50" x2="90" y2="50" stroke="#cbd5e1" stroke-width="1.5"/>
+      <line x1="115" y1="50" x2="160" y2="50" stroke="#cbd5e1" stroke-width="1.5"/>
+      <line x1="190" y1="50" x2="265" y2="50" stroke="#cbd5e1" stroke-width="1.5"/>
+
+      <!-- Exercise 1 on emerging sheet: Structured Math Grid with Box & Checkmark -->
+      <g transform="translate(12, 66)">
+        <rect width="128" height="42" rx="4" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/>
+        <!-- Visual math blocks: [  ] + [  ] = [  ] ✓ -->
+        <rect x="8" y="12" width="22" height="18" rx="3" fill="#ffffff" stroke="#94a3b8" stroke-width="1"/>
+        <path d="M35 21 H41 M38 18 V24" stroke="#0284c7" stroke-width="1.5" stroke-linecap="round"/>
+        <rect x="46" y="12" width="22" height="18" rx="3" fill="#ffffff" stroke="#94a3b8" stroke-width="1"/>
+        <path d="M73 19 H79 M73 23 H79" stroke="#0284c7" stroke-width="1.5" stroke-linecap="round"/>
+        <rect x="84" y="12" width="22" height="18" rx="3" fill="#ffffff" stroke="#10b981" stroke-width="1.2"/>
+        <path d="M112 18 L116 22 L122 15" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      </g>
+
+      <!-- Exercise 1 Item 2 -->
+      <g transform="translate(150, 66)">
+        <rect width="128" height="42" rx="4" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/>
+        <rect x="8" y="12" width="22" height="18" rx="3" fill="#ffffff" stroke="#94a3b8" stroke-width="1"/>
+        <line x1="35" y1="21" x2="41" y2="21" stroke="#f59e0b" stroke-width="1.5" stroke-linecap="round"/>
+        <rect x="46" y="12" width="22" height="18" rx="3" fill="#ffffff" stroke="#94a3b8" stroke-width="1"/>
+        <path d="M73 19 H79 M73 23 H79" stroke="#0284c7" stroke-width="1.5" stroke-linecap="round"/>
+        <rect x="84" y="12" width="22" height="18" rx="3" fill="#ffffff" stroke="#10b981" stroke-width="1.2"/>
+        <path d="M112 18 L116 22 L122 15" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      </g>
+
+      <!-- Exercise 2 on emerging sheet: Mini Ten-Frame Grid & Fraction Wheel -->
+      <g transform="translate(12, 116)">
+        <!-- Ten Frame -->
+        <rect width="128" height="42" rx="4" fill="#ffffff" stroke="#94a3b8" stroke-width="1"/>
+        <line x1="64" y1="0" x2="64" y2="42" stroke="#cbd5e1" stroke-width="1"/>
+        <line x1="0" y1="21" x2="128" y2="21" stroke="#cbd5e1" stroke-width="1"/>
+        <circle cx="16" cy="10.5" r="4.5" fill="#0284c7"/>
+        <circle cx="36" cy="10.5" r="4.5" fill="#0284c7"/>
+        <circle cx="16" cy="31.5" r="4.5" fill="#0284c7"/>
+        <circle cx="36" cy="31.5" r="4.5" fill="#0284c7"/>
+        <circle cx="80" cy="10.5" r="4.5" fill="#0284c7"/>
+        <circle cx="100" cy="10.5" r="4.5" fill="#0284c7"/>
+      </g>
+
+      <!-- Fraction Wheel -->
+      <g transform="translate(150, 116)">
+        <rect width="128" height="42" rx="4" fill="#ffffff" stroke="#94a3b8" stroke-width="1"/>
+        <!-- Mini Fraction Pie -->
+        <g transform="translate(30, 21)">
+          <circle cx="0" cy="0" r="15" fill="#ffffff" stroke="#0284c7" stroke-width="1.2"/>
+          <path d="M0 0 L15 0 A15 15 0 0 1 0 15 Z" fill="#38bdf8"/>
+          <path d="M0 0 L0 15 A15 15 0 0 1 -15 0 Z" fill="#38bdf8"/>
+          <line x1="-15" y1="0" x2="15" y2="0" stroke="#0284c7" stroke-width="0.8"/>
+          <line x1="0" y1="-15" x2="0" y2="15" stroke="#0284c7" stroke-width="0.8"/>
+        </g>
+        <!-- Fraction answer box -->
+        <rect x="58" y="10" width="18" height="10" rx="2" fill="#e0f2fe" stroke="#0284c7" stroke-width="0.8"/>
+        <line x1="56" y1="22" x2="78" y2="22" stroke="#0284c7" stroke-width="1.2"/>
+        <rect x="58" y="24" width="18" height="10" rx="2" fill="#e0f2fe" stroke="#0284c7" stroke-width="0.8"/>
+        <!-- Star stamp beside -->
+        <polygon points="105,12 108,19 116,19 110,24 112,32 105,27 98,32 100,24 94,19 102,19" fill="#f59e0b"/>
+      </g>
+
+      <!-- Bottom Sheet Trim Pattern (Freshly emerging paper edge) -->
+      <g transform="translate(12, 168)">
+        <rect width="266" height="24" rx="4" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+        <!-- Checkbox self-eval smileys -->
+        <circle cx="45" cy="12" r="7" fill="#dcfce7" stroke="#16a34a" stroke-width="1"/>
+        <circle cx="133" cy="12" r="7" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1"/>
+        <circle cx="221" cy="12" r="7" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1"/>
+      </g>
     </g>
   </g>
 </g>
 
-<!-- ================= STAGE 3: OUTPUT BESPOKE WORKSHEETS ================= -->
+<!-- Energy / Output Conduits leaving Printer into Finished Worksheets -->
+<g id="output-conduits">
+  <path d="M1370 420 C1435 420, 1465 270, 1530 270" fill="none" stroke="#f59e0b" stroke-width="4" opacity="0.85"/>
+  <path d="M1370 460 C1440 460, 1480 390, 1540 390" fill="none" stroke="#38bdf8" stroke-width="3.5" opacity="0.85"/>
+  <circle cx="1455" cy="340" r="5" fill="#fbbf24"/>
+  <circle cx="1455" cy="340" r="10" fill="#fbbf24" fill-opacity="0.3"/>
+</g>
+
+<!-- ================= STAGE 3: BESPOKE READY-TO-PRINT WORKSHEETS ================= -->
 <g id="stage-worksheets">
-  <!-- Flow Label -->
-  <g transform="translate(1620, 88)">
-    <text fill="#34d399" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" letter-spacing="2">STAGE 3: BESPOKE, READY-TO-USE WORKSHEETS</text>
-  </g>
-
   <!-- ================= SHEET 1 (BACK / LEFT): TIER G (ANSCHAULICH) ================= -->
   <g transform="translate(1525, 120) rotate(-6)">
-    <!-- Realistic Multi-layer Drop Shadow -->
+    <!-- Realistic Multi-layer Drop Shadows -->
     <rect x="0" y="14" width="265" height="435" rx="10" fill="#02080a" opacity="0.65"/>
     <rect x="0" y="6" width="265" height="435" rx="10" fill="#02080a" opacity="0.35"/>
-    
+
     <!-- Sheet Base (Warm Paper) -->
     <rect width="265" height="435" rx="10" fill="#fefdfb" stroke="#cbd5e1" stroke-width="1.5"/>
-    
-    <!-- Top Header Ribbon -->
+
+    <!-- Top Header Ribbon (Warm Amber Tone) -->
     <rect x="14" y="16" width="237" height="34" rx="6" fill="#fef3c7" stroke="#f59e0b" stroke-width="1"/>
-    <text x="24" y="32" fill="#b45309" font-family="system-ui, sans-serif" font-size="9" font-weight="800" letter-spacing="1">TIER G · ANSCHAULICH (GRADE 2)</text>
-    <text x="24" y="44" fill="#78350f" font-family="system-ui, sans-serif" font-size="11" font-weight="700">Mengen &amp; Zehnerbündelung</text>
-    
+    <!-- Graphic Header Badge & Accent Placeholders (Text-Free) -->
+    <circle cx="32" cy="33" r="9" fill="#f59e0b"/>
+    <circle cx="32" cy="33" r="4" fill="#ffffff"/>
+    <rect x="50" y="25" width="80" height="7" rx="3.5" fill="#b45309"/>
+    <rect x="50" y="36" width="125" height="6" rx="3" fill="#d97706"/>
+    <polygon points="230,26 232,32 238,32 233,36 235,42 230,38 225,42 227,36 222,32 228,32" fill="#f59e0b"/>
+
     <!-- Exercise 1: Ten-Frame Tactile Counting -->
     <g transform="translate(14, 62)">
-      <text x="0" y="10" fill="#334155" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700">1. Zähle die Punkte:</text>
+      <!-- Exercise Header Icon & Indicator Bar -->
+      <circle cx="8" cy="8" r="6" fill="#0284c7"/>
+      <rect x="20" y="5" width="75" height="6" rx="3" fill="#64748b"/>
+
       <!-- Ten-Frame Box -->
       <rect x="0" y="18" width="115" height="48" rx="4" fill="#ffffff" stroke="#94a3b8" stroke-width="1.2"/>
       <line x1="57" y1="18" x2="57" y2="66" stroke="#cbd5e1" stroke-width="1"/>
@@ -378,170 +461,278 @@
       <circle cx="36" cy="54" r="5.5" fill="#0284c7"/>
       <circle cx="72" cy="30" r="5.5" fill="#0284c7"/>
       <circle cx="93" cy="30" r="5.5" fill="#0284c7"/>
-      <text x="130" y="46" fill="#0f172a" font-family="'Courier New', monospace" font-size="15" font-weight="bold">= [ 6 ]</text>
+
+      <!-- Equals & Answer Box -->
+      <g transform="translate(126, 28)">
+        <path d="M0 8 H10 M0 14 H10" stroke="#0f172a" stroke-width="2" stroke-linecap="round"/>
+        <rect x="18" y="0" width="34" height="28" rx="4" fill="#f8fafc" stroke="#0284c7" stroke-width="1.5"/>
+        <path d="M26 14 L30 18 L38 10" stroke="#0284c7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      </g>
     </g>
 
-    <!-- Exercise 2: Visual Addition -->
+    <!-- Exercise 2: Visual Addition / Complements to 10 -->
     <g transform="translate(14, 145)">
-      <text x="0" y="10" fill="#334155" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700">2. Ergänze bis 10:</text>
+      <circle cx="8" cy="8" r="6" fill="#0284c7"/>
+      <rect x="20" y="5" width="85" height="6" rx="3" fill="#64748b"/>
+
       <rect x="0" y="18" width="237" height="52" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
-      <text x="12" y="48" fill="#1e293b" font-family="system-ui, sans-serif" font-size="12.5" font-weight="bold">7 + [ ___ ] = 10</text>
-      <text x="128" y="48" fill="#1e293b" font-family="system-ui, sans-serif" font-size="12.5" font-weight="bold">4 + [ ___ ] = 10</text>
+      <!-- Calculation Visual A -->
+      <g transform="translate(10, 26)">
+        <rect width="28" height="24" rx="4" fill="#e0f2fe" stroke="#0284c7" stroke-width="1"/>
+        <circle cx="14" cy="12" r="4" fill="#0284c7"/>
+        <path d="M34 12 H42 M38 8 V16" stroke="#64748b" stroke-width="1.8" stroke-linecap="round"/>
+        <rect x="48" y="0" width="28" height="24" rx="4" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/>
+        <path d="M82 10 H88 M82 14 H88" stroke="#64748b" stroke-width="1.8" stroke-linecap="round"/>
+        <rect x="94" y="0" width="20" height="24" rx="4" fill="#ecfdf5" stroke="#10b981" stroke-width="1"/>
+        <path d="M99 12 L102 15 L108 9" stroke="#10b981" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      </g>
+
+      <!-- Calculation Visual B -->
+      <g transform="translate(126, 26)">
+        <rect width="28" height="24" rx="4" fill="#e0f2fe" stroke="#0284c7" stroke-width="1"/>
+        <circle cx="10" cy="12" r="3.5" fill="#0284c7"/>
+        <circle cx="18" cy="12" r="3.5" fill="#0284c7"/>
+        <path d="M34 12 H42 M38 8 V16" stroke="#64748b" stroke-width="1.8" stroke-linecap="round"/>
+        <rect x="48" y="0" width="28" height="24" rx="4" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/>
+        <path d="M82 10 H88 M82 14 H88" stroke="#64748b" stroke-width="1.8" stroke-linecap="round"/>
+        <rect x="94" y="0" width="20" height="24" rx="4" fill="#ecfdf5" stroke="#10b981" stroke-width="1"/>
+        <path d="M99 12 L102 15 L108 9" stroke="#10b981" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      </g>
     </g>
 
-    <!-- Exercise 3: Drawing area -->
+    <!-- Exercise 3: Drawing & Counting Area (Red Apples) -->
     <g transform="translate(14, 230)">
-      <text x="0" y="10" fill="#334155" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700">3. Zeichne 5 Äpfel:</text>
+      <circle cx="8" cy="8" r="6" fill="#0284c7"/>
+      <rect x="20" y="5" width="90" height="6" rx="3" fill="#64748b"/>
+
       <rect x="0" y="18" width="237" height="75" rx="6" fill="#ffffff" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="4,4"/>
-      <!-- Apple sketches -->
-      <circle cx="42" cy="55" r="13" fill="#fee2e2" stroke="#ef4444" stroke-width="1.5"/>
-      <circle cx="80" cy="55" r="13" fill="#fee2e2" stroke="#ef4444" stroke-width="1.5"/>
-      <circle cx="118" cy="55" r="13" fill="#fee2e2" stroke="#ef4444" stroke-width="1.5"/>
+      <!-- Apple sketches with stem & leaf -->
+      <g transform="translate(38, 55)">
+        <circle cx="0" cy="0" r="14" fill="#fee2e2" stroke="#ef4444" stroke-width="1.5"/>
+        <path d="M0 -14 C0 -18 3 -20 5 -21" fill="none" stroke="#78350f" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M2 -18 Q7 -20 9 -17 Q6 -14 2 -18" fill="#22c55e"/>
+      </g>
+      <g transform="translate(82, 55)">
+        <circle cx="0" cy="0" r="14" fill="#fee2e2" stroke="#ef4444" stroke-width="1.5"/>
+        <path d="M0 -14 C0 -18 3 -20 5 -21" fill="none" stroke="#78350f" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M2 -18 Q7 -20 9 -17 Q6 -14 2 -18" fill="#22c55e"/>
+      </g>
+      <g transform="translate(126, 55)">
+        <circle cx="0" cy="0" r="14" fill="#fee2e2" stroke="#ef4444" stroke-width="1.5"/>
+        <path d="M0 -14 C0 -18 3 -20 5 -21" fill="none" stroke="#78350f" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M2 -18 Q7 -20 9 -17 Q6 -14 2 -18" fill="#22c55e"/>
+      </g>
+
+      <!-- Answer counting box beside apples -->
+      <g transform="translate(170, 42)">
+        <rect width="36" height="28" rx="4" fill="#f8fafc" stroke="#10b981" stroke-width="1.5"/>
+        <path d="M10 14 L14 18 L22 10" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      </g>
     </g>
 
-    <!-- Footer Seal -->
-    <g transform="translate(14, 390)">
-      <text x="0" y="14" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="8.5">worksheet-generator · ICF d150 · Anschauliche Stufe</text>
+    <!-- Star Assessment Bar -->
+    <g transform="translate(14, 330)">
+      <rect width="237" height="34" rx="6" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+      <polygon points="30,12 33,18 40,19 35,24 36,31 30,27 24,31 25,24 20,19 27,18" fill="#f59e0b"/>
+      <polygon points="54,12 57,18 64,19 59,24 60,31 54,27 48,31 49,24 44,19 51,18" fill="#f59e0b"/>
+      <polygon points="78,12 81,18 88,19 83,24 84,31 78,27 72,31 73,24 68,19 75,18" fill="#f59e0b"/>
+      <rect x="110" y="14" width="110" height="8" rx="4" fill="#e2e8f0"/>
+    </g>
+
+    <!-- Footer Seal Graphic (Text-Free) -->
+    <g transform="translate(14, 395)">
+      <rect width="70" height="6" rx="3" fill="#cbd5e1"/>
+      <rect x="80" y="0" width="40" height="6" rx="3" fill="#e2e8f0"/>
+      <circle cx="225" cy="3" r="4" fill="#f59e0b"/>
     </g>
   </g>
 
   <!-- ================= SHEET 2 (HERO FRONT): TIER M (STANDARD / REGELANFORDERUNG) ================= -->
   <g transform="translate(1705, 105) rotate(0)">
-    <!-- Deep Realistic Drop Shadow -->
+    <!-- Deep Multi-layer Drop Shadows -->
     <rect x="0" y="18" width="335" height="485" rx="12" fill="#02080a" opacity="0.75"/>
     <rect x="0" y="6" width="335" height="485" rx="12" fill="#02080a" opacity="0.4"/>
-    
+
     <!-- Sheet Base (Brilliant White Paper) -->
     <rect width="335" height="485" rx="12" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
 
     <!-- School Worksheet Header Box -->
     <g transform="translate(18, 16)">
-      <!-- Top Title Bar -->
+      <!-- Top Title Bar (Emerald / Teal) -->
       <rect width="299" height="28" rx="6" fill="#0f766e"/>
-      <text x="12" y="18" fill="#ffffff" font-family="system-ui, sans-serif" font-size="11" font-weight="800" letter-spacing="1">MATHEMATIK · KLASSE 3</text>
-      <text x="287" y="18" fill="#99f6e4" font-family="system-ui, sans-serif" font-size="9.5" font-weight="700" text-anchor="end">STUFE M</text>
+      <rect x="12" y="10" width="115" height="8" rx="4" fill="#ffffff"/>
+      <rect x="250" y="10" width="36" height="8" rx="4" fill="#99f6e4"/>
 
       <!-- Student Metadata Strip -->
       <rect x="0" y="34" width="299" height="24" rx="4" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
-      <text x="8" y="50" fill="#475569" font-family="system-ui, sans-serif" font-size="9.5">Name: <tspan fill="#0f172a" font-weight="600">Leon M.</tspan></text>
-      <text x="112" y="50" fill="#475569" font-family="system-ui, sans-serif" font-size="9.5">Datum: <tspan fill="#0f172a" font-weight="600">19.09.</tspan></text>
-      <text x="215" y="50" fill="#475569" font-family="system-ui, sans-serif" font-size="9.5">Punkte: <tspan fill="#0f172a" font-weight="700">__/24</tspan></text>
+      <circle cx="14" cy="46" r="5" fill="#0f766e"/>
+      <line x1="26" y1="46" x2="80" y2="46" stroke="#cbd5e1" stroke-width="1.5"/>
+      <line x1="110" y1="46" x2="160" y2="46" stroke="#cbd5e1" stroke-width="1.5"/>
+      <line x1="200" y1="46" x2="285" y2="46" stroke="#cbd5e1" stroke-width="1.5"/>
     </g>
 
-    <!-- Main Title -->
-    <g transform="translate(18, 88)">
-      <text fill="#0f172a" font-family="system-ui, sans-serif" font-size="14.5" font-weight="800">Halbschriftliche Addition &amp; Multiplikation</text>
-      <line x1="0" y1="7" x2="299" y2="7" stroke="#0f766e" stroke-width="2"/>
+    <!-- Section Title Ribbon Bar -->
+    <g transform="translate(18, 86)">
+      <rect width="210" height="9" rx="4.5" fill="#0f172a"/>
+      <line x1="0" y1="16" x2="299" y2="16" stroke="#0f766e" stroke-width="2"/>
     </g>
 
-    <!-- Exercise 1: Structured Arithmetic Calculations -->
-    <g transform="translate(18, 110)">
-      <text x="0" y="10" fill="#1e293b" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700">1. Rechne geschickt im Zahlenraum bis 100:</text>
-      
-      <!-- Grid of 4 Calculation Cards -->
+    <!-- Exercise 1: Structured Arithmetic Calculations (4 Calculation Cards) -->
+    <g transform="translate(18, 114)">
       <!-- Item A -->
-      <g transform="translate(0, 18)">
+      <g transform="translate(0, 0)">
         <rect width="142" height="38" rx="5" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/>
-        <text x="10" y="24" fill="#0f172a" font-family="'Courier New', monospace" font-size="13" font-weight="bold">47 + 28 =</text>
-        <rect x="90" y="10" width="44" height="20" rx="3" fill="#ffffff" stroke="#94a3b8" stroke-width="1"/>
-        <text x="112" y="24" fill="#059669" font-family="'Courier New', monospace" font-size="12" font-weight="bold" text-anchor="middle">75</text>
+        <rect x="10" y="10" width="26" height="18" rx="3" fill="#ffffff" stroke="#94a3b8" stroke-width="1"/>
+        <path d="M42 19 H48 M45 16 V22" stroke="#0284c7" stroke-width="1.8" stroke-linecap="round"/>
+        <rect x="54" y="10" width="26" height="18" rx="3" fill="#ffffff" stroke="#94a3b8" stroke-width="1"/>
+        <path d="M85 17 H91 M85 21 H91" stroke="#64748b" stroke-width="1.8" stroke-linecap="round"/>
+        <rect x="96" y="9" width="36" height="20" rx="3" fill="#ecfdf5" stroke="#10b981" stroke-width="1"/>
+        <path d="M104 19 L108 23 L116 15" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
       </g>
       <!-- Item B -->
-      <g transform="translate(156, 18)">
+      <g transform="translate(156, 0)">
         <rect width="142" height="38" rx="5" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/>
-        <text x="10" y="24" fill="#0f172a" font-family="'Courier New', monospace" font-size="13" font-weight="bold">83 - 36 =</text>
-        <rect x="90" y="10" width="44" height="20" rx="3" fill="#ffffff" stroke="#94a3b8" stroke-width="1"/>
-        <text x="112" y="24" fill="#059669" font-family="'Courier New', monospace" font-size="12" font-weight="bold" text-anchor="middle">47</text>
+        <rect x="10" y="10" width="26" height="18" rx="3" fill="#ffffff" stroke="#94a3b8" stroke-width="1"/>
+        <line x1="42" y1="19" x2="48" y2="19" stroke="#f59e0b" stroke-width="1.8" stroke-linecap="round"/>
+        <rect x="54" y="10" width="26" height="18" rx="3" fill="#ffffff" stroke="#94a3b8" stroke-width="1"/>
+        <path d="M85 17 H91 M85 21 H91" stroke="#64748b" stroke-width="1.8" stroke-linecap="round"/>
+        <rect x="96" y="9" width="36" height="20" rx="3" fill="#ecfdf5" stroke="#10b981" stroke-width="1"/>
+        <path d="M104 19 L108 23 L116 15" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
       </g>
       <!-- Item C -->
-      <g transform="translate(0, 62)">
+      <g transform="translate(0, 46)">
         <rect width="142" height="38" rx="5" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/>
-        <text x="10" y="24" fill="#0f172a" font-family="'Courier New', monospace" font-size="13" font-weight="bold">6 × 7 =</text>
-        <rect x="90" y="10" width="44" height="20" rx="3" fill="#ffffff" stroke="#94a3b8" stroke-width="1"/>
-        <text x="112" y="24" fill="#059669" font-family="'Courier New', monospace" font-size="12" font-weight="bold" text-anchor="middle">42</text>
+        <rect x="10" y="10" width="26" height="18" rx="3" fill="#ffffff" stroke="#94a3b8" stroke-width="1"/>
+        <path d="M43 16 L47 22 M47 16 L43 22" stroke="#10b981" stroke-width="1.8" stroke-linecap="round"/>
+        <rect x="54" y="10" width="26" height="18" rx="3" fill="#ffffff" stroke="#94a3b8" stroke-width="1"/>
+        <path d="M85 17 H91 M85 21 H91" stroke="#64748b" stroke-width="1.8" stroke-linecap="round"/>
+        <rect x="96" y="9" width="36" height="20" rx="3" fill="#ecfdf5" stroke="#10b981" stroke-width="1"/>
+        <path d="M104 19 L108 23 L116 15" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
       </g>
       <!-- Item D -->
-      <g transform="translate(156, 62)">
+      <g transform="translate(156, 46)">
         <rect width="142" height="38" rx="5" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/>
-        <text x="10" y="24" fill="#0f172a" font-family="'Courier New', monospace" font-size="13" font-weight="bold">72 ÷ 8 =</text>
-        <rect x="90" y="10" width="44" height="20" rx="3" fill="#ffffff" stroke="#94a3b8" stroke-width="1"/>
-        <text x="112" y="24" fill="#059669" font-family="'Courier New', monospace" font-size="12" font-weight="bold" text-anchor="middle">9</text>
+        <rect x="10" y="10" width="26" height="18" rx="3" fill="#ffffff" stroke="#94a3b8" stroke-width="1"/>
+        <line x1="42" y1="19" x2="48" y2="19" stroke="#8b5cf6" stroke-width="1.8" stroke-linecap="round"/>
+        <circle cx="45" cy="15" r="1.5" fill="#8b5cf6"/>
+        <circle cx="45" cy="23" r="1.5" fill="#8b5cf6"/>
+        <rect x="54" y="10" width="26" height="18" rx="3" fill="#ffffff" stroke="#94a3b8" stroke-width="1"/>
+        <path d="M85 17 H91 M85 21 H91" stroke="#64748b" stroke-width="1.8" stroke-linecap="round"/>
+        <rect x="96" y="9" width="36" height="20" rx="3" fill="#ecfdf5" stroke="#10b981" stroke-width="1"/>
+        <path d="M104 19 L108 23 L116 15" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
       </g>
     </g>
 
-    <!-- Exercise 2: Word Problem with Math Grid Area -->
-    <g transform="translate(18, 226)">
-      <text x="0" y="10" fill="#1e293b" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700">2. Sachaufgabe mit Lösungsweg:</text>
-      <text x="0" y="25" fill="#475569" font-family="system-ui, sans-serif" font-size="9.5">Im Schulgarten pflanzt die 3b vier Reihen mit je 6 Tulpen.</text>
-      
-      <!-- Graph Paper Math Grid -->
-      <g transform="translate(0, 32)">
-        <rect width="299" height="64" rx="4" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/>
-        <!-- Grid lines inside -->
-        <path d="M0 16 H299 M0 32 H299 M0 48 H299" stroke="#e2e8f0" stroke-width="1"/>
-        <path d="M42 0 V64 M84 0 V64 M126 0 V64 M168 0 V64 M210 0 V64 M252 0 V64" stroke="#e2e8f0" stroke-width="1"/>
-        <!-- Handwritten student work simulation -->
-        <text x="14" y="26" fill="#1d4ed8" font-family="'Courier New', monospace" font-size="12" font-weight="bold">4 × 6 = 24</text>
-        <text x="14" y="50" fill="#1d4ed8" font-family="'Courier New', monospace" font-size="11">A: Es blühen 24 Tulpen.</text>
-      </g>
-    </g>
-
-    <!-- Exercise 3: Competency Self-Evaluation Bar -->
-    <g transform="translate(18, 342)">
-      <text x="0" y="10" fill="#1e293b" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700">3. Wie sicher fühlst du dich heute?</text>
+    <!-- Exercise 2: Graph Paper Math Grid Area -->
+    <g transform="translate(18, 222)">
+      <rect x="0" y="0" width="160" height="8" rx="4" fill="#1e293b"/>
+      <!-- Graph Paper Math Grid Frame -->
       <g transform="translate(0, 16)">
-        <rect width="94" height="24" rx="4" fill="#f0fdf4" stroke="#86efac" stroke-width="1"/>
-        <text x="12" y="16" fill="#166534" font-family="system-ui, sans-serif" font-size="10" font-weight="600">☺ Sehr sicher</text>
-        
-        <rect x="103" y="0" width="94" height="24" rx="4" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
-        <text x="115" y="16" fill="#475569" font-family="system-ui, sans-serif" font-size="10">😐 Geht so</text>
-        
-        <rect x="206" y="0" width="93" height="24" rx="4" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
-        <text x="218" y="16" fill="#475569" font-family="system-ui, sans-serif" font-size="10">☹ Hilfe</text>
+        <rect width="299" height="70" rx="4" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/>
+        <!-- Grid lines inside -->
+        <path d="M0 14 H299 M0 28 H299 M0 42 H299 M0 56 H299" stroke="#e2e8f0" stroke-width="1"/>
+        <path d="M35 0 V70 M70 0 V70 M105 0 V70 M140 0 V70 M175 0 V70 M210 0 V70 M245 0 V70 M280 0 V70" stroke="#e2e8f0" stroke-width="1"/>
+        <!-- Geometric coordinate box & vector calculation -->
+        <rect x="35" y="14" width="70" height="42" rx="3" fill="#dbeafe" fill-opacity="0.6" stroke="#2563eb" stroke-width="1.5"/>
+        <circle cx="35" cy="14" r="3" fill="#2563eb"/>
+        <circle cx="105" cy="14" r="3" fill="#2563eb"/>
+        <circle cx="35" cy="56" r="3" fill="#2563eb"/>
+        <circle cx="105" cy="56" r="3" fill="#2563eb"/>
+        <!-- Solution Check Line -->
+        <g transform="translate(145, 26)">
+          <rect width="80" height="20" rx="4" fill="#ffffff" stroke="#2563eb" stroke-width="1.2"/>
+          <line x1="10" y1="10" x2="50" y2="10" stroke="#2563eb" stroke-width="2"/>
+          <path d="M60 10 L64 14 L72 6" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </g>
       </g>
     </g>
 
-    <!-- Golden Embossed Bespoke Quality Seal (Rich Vibrant Gold) -->
-    <g transform="translate(248, 390)">
+    <!-- Exercise 3: Competency Self-Evaluation Bar with Vector Smileys -->
+    <g transform="translate(18, 335)">
+      <rect x="0" y="0" width="140" height="8" rx="4" fill="#1e293b"/>
+      <g transform="translate(0, 16)">
+        <!-- Happy Face Box -->
+        <rect width="94" height="28" rx="4" fill="#f0fdf4" stroke="#86efac" stroke-width="1"/>
+        <g transform="translate(10, 3)">
+          <circle cx="11" cy="11" r="9" fill="#dcfce7" stroke="#16a34a" stroke-width="1.2"/>
+          <circle cx="8" cy="9" r="1.5" fill="#16a34a"/>
+          <circle cx="14" cy="9" r="1.5" fill="#16a34a"/>
+          <path d="M7 13 Q11 17 15 13" fill="none" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round"/>
+        </g>
+        <rect x="38" y="11" width="45" height="6" rx="3" fill="#86efac"/>
+
+        <!-- Neutral Face Box -->
+        <g transform="translate(103, 0)">
+          <rect width="94" height="28" rx="4" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+          <g transform="translate(10, 3)">
+            <circle cx="11" cy="11" r="9" fill="#f1f5f9" stroke="#64748b" stroke-width="1.2"/>
+            <circle cx="8" cy="9" r="1.5" fill="#64748b"/>
+            <circle cx="14" cy="9" r="1.5" fill="#64748b"/>
+            <line x1="8" y1="14" x2="14" y2="14" stroke="#64748b" stroke-width="1.5" stroke-linecap="round"/>
+          </g>
+          <rect x="38" y="11" width="45" height="6" rx="3" fill="#cbd5e1"/>
+        </g>
+
+        <!-- Unsure / Help Face Box -->
+        <g transform="translate(206, 0)">
+          <rect width="93" height="28" rx="4" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+          <g transform="translate(10, 3)">
+            <circle cx="11" cy="11" r="9" fill="#fef3c7" stroke="#d97706" stroke-width="1.2"/>
+            <circle cx="8" cy="9" r="1.5" fill="#d97706"/>
+            <circle cx="14" cy="9" r="1.5" fill="#d97706"/>
+            <path d="M8 15 Q11 12 14 14" fill="none" stroke="#d97706" stroke-width="1.5" stroke-linecap="round"/>
+          </g>
+          <rect x="38" y="11" width="45" height="6" rx="3" fill="#cbd5e1"/>
+        </g>
+      </g>
+    </g>
+
+    <!-- Golden Embossed Bespoke Quality Seal (Rich Vibrant Gold, Pure Vector, Text-Free) -->
+    <g transform="translate(248, 385)">
       <!-- Golden Ribbons -->
-      <path d="M18 36 L12 60 L24 52 L36 60 L30 36 Z" fill="#d97706"/>
-      <path d="M28 36 L24 64 L34 54 L44 64 L40 36 Z" fill="#b45309"/>
+      <path d="M18 36 L12 62 L24 54 L36 62 L30 36 Z" fill="#d97706"/>
+      <path d="M28 36 L24 66 L34 56 L44 66 L40 36 Z" fill="#b45309"/>
       <!-- Gold Medallion Layers -->
       <circle cx="28" cy="24" r="26" fill="#f59e0b" stroke="#ffffff" stroke-width="2"/>
       <circle cx="28" cy="24" r="22" fill="#fbbf24" stroke="#78350f" stroke-width="1.2" stroke-dasharray="3,2"/>
-      <circle cx="28" cy="24" r="18" fill="#fef08a"/>
-      <text x="28" y="19" fill="#78350f" font-family="system-ui, sans-serif" font-size="7.5" font-weight="900" text-anchor="middle" letter-spacing="1">BESPOKE</text>
-      <text x="28" y="27" fill="#78350f" font-family="system-ui, sans-serif" font-size="6.5" font-weight="800" text-anchor="middle">TAILORED</text>
-      <text x="28" y="36" fill="#b45309" font-family="system-ui, sans-serif" font-size="9" text-anchor="middle">★</text>
+      <circle cx="28" cy="24" r="17" fill="#fef08a"/>
+      <!-- Central Gold Star & Decorative Rosette -->
+      <polygon points="28,14 31,21 38,22 33,27 34,34 28,30 22,34 23,27 18,22 25,21" fill="#b45309"/>
     </g>
 
-    <!-- Footer Meta -->
-    <g transform="translate(18, 452)">
-      <text x="0" y="14" fill="#64748b" font-family="system-ui, sans-serif" font-size="8.5" font-weight="500">
-        worksheet-generator · Curricular Mode: Grundschule Math · Deterministic Output
-      </text>
+    <!-- Footer Meta Alignment Marks -->
+    <g transform="translate(18, 456)">
+      <rect width="90" height="6" rx="3" fill="#cbd5e1"/>
+      <rect x="100" y="0" width="50" height="6" rx="3" fill="#e2e8f0"/>
+      <rect x="160" y="0" width="30" height="6" rx="3" fill="#e2e8f0"/>
     </g>
   </g>
 
   <!-- ================= SHEET 3 (RIGHT / FOREGROUND): TIER E (ERWEITERT / ADVANCED) ================= -->
   <g transform="translate(2075, 125) rotate(4)">
-    <!-- Multi-layer Drop Shadow -->
+    <!-- Multi-layer Drop Shadows -->
     <rect x="0" y="14" width="265" height="435" rx="10" fill="#02080a" opacity="0.65"/>
     <rect x="0" y="6" width="265" height="435" rx="10" fill="#02080a" opacity="0.35"/>
-    
+
     <!-- Sheet Base (Cool Mint-Tinted Paper) -->
     <rect width="265" height="435" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
-    
-    <!-- Top Header Ribbon -->
+
+    <!-- Top Header Ribbon (Cool Sky Blue Tone) -->
     <rect x="14" y="16" width="237" height="34" rx="6" fill="#e0f2fe" stroke="#0284c7" stroke-width="1"/>
-    <text x="24" y="32" fill="#0369a1" font-family="system-ui, sans-serif" font-size="9" font-weight="800" letter-spacing="1">TIER E · ERWEITERT (GRADE 4+)</text>
-    <text x="24" y="44" fill="#0c4a6e" font-family="system-ui, sans-serif" font-size="11" font-weight="700">Brüche &amp; Geometrische Muster</text>
-    
+    <!-- Graphic Header Badge & Placeholders (Text-Free) -->
+    <circle cx="32" cy="33" r="9" fill="#0284c7"/>
+    <circle cx="32" cy="33" r="4" fill="#ffffff"/>
+    <rect x="50" y="25" width="90" height="7" rx="3.5" fill="#0369a1"/>
+    <rect x="50" y="36" width="120" height="6" rx="3" fill="#38bdf8"/>
+    <polygon points="230,26 232,32 238,32 233,36 235,42 230,38 225,42 227,36 222,32 228,32" fill="#0284c7"/>
+
     <!-- Exercise 1: Fraction Circle Diagram -->
     <g transform="translate(14, 62)">
-      <text x="0" y="10" fill="#334155" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700">1. Bestimme den Anteil:</text>
+      <circle cx="8" cy="8" r="6" fill="#0284c7"/>
+      <rect x="20" y="5" width="80" height="6" rx="3" fill="#64748b"/>
+
       <!-- Circular Fraction Graphic -->
-      <g transform="translate(42, 48)">
+      <g transform="translate(45, 52)">
         <circle cx="0" cy="0" r="28" fill="#ffffff" stroke="#0284c7" stroke-width="2"/>
         <!-- Sectors: 3 of 8 filled -->
         <path d="M0 0 L28 0 A28 28 0 0 1 0 28 Z" fill="#38bdf8"/>
@@ -552,54 +743,77 @@
         <line x1="-20" y1="-20" x2="20" y2="20" stroke="#0284c7" stroke-width="1.5"/>
         <line x1="-20" y1="20" x2="20" y2="-20" stroke="#0284c7" stroke-width="1.5"/>
       </g>
-      <text x="105" y="44" fill="#0f172a" font-family="'Courier New', monospace" font-size="15" font-weight="bold">Anteil = 3/8</text>
-      <text x="105" y="62" fill="#059669" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700">✓ Differenziert</text>
+
+      <!-- Fraction answer box with checkmark -->
+      <g transform="translate(100, 36)">
+        <rect width="26" height="14" rx="3" fill="#f0fdf4" stroke="#10b981" stroke-width="1"/>
+        <line x1="0" y1="18" x2="48" y2="18" stroke="#0284c7" stroke-width="2"/>
+        <rect y="22" width="26" height="14" rx="3" fill="#f0fdf4" stroke="#10b981" stroke-width="1"/>
+        <path d="M34 26 L38 30 L46 20" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      </g>
     </g>
 
-    <!-- Exercise 2: Multi-step Reasoning Table -->
+    <!-- Exercise 2: Logic Sequence Geometric Patterns -->
     <g transform="translate(14, 155)">
-      <text x="0" y="10" fill="#334155" font-family="system-ui, sans-serif" font-size="10.5" font-weight="700">2. Logische Zahlenfolgen:</text>
+      <circle cx="8" cy="8" r="6" fill="#0284c7"/>
+      <rect x="20" y="5" width="85" height="6" rx="3" fill="#64748b"/>
+
       <rect x="0" y="18" width="237" height="60" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
-      <text x="12" y="38" fill="#1e293b" font-family="'Courier New', monospace" font-size="11.5" font-weight="bold">3, 7, 15, 31, [ 63 ]</text>
-      <text x="12" y="62" fill="#1e293b" font-family="'Courier New', monospace" font-size="11.5" font-weight="bold">100, 81, 64, 49, [ 36 ]</text>
+      <!-- Sequence Row -->
+      <g transform="translate(12, 34)">
+        <!-- Step 1: Triangle -->
+        <polygon points="12,4 4,20 20,20" fill="#38bdf8"/>
+        <!-- Arrow -->
+        <path d="M26 12 H32" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round"/>
+        <!-- Step 2: Square -->
+        <rect x="38" y="5" width="15" height="15" rx="2" fill="#2dd4bf"/>
+        <!-- Arrow -->
+        <path d="M59 12 H65" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round"/>
+        <!-- Step 3: Pentagon -->
+        <polygon points="78,4 85,9 82,19 74,19 71,9" fill="#10b981"/>
+        <!-- Arrow -->
+        <path d="M91 12 H97" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round"/>
+        <!-- Step 4: Hexagon -->
+        <polygon points="108,4 114,7 114,16 108,19 102,16 102,7" fill="#f59e0b"/>
+        <!-- Arrow -->
+        <path d="M120 12 H126" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round"/>
+        <!-- Step 5: Mystery Challenge Box [ ? ] -->
+        <rect x="132" y="1" width="30" height="23" rx="4" fill="#fef3c7" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="3,2"/>
+        <path d="M144 8 C144 6, 150 6, 150 8 C150 10, 147 10, 147 12 M147 15 V16" fill="none" stroke="#d97706" stroke-width="2" stroke-linecap="round"/>
+        <!-- Checkmark badge beside -->
+        <path d="M172 12 L176 16 L184 7" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      </g>
     </g>
 
-    <!-- Exercise 3: Challenge Box -->
+    <!-- Exercise 3: Challenge Box (Knobelaufgabe: Balance Scale Puzzle) -->
     <g transform="translate(14, 250)">
-      <rect width="237" height="65" rx="6" fill="#f0fdf4" stroke="#10b981" stroke-width="1.2"/>
-      <text x="12" y="20" fill="#065f46" font-family="system-ui, sans-serif" font-size="10.5" font-weight="800">★ Knobelaufgabe des Tages:</text>
-      <text x="12" y="38" fill="#047857" font-family="system-ui, sans-serif" font-size="9.5">Finde zwei Primzahlen, deren Summe 48 ist.</text>
-      <text x="12" y="54" fill="#1e293b" font-family="'Courier New', monospace" font-size="11" font-weight="bold">Lösung: [ 17 ] + [ 31 ]</text>
+      <rect width="237" height="68" rx="6" fill="#f0fdf4" stroke="#10b981" stroke-width="1.2"/>
+      <polygon points="18,10 20,15 25,15 21,18 22,23 18,20 14,23 15,18 11,15 16,15" fill="#10b981"/>
+      <rect x="30" y="12" width="85" height="6" rx="3" fill="#047857"/>
+
+      <!-- Balance Scale Graphic -->
+      <g transform="translate(25, 26)">
+        <polygon points="35,28 30,36 40,36" fill="#065f46"/>
+        <line x1="12" y1="26" x2="58" y2="30" stroke="#047857" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M14 27 L10 39 H26 L22 27" fill="none" stroke="#059669" stroke-width="1.2"/>
+        <path d="M50 31 L46 43 H62 L58 31" fill="none" stroke="#059669" stroke-width="1.2"/>
+        <rect x="14" y="32" width="7" height="7" rx="1.5" fill="#10b981"/>
+        <circle cx="54" cy="36" r="3.5" fill="#34d399"/>
+      </g>
+
+      <!-- Solution Box with Checkmark -->
+      <g transform="translate(145, 34)">
+        <rect width="45" height="22" rx="4" fill="#ffffff" stroke="#10b981" stroke-width="1.2"/>
+        <path d="M14 11 L18 15 L26 7" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      </g>
     </g>
 
-    <!-- Footer Stamp -->
-    <g transform="translate(14, 390)">
-      <text x="0" y="14" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="8.5">worksheet-generator · Curricular Stufe E · DOCX / HTML Export</text>
+    <!-- Footer Stamp (Text-Free) -->
+    <g transform="translate(14, 395)">
+      <rect width="80" height="6" rx="3" fill="#cbd5e1"/>
+      <rect x="90" y="0" width="45" height="6" rx="3" fill="#e2e8f0"/>
+      <circle cx="225" cy="3" r="4" fill="#0284c7"/>
     </g>
-  </g>
-</g>
-
-<!-- Export Formats Output Badges -->
-<g id="output-format-strip" transform="translate(1705, 614)">
-  <!-- Pill JSON -->
-  <g transform="translate(0, 0)">
-    <rect width="84" height="28" rx="8" fill="#0b242c" stroke="#38bdf8" stroke-width="1.2"/>
-    <text x="42" y="18" fill="#38bdf8" font-family="'Courier New', monospace" font-size="11" font-weight="bold" text-anchor="middle">.JSON</text>
-  </g>
-  <!-- Pill MD -->
-  <g transform="translate(94, 0)">
-    <rect width="78" height="28" rx="8" fill="#0b242c" stroke="#2dd4bf" stroke-width="1.2"/>
-    <text x="39" y="18" fill="#2dd4bf" font-family="'Courier New', monospace" font-size="11" font-weight="bold" text-anchor="middle">.MD</text>
-  </g>
-  <!-- Pill HTML -->
-  <g transform="translate(182, 0)">
-    <rect width="86" height="28" rx="8" fill="#0b242c" stroke="#fbbf24" stroke-width="1.2"/>
-    <text x="43" y="18" fill="#fbbf24" font-family="'Courier New', monospace" font-size="11" font-weight="bold" text-anchor="middle">.HTML</text>
-  </g>
-  <!-- Pill DOCX -->
-  <g transform="translate(278, 0)">
-    <rect width="88" height="28" rx="8" fill="#0b242c" stroke="#a78bfa" stroke-width="1.2"/>
-    <text x="44" y="18" fill="#a78bfa" font-family="'Courier New', monospace" font-size="11" font-weight="bold" text-anchor="middle">.DOCX</text>
   </g>
 </g>
 </svg>
