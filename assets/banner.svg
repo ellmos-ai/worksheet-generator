@@ -120,7 +120,7 @@
 </g>
 
 <!-- ================= CLASSIC POWER GENERATOR (fills gap left of printer, feeds it via cable) ================= -->
-<g id="power-generator" transform="translate(370, 230) scale(1.25)">
+<g id="power-generator" transform="translate(300, 257) scale(1.25)">
   <!-- Ground shadow -->
   <ellipse cx="170" cy="252" rx="185" ry="18" fill="#02080a" opacity="0.4"/>
 
@@ -174,12 +174,38 @@
 
 <!-- Power cable from generator outlet to printer -->
 <g id="generator-power-cable">
-  <path d="M751 388 C 810 388, 865 402, 908 414" fill="none" stroke="#f59e0b" stroke-width="6" stroke-linecap="round"/>
-  <path d="M751 388 C 810 388, 865 402, 908 414" fill="none" stroke="#fbbf24" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+  <path d="M681 415 C 760 415, 840 415, 908 414" fill="none" stroke="#f59e0b" stroke-width="6" stroke-linecap="round"/>
+  <path d="M681 415 C 760 415, 840 415, 908 414" fill="none" stroke="#fbbf24" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
   <!-- Plug at printer side -->
   <rect x="906" y="405" width="16" height="18" rx="3" fill="#0e1a21" stroke="#2dd4bf" stroke-width="1.6"/>
   <line x1="911" y1="409" x2="911" y2="419" stroke="#5eead4" stroke-width="1.5"/>
   <line x1="917" y1="409" x2="917" y2="419" stroke="#5eead4" stroke-width="1.5"/>
+</g>
+
+<!-- ================= SOLAR PANEL FALLBACK (left of the generator, tilted, wired to it) ================= -->
+<g id="solar-panel-fallback" transform="translate(95, 385)">
+  <!-- Ground shadow -->
+  <ellipse cx="70" cy="140" rx="90" ry="11" fill="#02080a" opacity="0.35"/>
+
+  <!-- Support struts (stay upright regardless of panel tilt) -->
+  <rect x="18" y="70" width="9" height="72" rx="3" fill="#3d5466" stroke="#1d2c37" stroke-width="1"/>
+  <rect x="118" y="105" width="9" height="37" rx="3" fill="#3d5466" stroke="#1d2c37" stroke-width="1"/>
+
+  <!-- Tilted panel (leaning back, catching light) -->
+  <g transform="translate(22, 34) rotate(-22)">
+    <rect x="0" y="0" width="152" height="94" rx="7" fill="#0f2942" stroke="#93a5b8" stroke-width="3"/>
+    <rect x="6" y="6" width="140" height="82" rx="3" fill="#0b1f33"/>
+    <line x1="34" y1="6" x2="34" y2="88" stroke="#20456c" stroke-width="1.2"/>
+    <line x1="62" y1="6" x2="62" y2="88" stroke="#20456c" stroke-width="1.2"/>
+    <line x1="90" y1="6" x2="90" y2="88" stroke="#20456c" stroke-width="1.2"/>
+    <line x1="118" y1="6" x2="118" y2="88" stroke="#20456c" stroke-width="1.2"/>
+    <line x1="6" y1="33" x2="146" y2="33" stroke="#20456c" stroke-width="1.2"/>
+    <line x1="6" y1="60" x2="146" y2="60" stroke="#20456c" stroke-width="1.2"/>
+    <polygon points="6,6 32,6 6,62" fill="#ffffff" opacity="0.08"/>
+  </g>
+
+  <!-- Thin cable to the generator -->
+  <path d="M126 122 C 175 124, 205 128, 225 130" fill="none" stroke="#f59e0b" stroke-width="3" stroke-linecap="round"/>
 </g>
 
 <!-- ================= CENTER: CLASSIC 80s/90s RETRO DESKTOP PRINTER ================= -->
