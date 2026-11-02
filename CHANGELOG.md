@@ -5,6 +5,11 @@ Alle relevanten Änderungen an `worksheet-generator` werden in dieser Datei doku
 Das Format basiert auf [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 und dieses Projekt hält sich an [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Hinzugefügt
+- Spanische README mit Sprachwahl in EN/DE und Verweis in `llms.txt`; Dokumentationssprachen sind getrennt von Laufzeitsprachen ausgewiesen.
+
 ## [0.2.3] - 2026-09-10
 
 ### Hinzugefügt

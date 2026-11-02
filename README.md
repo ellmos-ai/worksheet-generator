@@ -12,11 +12,11 @@
   <a href="https://github.com/ellmos-ai"><img src="https://img.shields.io/badge/Ecosystem-ellmos--ai-purple.svg" alt="Ecosystem: ellmos-ai"></a>
   <a href="https://github.com/open-bricks"><img src="https://img.shields.io/badge/Umbrella-open--bricks-indigo.svg" alt="Umbrella: open-bricks"></a>
   <a href="llms.txt"><img src="https://img.shields.io/badge/LLM--Ready-llms.txt-blue.svg" alt="LLM-Ready"></a>
-  <a href="README_de.md"><img src="https://img.shields.io/badge/Docs-EN%20%7C%20DE-success.svg" alt="Documentation: Bilingual"></a>
+  <a href="README_de.md"><img src="https://img.shields.io/badge/Docs-EN%20%7C%20DE%20%7C%20ES-success.svg" alt="Documentation: English, German, Spanish"></a>
 </p>
 
 <p align="center">
-  <b>English</b> | <a href="README_de.md">Deutsch</a>
+  <b>English</b> | <a href="README_de.md">Deutsch</a> | <a href="README_es.md">Español</a>
 </p>
 
 > [!NOTE]
