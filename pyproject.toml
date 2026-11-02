@@ -43,6 +43,7 @@ Issues = "https://github.com/ellmos-ai/worksheet-generator/issues"
 "LLM Context Index" = "https://github.com/ellmos-ai/worksheet-generator/blob/main/llms.txt"
 "Third-Party Licenses" = "https://github.com/ellmos-ai/worksheet-generator/blob/main/THIRD_PARTY_LICENSES.md"
 "Marketing Log" = "https://github.com/ellmos-ai/worksheet-generator/blob/main/MARKETING-LOG.txt"
+Changelog = "https://github.com/ellmos-ai/worksheet-generator/blob/main/CHANGELOG.md"
 
 [project.scripts]
 worksheet-generator = "worksheet_generator.cli:main"

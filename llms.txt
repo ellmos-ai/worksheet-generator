@@ -15,7 +15,8 @@
 - `README.md`: English documentation, 16-point bilingual navigation, visual Mermaid architecture & lifecycle sequence diagrams.
 - `README_de.md`: Deutsche Dokumentation mit 100% Parität zu `README.md`.
 - `SKILL.md`: Skill-Spezifikation für KI-Agenten und LLM-Integration.
-- `THIRD_PARTY_LICENSES.md`: Lizenzaudit, SPDX-Inventar und Bring-Your-Own-ICF-Rechtshinweis.
+- `THIRD_PARTY_LICENSES.md`: Lizenzaudit, Level 1 SBOM, SPDX-Inventar und Bring-Your-Own-ICF-Rechtshinweis (Companion: `THIRD_PARTY_LICENSES.txt`).
+- `.github/dependabot.yml`: Wöchentliche Security-Updates für GitHub Actions und Pip (Zero-Noise Shield).
 - `MARKETING-LOG.txt`: Positionierung, Personas, High-Intent SEO-Matrix und Vergleichsmatrix.
 - `KONZEPT.md`: Herkunft, Designentscheidungen und Abgrenzungen.
 - `worksheet_generator/schema.py`: JSON-Schema-Definition und Validierung mit der Python-Standardbibliothek.
@@ -44,5 +45,5 @@ python -m worksheet_generator render output/worksheet.json --format md
 - Version: 0.2.3
 - Network: Die Generator-Engine arbeitet 100% offline. Einziger Netzzugriff ist das optionale, ausdrücklich manuell aufzurufende `_tools/icf_fetch.py --who-api` (WHO ICD-11-API).
 - ICF-Lizenz: Die MIT-Lizenz erstreckt sich NICHT auf ICF-Inhalte (ICF © WHO, deutsche Fassung © WHO/BfArM); das Repo bundelt keine ICF-Kurztitel oder -Volltexte.
-- Tests: 24 passed | 100% green (pytest, Linux + Windows, Python 3.10-3.13)
-- Last Checked: 2026-09-14
+- Tests: 30 passed | 100% green (pytest, Linux + Windows + macOS, Python 3.10-3.13)
+- Last Checked: 2026-11-02

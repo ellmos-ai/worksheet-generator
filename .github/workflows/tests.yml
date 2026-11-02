@@ -32,6 +32,10 @@ jobs:
         python -m pip install --upgrade pip
         pip install -e .[test]
 
+    - name: Verify repository hygiene & whitespace
+      run: |
+        git diff --check
+
     - name: Verify bytecode compilation
       run: |
         python -m compileall -q worksheet_generator tests

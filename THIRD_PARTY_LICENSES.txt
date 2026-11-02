@@ -1,0 +1,116 @@
+THIRD-PARTY LICENSES & LEVEL 1 SBOM NOTICE
+Project: ellmos-ai/worksheet-generator
+Audited: 2026-11-02
+Repository License: MIT License (see LICENSE)
+Documentation & Full Report: THIRD_PARTY_LICENSES.md
+Architecture & Security: 100% Local-First, Zero-Egress, Unprivileged User-Mode (RunAsInvoker), Zero Mandatory Dependencies, Student Privacy Isolation (INV-LOCAL-01..INV-SLA-10)
+
+================================================================================
+1. EXECUTIVE SUMMARY & ZERO-COPYLEFT ISOLATION GUARANTEE
+================================================================================
+
+worksheet-generator is an unprivileged, local-first educational material generator for
+special education professionals, therapists, and classroom teachers. It adheres to strict
+zero-egress, privacy-first runtime principles.
+
+- Zero Mandatory Dependencies (INV-ZERODEP-03): The entire core generator, schema validator,
+  curriculum adapter, and Markdown/HTML renderers run exclusively on the Python 3.10+
+  Standard Library.
+- Zero-Copyleft Isolation Guarantee (INV-PERMISSIVE-06): No GPL, AGPL, SSPL, or viral copyleft
+  dependencies are incorporated into the runtime distribution. All direct, optional, and
+  development dependencies are strictly permissive (MIT, PSF-2.0).
+- Unprivileged User-Mode (RunAsInvoker, INV-UNPRIV-02): worksheet-generator executes
+  exclusively in standard, non-elevated user space without requesting administrative rights.
+- Output Ownership Guarantee (INV-OUTPUT-07): All generated worksheets (JSON, Markdown,
+  HTML, DOCX) remain the 100% exclusive intellectual property of the generating user.
+
+================================================================================
+2. INVARIANT CROSS-REFERENCE MATRIX (INV-LOCAL-01 .. INV-SLA-10)
+================================================================================
+
+Invariant ID   | Operational Mandate                | Technical Enforcement                | License Scope
+---------------+------------------------------------+--------------------------------------+-------------------
+INV-LOCAL-01   | 100% Local-First & Zero-Egress     | Zero telemetry; offline execution    | MIT / PSF-2.0
+INV-UNPRIV-02  | Unprivileged RunAsInvoker          | Standard non-elevated user mode      | MIT / PSF-2.0
+INV-ZERODEP-03 | Zero Mandatory Dependencies        | 100% Python Standard Library         | MIT / PSF-2.0
+INV-ISOLATION-04| Student & Client Privacy Isolation| Zero PII; abstract pedagogical goals | MIT / PSF-2.0
+INV-ICF-05     | Bring-Your-Own-Reference Demarcation| No bundled copyrighted classifications| WHO / BfArM Boundary
+INV-PERMISSIVE-06| Zero-Copyleft Isolation Guarantee| Strictly permissive (MIT, PSF-2.0)   | MIT / PSF-2.0
+INV-OUTPUT-07  | Zero-Copyleft on Output            | Worksheets are exclusive user IP     | User IP
+INV-FORMAT-08  | Multi-Format Deterministic Export  | Validated JSON, Markdown, HTML, DOCX | MIT / PSF-2.0
+INV-SCHEMA-09  | Strict Schema & Contract Validation| Dataclasses & schema definitions     | MIT / PSF-2.0
+INV-SLA-10     | 48h Security & Governance SLA      | Committed response SLA (§ 521 BGB)   | Statutory Standard
+
+================================================================================
+3. RUNTIME DEPENDENCY MATRIX (LEVEL 1 SBOM)
+================================================================================
+
+Package                  Role / Functional Scope                                License       Upstream
+-----------------------+------------------------------------------------------+-------------+---------------------
+Python Standard Library  dataclasses, json, pathlib, re, argparse, sys, html    PSF-2.0       python/cpython
+
+================================================================================
+4. OPTIONAL FEATURE DEPENDENCIES
+================================================================================
+
+Package                  Group       License                  Purpose & Usage
+-----------------------+-----------+------------------------+------------------------------------------
+python-docx (>=1.1.0)    docx        MIT                      Optional Microsoft Word DOCX export renderer
+
+================================================================================
+5. DEVELOPMENT & QUALITY ASSURANCE TOOLING
+================================================================================
+
+Package                  Usage & Purpose                                        License       Source / Upstream
+-----------------------+------------------------------------------------------+-------------+---------------------
+pytest (>=8.0.0)         Automated unit, regression, and contract test runner   MIT           pytest-dev/pytest
+setuptools (>=77.0.3)    PEP 517 / PEP 621 packaging and build backend          MIT           pypa/setuptools
+build                    PEP 517 isolated package builder                       MIT           pypa/build
+
+================================================================================
+6. EDUCATIONAL FRAMEWORKS NOTICE (WHO / BFARM ICF)
+================================================================================
+
+ICF (International Classification of Functioning, Disability and Health):
+- Copyright Holder: (c) World Health Organization (WHO), 2001 / 2026.
+- German Translation & Terminology: (c) WHO / BfArM, Section 5 (2) UrhG.
+- Bring-Your-Own-Reference Principle (INV-ICF-05): worksheet-generator bundles no ICF full texts,
+  short titles, or diagnostic descriptions. It uses standard ICF alphanumeric codes strictly as
+  neutral, abstract identifiers. The MIT license does not grant rights to copyrighted WHO/BfArM texts.
+
+================================================================================
+7. STATUTORY DISCLAIMER (§ 521 BGB) & 48H SECURITY RESPONSE SLA
+================================================================================
+
+Die Bereitstellung dieser Software erfolgt als unentgeltliche Open-Source-Leistung
+gemäß deutschem Recht (§ 521 BGB - Gefälligkeitsrecht / unentgeltliche Zuwendung).
+Die Haftung ist auf Vorsatz und grobe Fahrlässigkeit beschränkt. Es wird keine Gewähr
+für Mängelfreiheit oder unterbrechungsfreie Funktionsfähigkeit übernommen.
+
+Vulnerability reports received via GitHub Security Advisories or issues are acknowledged
+within 48 hours, triaged within 5 business days, and coordinated through responsible
+disclosure (INV-SLA-10).
+
+================================================================================
+8. LICENSE TEXTS & ATTRIBUTION
+================================================================================
+
+MIT LICENSE (worksheet-generator, python-docx, pytest, setuptools, build)
+------------------------------------------------------------------------
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

@@ -89,6 +89,11 @@ def test_documentation_and_license_artifacts() -> None:
     assert "ICF (International Classification of Functioning, Disability and Health)" in tpl_text
     assert "Zero-Copyleft on Generated Worksheets" in tpl_text
 
+    tpl_txt = ROOT / "THIRD_PARTY_LICENSES.txt"
+    assert tpl_txt.is_file()
+    tpl_txt_text = tpl_txt.read_text(encoding="utf-8")
+    assert "THIRD-PARTY LICENSES & LEVEL 1 SBOM NOTICE" in tpl_txt_text
+
     # 2. Marketing log
     mlog = ROOT / "MARKETING-LOG.txt"
     assert mlog.is_file()
@@ -117,6 +122,7 @@ def test_pyproject_pep621_urls() -> None:
         '"LLM Context Index"',
         '"Third-Party Licenses"',
         '"Marketing Log"',
+        "Changelog",
     ]:
         assert key in pyproject
 
@@ -139,4 +145,52 @@ def test_bilingual_navigation_parity() -> None:
 
     for title, anchor in de_nav:
         assert f"#{anchor}" in readme_de
+
+
+def test_ci_workflow_and_dependabot_hygiene() -> None:
+    ci = (ROOT / ".github" / "workflows" / "tests.yml").read_text(encoding="utf-8")
+    assert "git diff --check" in ci
+
+    dependabot = (ROOT / ".github" / "dependabot.yml").read_text(encoding="utf-8")
+    assert 'package-ecosystem: "github-actions"' in dependabot
+    assert 'package-ecosystem: "pip"' in dependabot
+    assert "open-pull-requests-limit: 0" in dependabot
+
+
+def test_gitignore_lock_defense() -> None:
+    gitignore = (ROOT / ".gitignore").read_text(encoding="utf-8")
+    for pattern in [
+        "LOCK*.txt",
+        "LOCK.user.*",
+        "LOCK-CACHE*",
+        ".gemini/",
+        ".antigravity/",
+        ".cursor/",
+    ]:
+        assert pattern in gitignore
+
+
+def test_level1_sbom_parity_and_invariants() -> None:
+    tpl_md = (ROOT / "THIRD_PARTY_LICENSES.md").read_text(encoding="utf-8")
+    tpl_txt = (ROOT / "THIRD_PARTY_LICENSES.txt").read_text(encoding="utf-8")
+
+    invariants = [
+        "INV-LOCAL-01",
+        "INV-UNPRIV-02",
+        "INV-ZERODEP-03",
+        "INV-ISOLATION-04",
+        "INV-ICF-05",
+        "INV-PERMISSIVE-06",
+        "INV-OUTPUT-07",
+        "INV-FORMAT-08",
+        "INV-SCHEMA-09",
+        "INV-SLA-10",
+    ]
+
+    for inv in invariants:
+        assert inv in tpl_md
+        assert inv in tpl_txt
+
+    assert "521 BGB" in tpl_md
+    assert "521 BGB" in tpl_txt
 

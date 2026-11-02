@@ -9,6 +9,13 @@ icf_local.*.json
 
 # LOCK-System (Multi-Agenten-Koordination, nie committen)
 LOCK*.txt
+LOCK.user.*
+LOCK.until.*
+LOCK.condition.*
+LOCK.team.*
+LOCK.community.*
+LOCK.task.*
+LOCK-CACHE*
 
 # Generierte Arbeitsblaetter (nur synthetische Beispiele in examples/ sind Teil des Repos)
 output/
@@ -32,8 +39,17 @@ build/
 dist/
 *.egg-info/
 
-# OS/Editor
+# OS/Editor & Agenten-Arbeitsverzeichnisse
 Thumbs.db
 .DS_Store
 .idea/
 .vscode/
+.gemini/
+.antigravity/
+.cursor/
+.claude/
+.copilot/
+* (kopie)*
+* (copy)*
+*.tmp
+*.bak
