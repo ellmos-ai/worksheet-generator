@@ -369,4 +369,4 @@ Forma parte de los ecosistemas **ellmos-ai** y **open-bricks**:
 ## Licencia y descargo de responsabilidad
 
 - **Licencia:** Licencia MIT (consulta [LICENSE](LICENSE)).
-- **Aviso médico y educativo:** Este software es una herramienta para generar materiales, no un producto sanitario de diagnóstico ni un currículo terapéutico pedagógico certificado. Profesionales cualificados deben revisar todos los materiales antes de utilizarlos en clase.
+- **Aviso médico y educativo:** Este software es una herramienta para generar materiales, no un producto sanitario de diagnóstico ni un currículo terapéutico pedagógico certificado. Educadores cualificados deben revisar todos los materiales antes de utilizarlos en clase.
