@@ -5,6 +5,12 @@ Alle relevanten Änderungen an `worksheet-generator` werden in dieser Datei doku
 Das Format basiert auf [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 und dieses Projekt hält sich an [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## Unreleased
+
+### Behoben
+- Ungültige `curriculum_sources` werden bei Status und Curriculum-Generierung mit einer klaren Konfigurationsfehlermeldung statt eines Tracebacks abgewiesen, bevor ein Arbeitsblatt geschrieben wird. Leere Quellen, `null`, unbekannte Adapter als Warnung und der unabhängige Fördermodus bleiben erhalten.
+- Die englischen/deutschen Konfigurationsbeispiele verwenden die tatsächliche Liste von Adapter-Objekten und unterstützte Konfigurationsfelder.
+
 ## [0.2.3] - 2026-09-10
 
 ### Hinzugefügt
