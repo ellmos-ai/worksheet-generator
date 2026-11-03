@@ -294,11 +294,11 @@ Lokale, unversionierte Überschreibungen gehören in `config.local.json` (gitign
 
 ```json
 {
-  "default_niveau": "einfache_sprache",
-  "default_alter": "8-10",
-  "curriculum_sources": {
-    "local_files": "pfad/zu/curricula"
-  }
+  "material_dirs": [],
+  "icf_local_path": "icf_local.json",
+  "curriculum_sources": [
+    {"type": "local-files", "path": "pfad/zu/curricula"}
+  ]
 }
 ```
 
