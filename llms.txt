@@ -16,7 +16,7 @@
 - `README_de.md`: Deutsche Dokumentation mit 100% Parität zu `README.md`.
 - `SKILL.md`: Skill-Spezifikation für KI-Agenten und LLM-Integration.
 - `THIRD_PARTY_LICENSES.md`: Lizenzaudit, Level 1 SBOM, SPDX-Inventar und Bring-Your-Own-ICF-Rechtshinweis (Companion: `THIRD_PARTY_LICENSES.txt`).
-- `.github/dependabot.yml`: Wöchentliche Security-Updates für GitHub Actions und Pip (Zero-Noise Shield).
+- `.github/dependabot.yml`: Wöchentliche Versionsprüfungen für GitHub Actions; reguläre Pip-Versions-PRs sind deaktiviert. Sicherheitsupdates haben eigene Voraussetzungen und Limits.
 - `MARKETING-LOG.txt`: Positionierung, Personas, High-Intent SEO-Matrix und Vergleichsmatrix.
 - `KONZEPT.md`: Herkunft, Designentscheidungen und Abgrenzungen.
 - `worksheet_generator/schema.py`: JSON-Schema-Definition und Validierung mit der Python-Standardbibliothek.

@@ -356,7 +356,7 @@ PYTHONIOENCODING=utf-8 python -m pytest tests/ -v
 
 30 Tests prüfen:
 - PEP 639 und PEP 621 Lizenz- und Paketfindungskontrakte (`tests/test_metadata.py`).
-- CI-Workflow-Integrität, Dependabot-Sicherheitsschild und Lock-Defense.
+- CI-Workflow-Integrität, Dependabot-Konfiguration für Updates und Lock-Defense.
 - Level-1-SBOM-Invariantenparität und gesetzliche Haftungsausschluss-Prüfung.
 - Schemavalidierung und Fehlerabfang bei ungültigen Eingaben (`tests/test_smoke.py`).
 - Förder- und Curriculum-Generierungsmodi (`tests/test_curriculum.py`).

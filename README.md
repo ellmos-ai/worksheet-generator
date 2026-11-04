@@ -356,7 +356,7 @@ PYTHONIOENCODING=utf-8 python -m pytest tests/ -v
 
 30 tests verify:
 - PEP 639 and PEP 621 license and package-discovery contracts (`tests/test_metadata.py`).
-- CI workflow integrity, Dependabot security shield, and lock defense.
+- CI workflow integrity, Dependabot update configuration, and lock defense.
 - Level 1 SBOM invariant parity and statutory disclaimer verification.
 - Schema validation and negative error cases (`tests/test_smoke.py`).
 - Special education and curriculum generation modes (`tests/test_curriculum.py`).
