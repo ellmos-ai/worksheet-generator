@@ -5,6 +5,15 @@ Alle relevanten Änderungen an `worksheet-generator` werden in dieser Datei doku
 Das Format basiert auf [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 und dieses Projekt hält sich an [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased] - 2026-11-02
+
+### Hinzugefügt
+- **CI-Matrix- & Dependabot-Härtung:** `.github/dependabot.yml` für wöchentliche Updates von `github-actions` und `pip` (mit `open-pull-requests-limit: 0` zur Begrenzung regulärer Versions-PRs; Sicherheitsupdates werden dadurch nicht konfiguriert) provisioniert; `.github/workflows/tests.yml` um ein eventgebundenes Whitespace- und Merge-Marker-Gate für eingecheckte Commitbereiche ergänzt.
+- **Gitignore & Lock-Defense:** `.gitignore` gegen Multi-Agenten-Locks (`LOCK*.txt`, `LOCK.user.*`, `LOCK.until.*`, `LOCK.condition.*`, `LOCK.team.*`, `LOCK.community.*`, `LOCK.task.*`, `LOCK-CACHE*`), Agenten-Arbeitsverzeichnisse (`.gemini/`, `.antigravity/`, `.cursor/`, `.claude/`, `.copilot/`) und temporäre Dateiduplikate gehärtet.
+- **Level-1-SBOM & Transparenz-Audit:** Vollständiges Plain-Text-Begleitdokument `THIRD_PARTY_LICENSES.txt` mit Invarianten-Matrix (`INV-LOCAL-01` bis `INV-SLA-10`), Unprivileged RunAsInvoker Zertifizierung, gesetzlichem Haftungsausschluss (§ 521 BGB Gefälligkeitsrecht) und 48h Security Response SLA ergänzt; `THIRD_PARTY_LICENSES.md` synchronisiert.
+- **PEP 621 Metadaten:** `Changelog`-URL in `[project.urls]` in `pyproject.toml` ergänzt (Version 0.2.3 strikt unberührt gemäß T-20260920-167562623).
+- **Vertragstest-Erweiterung:** 3 neue hermetische Vertragstests in `tests/test_metadata.py` (`test_ci_workflow_and_dependabot_hygiene`, `test_gitignore_lock_defense`, `test_level1_sbom_parity_and_invariants`) ergänzt; Testsuite von 27 auf 30 Tests erweitert (100% grün).
+
 ## [0.2.3] - 2026-09-10
 
 ### Hinzugefügt
