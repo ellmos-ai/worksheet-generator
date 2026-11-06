@@ -21,6 +21,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
 
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v5
@@ -31,6 +33,13 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -e .[test]
+
+    - name: Verify repository hygiene & whitespace
+      env:
+        EVENT_NAME: ${{ github.event_name }}
+        BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
+        HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+      run: python .github/scripts/check_committed_diff.py
 
     - name: Verify bytecode compilation
       run: |

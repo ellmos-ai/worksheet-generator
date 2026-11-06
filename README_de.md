@@ -6,7 +6,8 @@
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="Lizenz: MIT"></a>
   <a href="https://www.python.org/downloads/"><img src="https://img.shields.io/badge/Python-3.10+-blue.svg" alt="Python 3.10+"></a>
   <a href="https://github.com/ellmos-ai/worksheet-generator/actions"><img src="https://github.com/ellmos-ai/worksheet-generator/actions/workflows/tests.yml/badge.svg" alt="CI-Status"></a>
-  <a href="tests/"><img src="https://img.shields.io/badge/Tests-24%20passed%20%7C%20100%25-brightgreen.svg" alt="Tests: 24 bestanden"></a>
+  <a href="tests/"><img src="https://img.shields.io/badge/Tests-30%20passed%20%7C%20100%25-brightgreen.svg" alt="Tests: 30 bestanden"></a>
+  <a href="tests/"><img src="https://img.shields.io/badge/Gepr%C3%BCft-2026--11--02-brightgreen.svg" alt="Geprüft: 2026-11-02"></a>
   <a href="#was-ist-worksheet-generator"><img src="https://img.shields.io/badge/Datenschutz-100%25%20Local--First%20(Zero%20Egress)-blue.svg" alt="Datenschutz: 100% Local-First"></a>
   <a href="#sicherheit--system-invarianten"><img src="https://img.shields.io/badge/Rechte-RunAsInvoker-green.svg" alt="Rechte: RunAsInvoker"></a>
   <a href="https://github.com/ellmos-ai"><img src="https://img.shields.io/badge/Ecosystem-ellmos--ai-purple.svg" alt="Ökosystem: ellmos-ai"></a>
@@ -337,10 +338,10 @@ ICF © World Health Organization (WHO); deutsche Fassung © WHO / BfArM (§ 5 Ab
 
 ## Drittanbieter-Lizenzen & Transparenz
 
-Umfassende Lizenz- und Transparenzinformationen sind in [`THIRD_PARTY_LICENSES.md`](THIRD_PARTY_LICENSES.md) dokumentiert:
+Umfassende Lizenz- und Transparenzinformationen sind in [`THIRD_PARTY_LICENSES.md`](THIRD_PARTY_LICENSES.md) (sowie dem Text-Begleitdokument [`THIRD_PARTY_LICENSES.txt`](THIRD_PARTY_LICENSES.txt)) dokumentiert:
 - **Kern-Laufzeit:** Python Standardbibliothek (`PSF-2.0`). 0 externe Laufzeit-Pflichtabhängigkeiten.
 - **Optionale Bibliotheken:** `python-docx` (`MIT`).
-- **Entwicklungs- & Testwerkzeuge:** `pytest` (`MIT`), `setuptools` (`MIT`).
+- **Entwicklungs- & Testwerkzeuge:** `pytest` (`MIT`), `setuptools` (`MIT`), `build` (`MIT`).
 - **Material-Ausgabe:** 100 % Zero-Copyleft-Garantie für alle erzeugten Arbeitsblätter und Exporte.
 
 ---
@@ -353,8 +354,10 @@ Die Testsuite stellt Metadaten-Parität, Schema-Validierung und Renderer-Integri
 PYTHONIOENCODING=utf-8 python -m pytest tests/ -v
 ```
 
-24 Tests prüfen:
+30 Tests prüfen:
 - PEP 639 und PEP 621 Lizenz- und Paketfindungskontrakte (`tests/test_metadata.py`).
+- CI-Workflow-Integrität, Dependabot-Konfiguration für Updates und Lock-Defense.
+- Level-1-SBOM-Invariantenparität und gesetzliche Haftungsausschluss-Prüfung.
 - Schemavalidierung und Fehlerabfang bei ungültigen Eingaben (`tests/test_smoke.py`).
 - Förder- und Curriculum-Generierungsmodi (`tests/test_curriculum.py`).
 - Korrekte Markdown- und HTML-Formatierung und HTML-Escaping.
