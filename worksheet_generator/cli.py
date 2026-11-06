@@ -29,6 +29,24 @@ DEFAULT_CONFIG = RUNTIME_ROOT / "config.json"
 LOCAL_CONFIG = RUNTIME_ROOT / "config.local.json"
 
 
+class ConfigurationError(ValueError):
+    """Invalid configuration consumed by a CLI command."""
+
+
+def _curriculum_sources_config(config: dict) -> list[dict] | None:
+    sources = config.get("curriculum_sources", [])
+    if sources is None:
+        return None
+    if not isinstance(sources, list):
+        raise ConfigurationError("curriculum_sources muss eine Liste von Objekten oder null sein.")
+    for index, entry in enumerate(sources):
+        if not isinstance(entry, dict):
+            raise ConfigurationError(f"curriculum_sources[{index}] muss ein Objekt sein.")
+        if "type" in entry and not isinstance(entry["type"], str):
+            raise ConfigurationError(f"curriculum_sources[{index}].type muss eine Zeichenkette sein.")
+    return sources
+
+
 def load_config() -> dict:
     """Lädt den Paketstandard und überlagert Projekt- sowie lokale Konfiguration."""
     config: dict = json.loads(PACKAGE_DEFAULT_CONFIG.read_text(encoding="utf-8"))
@@ -64,7 +82,7 @@ def cmd_generate(args: argparse.Namespace) -> int:
             differenzierung=args.level or "",
             kompetenzfokus=[k.strip() for k in args.kompetenz.split(",") if k.strip()] if args.kompetenz else [],
         )
-        curriculum_sources_config = config.get("curriculum_sources", [])
+        curriculum_sources_config = _curriculum_sources_config(config)
         worksheet = generate_worksheet(
             ziel,
             material_dirs=material_dirs,
@@ -127,7 +145,7 @@ def cmd_status(_args: argparse.Namespace) -> int:
     except ImportError:
         docx_status = "NICHT installiert (pip install python-docx)"
 
-    curriculum_sources_config = config.get("curriculum_sources", [])
+    curriculum_sources_config = _curriculum_sources_config(config)
 
     print("worksheet-generator -- Status")
     print(f"  Schema-Version:     {schema.SCHEMA_VERSION}")
@@ -204,7 +222,11 @@ def main(argv: list[str] | None = None) -> int:
     if not getattr(args, "command", None):
         parser.print_help()
         return 0
-    return args.func(args)
+    try:
+        return args.func(args)
+    except ConfigurationError as exc:
+        print(f"FEHLER: {exc}", file=sys.stderr)
+        return 1
 
 
 if __name__ == "__main__":

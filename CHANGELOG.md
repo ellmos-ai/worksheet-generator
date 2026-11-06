@@ -7,6 +7,10 @@ und dieses Projekt hält sich an [Semantic Versioning](https://semver.org/spec/v
 
 ## [Unreleased] - 2026-11-02
 
+### Behoben
+- Ungültige `curriculum_sources` werden bei Status und Curriculum-Generierung mit einer klaren Konfigurationsfehlermeldung statt eines Tracebacks abgewiesen, bevor ein Arbeitsblatt geschrieben wird. Leere Quellen, `null`, unbekannte Adapter als Warnung und der unabhängige Fördermodus bleiben erhalten.
+- Die englischen/deutschen Konfigurationsbeispiele verwenden die tatsächliche Liste von Adapter-Objekten und unterstützte Konfigurationsfelder.
+
 ### Hinzugefügt
 - **CI-Matrix- & Dependabot-Härtung:** `.github/dependabot.yml` für wöchentliche Updates von `github-actions` und `pip` (mit `open-pull-requests-limit: 0` zur Begrenzung regulärer Versions-PRs; Sicherheitsupdates werden dadurch nicht konfiguriert) provisioniert; `.github/workflows/tests.yml` um ein eventgebundenes Whitespace- und Merge-Marker-Gate für eingecheckte Commitbereiche ergänzt.
 - **Gitignore & Lock-Defense:** `.gitignore` gegen Multi-Agenten-Locks (`LOCK*.txt`, `LOCK.user.*`, `LOCK.until.*`, `LOCK.condition.*`, `LOCK.team.*`, `LOCK.community.*`, `LOCK.task.*`, `LOCK-CACHE*`), Agenten-Arbeitsverzeichnisse (`.gemini/`, `.antigravity/`, `.cursor/`, `.claude/`, `.copilot/`) und temporäre Dateiduplikate gehärtet.

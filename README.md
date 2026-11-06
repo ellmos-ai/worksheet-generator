@@ -295,11 +295,11 @@ Local, unversioned overrides belong in `config.local.json` (gitignored, template
 
 ```json
 {
-  "default_niveau": "einfache_sprache",
-  "default_alter": "8-10",
-  "curriculum_sources": {
-    "local_files": "path/to/curricula"
-  }
+  "material_dirs": [],
+  "icf_local_path": "icf_local.json",
+  "curriculum_sources": [
+    {"type": "local-files", "path": "path/to/curricula"}
+  ]
 }
 ```
 
