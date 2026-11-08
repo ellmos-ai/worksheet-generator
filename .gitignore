@@ -23,11 +23,16 @@ output/
 # Interne Arbeits- und Planungsdokumente (Aufgabenliste, Notizen, Pflegeprotokolle)
 _intern/
 _after-care/
-TODO.md
 
 # Lokale Referenzkopie des Vorgaengerprojekts, aus dem die Engine abgeleitet
 # wurde -- Altcode, nie Teil des Repos
 bach_source/
+
+# Lokale Datenbanken und Datenverzeichnisse (Release-Gate)
+*.db
+*.sqlite
+*.sqlite3
+data/
 
 # Python
 __pycache__/

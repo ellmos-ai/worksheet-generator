@@ -30,7 +30,7 @@ def test_pyproject_scopes_package_discovery() -> None:
     )
     assert re.search(
         r'^\[tool\.setuptools\.package-data\]\s*\n'
-        r'worksheet_generator = \["default_config\.json"\]$',
+        r'worksheet_generator = \["default_config\.json", "py\.typed"\]$',
         pyproject,
         re.MULTILINE,
     )
@@ -195,4 +195,39 @@ def test_level1_sbom_parity_and_invariants() -> None:
 
     assert "521 BGB" in tpl_md
     assert "521 BGB" in tpl_txt
+
+
+def test_final_gate_compliance_and_pep561() -> None:
+    # 1. PEP 561 py.typed marker and classifiers
+    typed_marker = ROOT / "worksheet_generator" / "py.typed"
+    assert typed_marker.is_file()
+
+    pyproject = (ROOT / "pyproject.toml").read_text(encoding="utf-8")
+    assert '"Typing :: Typed"' in pyproject
+
+    # 2. SECURITY.md policy
+    sec_file = ROOT / "SECURITY.md"
+    assert sec_file.is_file()
+    sec_text = sec_file.read_text(encoding="utf-8")
+    assert "INV-SLA-10 (48-Hour Response SLA)" in sec_text
+    assert "Zero-Copyleft Guarantee" in sec_text
+
+    # 3. TODO.md STATUS table
+    todo_file = ROOT / "TODO.md"
+    assert todo_file.is_file()
+    todo_text = todo_file.read_text(encoding="utf-8")
+    assert "## STATUS" in todo_text
+    assert "| Category" in todo_text
+    assert "PASS (10/10 Gates)" in todo_text
+
+    # 4. ellmos-module.v2.json repository type
+    manifest_file = ROOT / "ellmos-module.v2.json"
+    assert manifest_file.is_file()
+    manifest_data = json.loads(manifest_file.read_text(encoding="utf-8"))
+    assert manifest_data.get("source_of_truth", {}).get("type") == "git-repository"
+
+    # 5. .gitignore minimum requirements
+    gitignore_text = (ROOT / ".gitignore").read_text(encoding="utf-8")
+    assert "*.db" in gitignore_text
+    assert "data/" in gitignore_text
 

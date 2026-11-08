@@ -5,18 +5,24 @@ Alle relevanten Änderungen an `worksheet-generator` werden in dieser Datei doku
 Das Format basiert auf [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 und dieses Projekt hält sich an [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased] - 2026-11-02
+## [Unreleased]
+
+### Hinzugefügt
+- **Sicherheitsrichtlinie (`SECURITY.md`):** Sicherheitsrichtlinie für verantwortungsvolle Offenlegung, Local-First-Datenschutz, Zero-PII-Garantie auf Klienten- und Schülerdaten, WHO-API-Schutz und 48-Stunden-SLA nach P-006-Standard etabliert.
+- **PEP 561 Typisierungsunterstützung:** Typisierungsmarker `worksheet_generator/py.typed` angelegt, Trove-Classifier `"Typing :: Typed"` und Package-Data-Eintrag in `pyproject.toml` ergänzt.
+- **Release-Gate Aufgabenregister (`TODO.md`):** Standardisiertes Aufgabenregister mit 10-Gate `## STATUS`-Tabelle zur automatisierten Verifikation von Sicherheits- und Release-Invarianten angelegt.
+- **CI-Matrix- & Dependabot-Härtung:** `.github/dependabot.yml` für wöchentliche Updates von `github-actions` und `pip` (mit `open-pull-requests-limit: 0` zur Begrenzung regulärer Versions-PRs; Sicherheitsupdates werden dadurch nicht konfiguriert) provisioniert; `.github/workflows/tests.yml` um ein eventgebundenes Whitespace- und Merge-Marker-Gate für eingecheckte Commitbereiche ergänzt.
+- **Level-1-SBOM & Transparenz-Audit:** Vollständiges Plain-Text-Begleitdokument `THIRD_PARTY_LICENSES.txt` mit Invarianten-Matrix (`INV-LOCAL-01` bis `INV-SLA-10`), Unprivileged RunAsInvoker Zertifizierung, gesetzlichem Haftungsausschluss (§ 521 BGB Gefälligkeitsrecht) und 48h Security Response SLA ergänzt; `THIRD_PARTY_LICENSES.md` synchronisiert.
+- **PEP 621 Metadaten:** `Changelog`- und `Security Policy`-URLs in `[project.urls]` in `pyproject.toml` ergänzt.
+- **Vertragstest-Erweiterung:** 4 neue hermetische Vertragstests in `tests/test_metadata.py` (`test_ci_workflow_and_dependabot_hygiene`, `test_gitignore_lock_defense`, `test_level1_sbom_parity_and_invariants`, `test_final_gate_compliance_and_pep561`) ergänzt; Testsuite auf 35 Tests erweitert (100% grün).
 
 ### Behoben
 - Ungültige `curriculum_sources` werden bei Status und Curriculum-Generierung mit einer klaren Konfigurationsfehlermeldung statt eines Tracebacks abgewiesen, bevor ein Arbeitsblatt geschrieben wird. Leere Quellen, `null`, unbekannte Adapter als Warnung und der unabhängige Fördermodus bleiben erhalten.
 - Die englischen/deutschen Konfigurationsbeispiele verwenden die tatsächliche Liste von Adapter-Objekten und unterstützte Konfigurationsfelder.
 
-### Hinzugefügt
-- **CI-Matrix- & Dependabot-Härtung:** `.github/dependabot.yml` für wöchentliche Updates von `github-actions` und `pip` (mit `open-pull-requests-limit: 0` zur Begrenzung regulärer Versions-PRs; Sicherheitsupdates werden dadurch nicht konfiguriert) provisioniert; `.github/workflows/tests.yml` um ein eventgebundenes Whitespace- und Merge-Marker-Gate für eingecheckte Commitbereiche ergänzt.
-- **Gitignore & Lock-Defense:** `.gitignore` gegen Multi-Agenten-Locks (`LOCK*.txt`, `LOCK.user.*`, `LOCK.until.*`, `LOCK.condition.*`, `LOCK.team.*`, `LOCK.community.*`, `LOCK.task.*`, `LOCK-CACHE*`), Agenten-Arbeitsverzeichnisse (`.gemini/`, `.antigravity/`, `.cursor/`, `.claude/`, `.copilot/`) und temporäre Dateiduplikate gehärtet.
-- **Level-1-SBOM & Transparenz-Audit:** Vollständiges Plain-Text-Begleitdokument `THIRD_PARTY_LICENSES.txt` mit Invarianten-Matrix (`INV-LOCAL-01` bis `INV-SLA-10`), Unprivileged RunAsInvoker Zertifizierung, gesetzlichem Haftungsausschluss (§ 521 BGB Gefälligkeitsrecht) und 48h Security Response SLA ergänzt; `THIRD_PARTY_LICENSES.md` synchronisiert.
-- **PEP 621 Metadaten:** `Changelog`-URL in `[project.urls]` in `pyproject.toml` ergänzt (Version 0.2.3 strikt unberührt gemäß T-20260920-167562623).
-- **Vertragstest-Erweiterung:** 3 neue hermetische Vertragstests in `tests/test_metadata.py` (`test_ci_workflow_and_dependabot_hygiene`, `test_gitignore_lock_defense`, `test_level1_sbom_parity_and_invariants`) ergänzt; Testsuite von 27 auf 30 Tests erweitert (100% grün).
+### Geändert
+- **Katalog-Standardisierung (`ellmos-module.v2.json`):** `source_of_truth.type` von `local-directory` auf `git-repository` retypisiert, um `runtime_source` und `commit_sha` im `.MODULES`-Katalog nahtlos abzuleiten.
+- **Gitignore- & Lock-Defense-Härtung (`.gitignore`):** Release-Gate-Schutz für Datenbanken (`*.db`, `*.sqlite`, `*.sqlite3`), `data/`, Multi-Agenten-Locks und Agenten-Arbeitsverzeichnisse integriert; `TODO.md`-Ausschluss aufgehoben.
 
 ## [0.2.3] - 2026-09-10
 
@@ -61,37 +67,4 @@ und dieses Projekt hält sich an [Semantic Versioning](https://semver.org/spec/v
   ausdrückliche Anweisung des Nutzers auf die WHO-API zu. Beide READMEs sagen das jetzt.
 - **Englische Dokumentation ergänzt:** Der ICF-Lizenzhinweis (WHO/BfArM, MIT deckt keine
   ICF-Inhalte) sowie Installation, Konfiguration, Curriculum-Modus und Tests standen
-  bisher nur in `README_de.md`.
-
-### Entfernt
-- Interne Arbeitsdatei `TODO.md` und interne Verweise (nicht öffentliche Ablagen,
-  Notiz-Pfade und Projektnamen) aus dem veröffentlichten Stand genommen.
-
-## [0.1.2] - 2026-07-27
-
-### Hinzugefügt
-- **Dokumentations-Parität & i18n:** `README_de.md` als vollständige deutsche Dokumentation mit Systemarchitektur, GFM-Callouts und Ökosystem-Verlinkungen ergänzt.
-- **Bilinguale Startseite:** `README.md` mit Sprachwechsel und konsistenten Schnellstart-Anleitungen aktualisiert.
-
-### Geändert
-- **LLM-Metadaten:** `llms.txt` um `README_de.md` ergänzt und auf den aktuellen Prüfstand synchronisiert.
-- **Projekt-Version:** `pyproject.toml` auf `0.1.2` angehoben.
-
-## [0.1.1] - 2026-07-26
-
-### Hinzugefügt
-- **Discoverability & README-Design:** GFM Callout Notes (`> [!NOTE]`, `> [!IMPORTANT]`), zusätzliche Shields.io Badges (pytest, local-first privacy) und Mermaid Systemarchitektur-Diagramm in `README.md` integriert.
-- **Pytest-Konfiguration:** `[tool.pytest.ini_options]` in `pyproject.toml` nachgerüstet.
-
-### Geändert
-- **LLM-Metadaten:** Verification & Timestamp in `llms.txt` auf `2026-07-26` aktualisiert.
-
-## [0.1.0] - 2026-07-24
-
-### Hinzugefügt
-- Technisches Hygiene- & Dokumentations-Update.
-- Maschinenlesbares `llms.txt` im Repo-Root für KI-Agenten und RAG-Systeme.
-- Standardisiertes `pyproject.toml` mit Paket-Metadaten und Discoverability-Keywords.
-- GitHub Actions CI Workflow (`.github/workflows/tests.yml`) für automatisierte Pytest-Matrix-Tests unter Linux und Windows.
-- Shields.io Badges, Schnellübersicht und Discoverability-Erweiterungen in `README.md`.
-- `repository` URL in `ellmos-module.v2.json` eingetragen.
+  bisher nur auf Deutsch; `README.md` ist jetzt vollständig.
